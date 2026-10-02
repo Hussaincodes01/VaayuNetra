@@ -1,0 +1,253 @@
+# Deploying VayuNetra
+
+This takes a fresh clone to a running system: the database on Supabase, the website and dashboard on
+Vercel, email through Resend, and the inference worker on your own machine. Follow the steps in
+order. Each step ends with a check.
+
+Commands run from the repository root unless a step says `cd web` or `cd worker`.
+
+## 0. Accounts and tools
+
+| Service | Needed for | Plan |
+|---|---|---|
+| GitHub | the repository; CI runs on every push | free |
+| Supabase | database, sign-in, file storage | free tier works |
+| Vercel | website, dashboard, cron jobs | **Pro** for the 15-minute alert cron (see step 4.5) |
+| Resend | magic-link sign-in emails, alerts, monthly reports | free tier works; needs a domain you control |
+| Mapbox | the 3D globe and site maps | free tier; public token |
+| Mapillary | street-level photos on the landing page (optional) | free |
+| Groq | "Explain this site" AI briefings (optional) | free tier works |
+| Twilio | WhatsApp/SMS alerts (optional, off by default) | pay as you go |
+| Google Earth Engine | the worker's Sentinel-2 and ERA5-Land data | service account on a Cloud project |
+
+Tools on your computer: Git, Node 24 with Corepack (`corepack enable` gives you pnpm 10), the Supabase
+CLI 2.119 or newer, and for the worker Python 3.11 with [uv](https://docs.astral.sh/uv/).
+
+```bash
+git clone https://github.com/Hussaincodes01/VaayuNetra.git
+cd VaayuNetra
+corepack enable
+(cd web && pnpm install --frozen-lockfile)
+```
+
+Check: `node --version` prints v24, `supabase --version` prints 2.119 or newer.
+
+## 1. Supabase: database, storage and seed data
+
+1. In the [Supabase dashboard](https://supabase.com/dashboard), create a project. Region: Mumbai
+   (`ap-south-1`). Save the database password.
+2. Copy three values from **Project Settings → API Keys**, using the **Legacy API keys** tab:
+   - Project URL: `https://<ref>.supabase.co`
+   - `anon` key (public)
+   - `service_role` key (secret: it bypasses every security rule; it goes only into Vercel's server
+     variables and the worker's `.env`)
+3. Apply the schema. It creates the tables, row-level security, storage buckets and Realtime settings:
+
+   ```bash
+   supabase login
+   supabase link --project-ref <ref>
+   supabase db push
+   ```
+
+4. Load the field-test data (10 sites, 674 scans, settings):
+
+   ```bash
+   SUPABASE_URL=https://<ref>.supabase.co SUPABASE_SERVICE_ROLE_KEY=<service_role> node supabase/seed.ts --remote
+   ```
+
+Check: in the Supabase **Table Editor**, `sites` has 10 rows and `scans` has 674.
+
+## 2. Resend and sign-in email
+
+The dashboard is invite-only and signs people in with emailed magic links. Supabase's built-in
+mailer is meant for testing and has a low hourly limit, so send through Resend.
+
+1. In Resend, add your domain under **Domains** and create the DNS records it lists. Wait until the
+   domain shows **Verified**.
+2. Create an API key under **API Keys** with sending access. Pick the sender address, for example
+   `alerts@<your-domain>`. This is `ALERT_FROM_EMAIL`.
+3. In Supabase, **Authentication → Emails → SMTP Settings**, turn on custom SMTP:
+   - Host `smtp.resend.com`, port `465`, username `resend`, password: the Resend API key
+   - Sender email: the `ALERT_FROM_EMAIL` address; sender name: `VayuNetra`
+4. In **Authentication → Sign In / Providers**: keep **Email** enabled and turn **Allow new users to
+   sign up** off. People join only by invitation.
+5. In **Authentication → URL Configuration**:
+   - Site URL: `https://vayunetra.vercel.app`, or your custom domain (step 4.6)
+   - Redirect URLs: `https://vayunetra.vercel.app/**` and, for preview deployments,
+     `https://*-<your-vercel-team-slug>.vercel.app/**`
+
+Check: **Authentication → Emails** shows the SMTP sender as your Resend address.
+
+## 3. Other keys
+
+- **Mapbox:** create a public token under Account → Tokens. Add URL restrictions for your domain(s):
+  browser tokens are visible to anyone.
+- **Mapillary** (optional): create an app at mapillary.com/dashboard/developers and copy the client
+  token. Restrict it to your domain too.
+- **Groq** (optional): create an API key at console.groq.com. Without it the dashboard says AI
+  briefings are not configured, and everything else works.
+- **Cron secret:** generate a random value:
+
+  ```bash
+  node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+  ```
+
+Fill a values file from the template. `.env*` files are gitignored; never commit this one:
+
+```bash
+cd web
+cp .env.example .env.production
+```
+
+| Variable | Value | Required |
+|---|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | Project URL from step 1 | yes |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `anon` key | yes |
+| `SUPABASE_SERVICE_ROLE_KEY` | `service_role` key | yes |
+| `NEXT_PUBLIC_SITE_URL` | `https://vayunetra.vercel.app` or your domain | yes |
+| `RESEND_API_KEY`, `ALERT_FROM_EMAIL` | from step 2 | yes, for alerts and reports |
+| `CRON_SECRET` | the random value above | yes, for alerts and reports |
+| `NEXT_PUBLIC_MAPBOX_TOKEN` | Mapbox public token | yes, for the maps |
+| `NEXT_PUBLIC_MAPILLARY_TOKEN` | Mapillary client token | optional |
+| `GROQ_API_KEY` (and `GROQ_MODEL`) | Groq key; model defaults to `llama-3.3-70b-versatile` | optional |
+| `NEXT_PUBLIC_VIDEO_URL` | YouTube/Vimeo link or file URL of the film | optional; the film section needs it |
+| `ALERT_LOOKBACK_DAYS` | default 30 | optional |
+| `ALERTS_TWILIO_ENABLED`, `TWILIO_*` | `true` plus Twilio SID, token and sender | optional |
+| `ANTHROPIC_API_KEY` | not used by the current code | leave empty |
+
+Check: every "yes" row has a value.
+
+## 4. Vercel
+
+### 4.1 Create the project
+
+1. Push the repository to GitHub if it is not there yet.
+2. In Vercel: **Add New → Project → Import** the `VaayuNetra` repository.
+3. **Root Directory:** click **Edit** and choose `web`. The framework preset becomes Next.js; keep the
+   default build settings. Node 24 comes from `web/package.json`.
+4. Open **Environment Variables** and paste the whole content of `web/.env.production` into the Key
+   field. Vercel splits it into one variable per line. Variables added on this screen apply to all
+   environments; afterwards **Settings → Environment Variables** lists each one with Production and
+   Preview.
+5. Click **Deploy**.
+
+To set or update the variables from a terminal instead, link the folder once and push them. The
+script sets Production and Preview, and skips `NEXT_PUBLIC_SITE_URL` for Preview so each preview
+uses its own URL:
+
+```bash
+npm i -g vercel@latest
+cd web
+vercel link                                # choose the vayunetra project
+node scripts/vercel-env.mjs .env.production
+```
+
+After changing variables, redeploy: **Deployments → ⋯ → Redeploy**.
+
+### 4.2 Preview URL
+
+Remove Preview from `NEXT_PUBLIC_SITE_URL` under **Settings → Environment Variables**. If you used
+the script, this is already done. Previews then use their own branch URL for sign-in links, which the
+preview redirect URL in step 2 allows.
+
+### 4.3 Analytics
+
+Open the project's **Analytics** tab and click **Enable**. The site already includes the Vercel
+Analytics component, which runs only on Vercel.
+
+### 4.4 First administrator
+
+```bash
+cd web
+SUPABASE_URL=https://<ref>.supabase.co SUPABASE_SERVICE_ROLE_KEY=<service_role> \
+  SITE_URL=https://vayunetra.vercel.app node scripts/create-admin.mjs you@example.org "Your Name"
+```
+
+Open the invite email and follow the link, then sign in at `/login`. Invite everyone else from
+**Dashboard → Settings**, and set the alert recipients per state there.
+
+### 4.5 Cron jobs
+
+`web/vercel.json` declares two cron jobs, and Vercel turns them on with the production deployment:
+
+| Path | Schedule (UTC) | Job |
+|---|---|---|
+| `/api/cron/alerts` | `*/15 * * * *` | new T1/T2 events to state recipients; worker-offline email to admins |
+| `/api/cron/monthly` | `30 2 1 * *` | monthly PDF report per state |
+
+The Hobby plan allows cron jobs at most once a day and rejects the deployment with
+`*/15 * * * *` ("Hobby accounts are limited to daily cron jobs"). Use the Pro plan, or on Hobby change
+the alerts schedule in `web/vercel.json` to a daily one such as `0 3 * * *` and push.
+
+Check: **Settings → Cron Jobs** lists both jobs. Then call the alerts job by hand:
+
+```bash
+curl -H "Authorization: Bearer <CRON_SECRET>" https://vayunetra.vercel.app/api/cron/alerts
+```
+
+It answers `{"ok":true,...}`. Without the header it answers 401.
+
+### 4.6 Custom domain (if you have one)
+
+1. **Settings → Domains → Add** the domain and create the DNS records Vercel shows.
+2. Set `NEXT_PUBLIC_SITE_URL` (Production) to `https://<domain>` and redeploy.
+3. In Supabase **Authentication → URL Configuration**, set the Site URL to the domain and add
+   `https://<domain>/**` to the Redirect URLs.
+4. Add the domain to the Mapbox and Mapillary token URL restrictions.
+
+## 5. Check the deployment
+
+1. Open the site. The landing page tells the story top to bottom, and the footer shows
+   "Last updated" with the seed date.
+2. Open `/map` and a site page such as `/map/deonar`.
+3. Check the security headers:
+
+   ```bash
+   curl -sI https://vayunetra.vercel.app/ | grep -iE "content-security-policy|strict-transport-security"
+   ```
+
+4. Sign in as the admin. The overview shows 5 sites and "Worker offline" until step 6 is done.
+5. With a recipient set for Maharashtra, run the alert check. It inserts a fake T1 scan, triggers the
+   cron, prints the result and deletes the scan:
+
+   ```bash
+   cd web
+   SUPABASE_URL=https://<ref>.supabase.co SUPABASE_SERVICE_ROLE_KEY=<service_role> CRON_SECRET=<secret> \
+     node scripts/alert-smoke.mjs --trigger https://vayunetra.vercel.app
+   ```
+
+   It prints `PASS`, and the recipient gets one email.
+
+## 6. The worker (your GPU or CPU machine)
+
+The worker reads Sentinel-2 through Earth Engine, runs the model and writes scans to Supabase. It
+makes outbound connections only.
+
+1. On that machine, clone the repository and follow **Setup** in [`worker/README.md`](worker/README.md):
+   `uv sync`, PyTorch, and `cp .env.example .env`.
+2. Fill `worker/.env`: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` and `WORKER_ID` (a name for this
+   machine). Keep the Earth Engine values unless you use another Cloud project.
+3. Put the Earth Engine service-account key at `worker/secrets/ee-key.json`.
+4. Copy the model file `vayunetra_best_model_20261001_1401.zip` into `models/` at the repository
+   root. The weights are not in git; they come from the training notebook's output.
+5. Test without writing anything: `uv run vayu scan --site deonar --no-upload`.
+6. Run it permanently with Docker, systemd or Windows Task Scheduler, as in **Running it permanently**
+   in `worker/README.md`.
+
+Check: within a minute the dashboard's site page shows "Worker online", and **Request scan** is
+enabled.
+
+## 7. Continuous integration
+
+`.github/workflows/web.yml` and `worker.yml` run on every push and pull request. They need no secrets:
+the end-to-end job starts its own local Supabase inside the runner. A green run means:
+
+- web: lint, formatting, TypeScript, the `server-only` guard and the production build
+- database: pgTAP tests for row-level security, workflow rules, alerts and rate limits
+- Playwright: the 12 landing sections, the public map, officer sign-in and **Request scan**,
+  signed-out access to `/dashboard` refused, pages rendering with the worker offline, security
+  headers, and the access-request rate limit
+- worker: ruff and pytest
+
+Day-to-day operations (restarting the worker, rotating keys, backfills, adding a landfill) are in
+[RUNBOOK.md](RUNBOOK.md).

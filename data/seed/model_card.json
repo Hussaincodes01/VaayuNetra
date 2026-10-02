@@ -1,0 +1,36 @@
+{
+  "name": "VayuNetra",
+  "checkpoint": "best.pt",
+  "exported": "2026-10-01 14:01",
+  "arch": "smp.Unet('resnet50', decoder_attention_type='scse', aux_params=dict(classes=1, pooling='avg', dropout=0.2))",
+  "in_channels": 17,
+  "classes": 1,
+  "pretrained_encoder": "SSL4EO-S12 ResNet-50 MoCo (torchgeo), conv1 widened 13\u219217",
+  "inputs": "13 S2 L1C TOA bands (DN/10000, harmonized; order B1..B8,B8A,B9..B12) + ref B11, ref B12 (median of 4 clean passes) + clip(MBMP/0.02,\u00b110) + clip(robust z of MBMP,\u00b18)",
+  "chip": 200,
+  "pad": 12,
+  "min_plume_px": 20,
+  "scene_score": "mean of top-20 pixel probabilities, 4-flip TTA",
+  "scene_threshold": 0.8441956162452697,
+  "ime": {
+    "a": 0.14023546707703108,
+    "b": 1.111408494769244,
+    "formula": "Q[kg/h] = 3600*(a*U10+b)*IME[kg]/L[m]"
+  },
+  "physics_check": "methane if B12 dims >1%, B11 dims <half of B12, visible/NIR change <half of B12; elongated plumes within 45\u00b0 of wind",
+  "loss": "positive-only Dice + balanced focal + top-k detection BCE + aux scene BCE",
+  "test_metrics": {
+    "VayuNetra (SSL4EO U-Net)": {
+      "precision": 0.779,
+      "recall": 0.303,
+      "fpr": 0.086,
+      "pixel IoU": 0.312
+    },
+    "MBMP baseline": {
+      "precision": 0.602,
+      "recall": 0.144,
+      "fpr": 0.096,
+      "pixel IoU": 0.077
+    }
+  }
+}

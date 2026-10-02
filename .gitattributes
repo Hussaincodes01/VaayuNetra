@@ -1,0 +1,10 @@
+# Keep LF line endings in the repository and in every checkout (CI runs on Linux; Prettier expects LF).
+* text=auto eol=lf
+
+*.png binary
+*.webp binary
+*.jpg binary
+*.pdf binary
+*.ico binary
+*.zip binary
+*.woff2 binary

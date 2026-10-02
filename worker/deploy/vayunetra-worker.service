@@ -1,0 +1,27 @@
+# systemd unit for the VayuNetra worker on Linux.
+#   sudo cp deploy/vayunetra-worker.service /etc/systemd/system/
+#   sudo systemctl daemon-reload && sudo systemctl enable --now vayunetra-worker
+#   journalctl -u vayunetra-worker -f
+# The worker reads /opt/vayunetra/worker/.env itself (python-dotenv understands its inline comments,
+# systemd's EnvironmentFile does not), so no EnvironmentFile line here.
+[Unit]
+Description=VayuNetra worker (Sentinel-2 methane screening)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=vayunetra
+Group=vayunetra
+WorkingDirectory=/opt/vayunetra/worker
+ExecStart=/opt/vayunetra/worker/.venv/bin/vayu worker --health-port 8787
+Restart=always
+RestartSec=30
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/opt/vayunetra/worker/cache
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,44 @@
+# VayuNetra worker.
+#   GPU (NVIDIA Container Toolkit):  docker compose up -d worker
+#   CPU only:                        docker compose --profile cpu up -d worker-cpu
+# Needs worker/.env, worker/secrets/ee-key.json and the model zip in ../models/.
+# The worker makes outbound connections only; /health listens on 127.0.0.1 inside the container.
+
+x-worker: &worker
+  restart: unless-stopped
+  working_dir: /app
+  volumes:
+    - chip-cache:/app/cache
+    - ./.env:/app/.env:ro
+    - ./secrets:/app/secrets:ro
+    - ../models:/app/models:ro
+  healthcheck:
+    test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8787/health', timeout=5)"]
+    interval: 60s
+    timeout: 10s
+    retries: 3
+    start_period: 120s
+
+services:
+  worker:
+    <<: *worker
+    build: { context: ., dockerfile: Dockerfile }
+    image: vayunetra-worker:cuda
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  worker-cpu:
+    <<: *worker
+    profiles: ["cpu"]
+    build: { context: ., dockerfile: Dockerfile.cpu }
+    image: vayunetra-worker:cpu
+    environment:
+      VAYU_DEVICE: cpu
+
+volumes:
+  chip-cache:

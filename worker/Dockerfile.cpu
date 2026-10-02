@@ -1,0 +1,15 @@
+# VayuNetra worker, CPU only. Slower inference; same results within floating-point tolerance.
+FROM python:3.11-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1
+WORKDIR /app
+
+RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+COPY pyproject.toml README.md ./
+COPY src ./src
+RUN pip install ".[ee,api,pdf]" "segmentation-models-pytorch>=0.3.3" \
+ && python -m playwright install --with-deps chromium
+
+VOLUME ["/app/cache"]
+ENTRYPOINT ["vayu"]
+CMD ["worker", "--health-port", "8787"]

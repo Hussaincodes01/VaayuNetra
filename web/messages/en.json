@@ -1,0 +1,674 @@
+{
+  "Metadata": {
+    "title": "VayuNetra: satellite methane screening for Indian landfills",
+    "description": "VayuNetra finds, verifies and measures methane plumes from Indian landfills in free Sentinel-2 imagery, then turns them into action dossiers for MoHUA, CPCB/SPCBs and municipal corporations.",
+    "ogAlt": "VayuNetra plume mask over Deonar landfill, Mumbai, 6 January 2025"
+  },
+  "Nav": {
+    "skip": "Skip to content",
+    "home": "VayuNetra home",
+    "signal": "Signal",
+    "how": "How it works",
+    "proof": "Proof",
+    "field": "Field test",
+    "action": "Action",
+    "honest": "Limits",
+    "film": "Film",
+    "initiative": "Initiative",
+    "request": "Request access",
+    "switchLanguage": "हिन्दी",
+    "switchLanguageLabel": "हिन्दी में पढ़ें"
+  },
+  "Common": {
+    "screening": "Screening-grade satellite estimate: confirm with a hyperspectral satellite, an OGI drone or a ground survey before enforcement or carbon crediting.",
+    "minimumEstimate": "minimum estimate",
+    "tph": "{value} t/h",
+    "kgph": "{value} kg/h",
+    "range68": "68% range {lo}–{hi} t/h",
+    "tier": {
+      "T1": "T1 methane-confident",
+      "T2": "T2 probable, needs confirmation",
+      "T3": "T3 surface change, rejected as methane"
+    },
+    "tierShort": {
+      "T1": "T1",
+      "T2": "T2",
+      "T3": "T3"
+    },
+    "surfaceKind": {
+      "burn": "burn scar",
+      "moisture": "moisture",
+      "freshWaste": "fresh waste",
+      "spectral": "passes the spectral and wind tests",
+      "nearMiss": "near-miss on one test"
+    },
+    "vayunetra": "VayuNetra",
+    "mbmp": "Classic MBMP",
+    "source": "Source",
+    "lastUpdated": "Last updated {when} IST",
+    "lastUpdatedNone": "Last updated: not available (live data could not be reached)"
+  },
+  "Hero": {
+    "eyebrow": "Satellite AI for Indian landfill methane",
+    "title": "Methane is invisible. VayuNetra makes it visible.",
+    "subtitle": "Satellite AI that finds, verifies and measures methane from India's landfills — and turns it into action.",
+    "watchFilm": "Watch the film",
+    "openDashboard": "Open the dashboard",
+    "stripLabel": "Status",
+    "scenes": "Scenes analysed",
+    "controlFalseAlarms": "Control false alarms",
+    "controlValue": "{flags} of {passes}",
+    "lastScan": "Last scan",
+    "worker": "Worker",
+    "online": "online",
+    "offline": "offline",
+    "sourceLive": "Live from the VayuNetra database",
+    "sourceSeed": "India field test, January 2024 to December 2025",
+    "globeLabel": "Night globe turning towards India and Delhi, with the five monitored landfills marked",
+    "scroll": "Scroll to begin"
+  },
+  "Problem": {
+    "kicker": "The problem",
+    "title": "Landfill methane is large, fast-acting and mostly unmeasured",
+    "warmingValue": "~{value}×",
+    "warming": "Methane traps about {value} times more heat than CO₂ over 20 years.",
+    "warmingSource": "IPCC AR6, GWP20 {gwp20} for non-fossil methane",
+    "maasakkersValue": "{low}–{high}×",
+    "maasakkers": "Landfill emissions in Delhi, Mumbai, Lahore and Buenos Aires were {low}–{high} times higher than earlier estimates.",
+    "maasakkersSource": "Maasakkers et al. 2022, Science Advances",
+    "fireValue": "April 2024",
+    "fire": "Delhi's Ghazipur landfill caught fire. Fires and methane come from the same buried waste.",
+    "fireSource": "CNN, April 2024",
+    "line": "No one measures it landfill by landfill."
+  },
+  "Signal": {
+    "kicker": "The invisible signal",
+    "title": "Deonar landfill, Mumbai, 6 January 2025",
+    "stages": {
+      "rgb": "True colour",
+      "mbmp": "Methane signal",
+      "mask": "Plume and wind"
+    },
+    "rgbText": "Sentinel-2's true-colour view of Deonar. The landfill mound, the creek and the city around it look ordinary.",
+    "mbmpText": "The multi-band multi-pass retrieval compares two shortwave-infrared bands against earlier clean passes. Red marks where band 12 went darker than expected.",
+    "maskText": "VayuNetra outlines the plume. The arrow is the ERA5-Land wind ({wind} m/s), and the plume lies along it, as a real plume should.",
+    "rgbAlt": "Sentinel-2 true-colour chip of Deonar landfill on 6 January 2025",
+    "mbmpAlt": "MBMP methane signal for Deonar on 6 January 2025: red where shortwave-infrared band 12 is darker than in clean passes",
+    "maskAlt": "VayuNetra plume mask in orange over Deonar on 6 January 2025, with the wind arrow pointing south",
+    "caption": "Methane dims one infrared band by only a few percent. The eye cannot see it; the retrieval and the model can.",
+    "result": "{tier}: about {tph} t/h ({range}), wind {wind} m/s. Unconfirmed: queued for a hyperspectral check.",
+    "sliderLabel": "Evidence stage",
+    "dragHint": "Scroll or use the buttons to move through the evidence"
+  },
+  "How": {
+    "kicker": "How it works",
+    "title": "From a free satellite pass to an action dossier",
+    "steps": {
+      "pass": {
+        "title": "Sentinel-2 pass",
+        "text": "Free Sentinel-2 imagery arrives about every {days} days. Every new pass over a site is cut into a chip around the landfill."
+      },
+      "mbmp": {
+        "title": "MBMP retrieval",
+        "text": "The multi-band multi-pass method compares the two shortwave-infrared bands with earlier clean passes of the same place."
+      },
+      "ai": {
+        "title": "AI segmentation",
+        "text": "A U-Net with a {encoder} encoder, pretrained on Sentinel-2 ({pretraining}) and trained on {plumes} real plumes plus simulated ones, outlines the plume and scores the scene."
+      },
+      "gate": {
+        "title": "Physics gate",
+        "text": "Methane darkens band 12 strongly, band 11 weakly and visible light not at all, and a plume lies along the wind. Fires, moisture and fresh waste fail these tests."
+      },
+      "rate": {
+        "title": "kg/h with uncertainty",
+        "text": "The plume's integrated mass and the ERA5-Land wind give an emission rate with a 68% range. In calm wind no rate is reported."
+      },
+      "dossier": {
+        "title": "Action dossier",
+        "text": "Each site gets a dossier with the evidence, the rate and the next step for MoHUA, CPCB/SPCBs and the municipal corporation."
+      }
+    }
+  },
+  "Proof": {
+    "kicker": "Proof",
+    "title": "Global benchmark on held-out test sites",
+    "intro": "VayuNetra against the classic MBMP method, scored on sites the model never saw in training.",
+    "auc": {
+      "title": "ROC AUC",
+      "meaning": "0.5 is a coin toss: the score cannot tell plumes from clean scenes. The classic method scores {mbmp}, close to that. VayuNetra scores {vayunetra}."
+    },
+    "recall": {
+      "title": "Recall by emission rate (t/h)",
+      "meaning": "Above 3 t/h VayuNetra finds 3 to 6 times more plumes than the classic method. Below 1 t/h it finds fewer: {low} against {lowMbmp}.",
+      "axis": "share of plumes found"
+    },
+    "iou": {
+      "title": "Plume outline (pixel IoU)",
+      "meaning": "How well the drawn outline overlaps the true plume: {vayunetra} against {mbmp}, about four times closer."
+    },
+    "accuracy": {
+      "title": "Emission rate within ±50%",
+      "meaning": "For {share} of {plumes} real plumes the estimated rate is within ±50% of the published MARS rate. The median ratio is {ratio}, so estimates are not biased high or low.",
+      "inside": "within ±50%",
+      "outside": "outside"
+    },
+    "operating": "At the operating threshold: precision {pV} vs {pM}, recall {rV} vs {rM}, false-alarm rate {fV} vs {fM}.",
+    "chartLabel": "{title}: VayuNetra {vayunetra}, classic MBMP {mbmp}"
+  },
+  "Field": {
+    "kicker": "India field test",
+    "title": "Five landfills, two years, a control point beside each",
+    "intro": "January 2024 to December 2025. Each landfill has a control point {km} km away that should never show a plume.",
+    "statScenes": "clear Sentinel-2 scenes",
+    "statControl": "control false alarms",
+    "statFlags": "landfill flags",
+    "statTiers": "T1 · T2 · T3",
+    "flagged": "Flagged pass",
+    "noFlag": "No pass flagged at this site",
+    "passes": "{passes} passes · {flags} flags",
+    "control": "Control point {km} km north: {flags} flags in {passes} passes",
+    "bound": "Persistent emission above {tph} t/h would have produced more flags (95%).",
+    "rate": "≈ {tph} t/h ({range})",
+    "rateCalm": "Rate not estimated: calm wind ({wind} m/s)",
+    "wind": "Wind {wind} m/s",
+    "groundView": "Ground view",
+    "groundViewTitle": "Street-level 360° view near {site}",
+    "groundViewNone": "No street-level imagery near this site yet.",
+    "close": "Close",
+    "boardLabel": "Evidence chip for {site}, {date}: {tier}",
+    "mapLabel": "3D map tour of the five landfills",
+    "step": "Site {n} of {total}",
+    "plumeSource": "Plume outline from the evidence image of this pass.",
+    "controlArrow": "Control point {km} km north",
+    "controlShort": "Control point"
+  },
+  "Gate": {
+    "kicker": "The physics gate",
+    "title": "Fourteen flags, sorted by physics",
+    "line": "VayuNetra checks itself before it alerts anyone.",
+    "intro": "Every landfill flag goes through the same spectral and wind tests. Most turn out to be the landfill's surface changing, not methane.",
+    "pile": {
+      "T1": "Methane-confident",
+      "T2": "Probable, needs confirmation",
+      "T3": "Surface change, rejected"
+    },
+    "card": "{site}, {date}"
+  },
+  "Action": {
+    "kicker": "From detection to action",
+    "title": "What the Deonar dossier asks for",
+    "intro": "Deonar's minimum time-averaged rate is {kgph} kg/h, a minimum estimate of about {tco2e} t CO₂e per year (GWP100 = {gwp}).",
+    "steps": {
+      "confirm": {
+        "title": "Confirm",
+        "text": "Task a hyperspectral satellite or fly an OGI-camera drone over the flagged cell."
+      },
+      "capture": {
+        "title": "Capture the gas",
+        "text": "Wells and a header on the flagged cell. At {capture} capture: about {avoided} t CO₂e avoided per year."
+      },
+      "power": {
+        "title": "Generate power",
+        "text": "About {mw} MW electric, worth about ₹{crore} crore a year."
+      },
+      "credits": {
+        "title": "Carbon credits",
+        "text": "About ${usd} a year from the avoided emissions."
+      }
+    },
+    "assumptions": "Assumptions",
+    "chips": {
+      "rate": "minimum rate {value} kg/h",
+      "capture": "capture {value}",
+      "destruction": "flare/engine destruction {value}",
+      "gwp": "GWP100 {value}",
+      "lhv": "CH₄ heating value {value} MJ/kg",
+      "engine": "engine efficiency {value}",
+      "tariff": "tariff ₹{value}/kWh",
+      "carbon": "carbon price ${value}/t"
+    },
+    "editable": "All values are assumptions and editable in the dashboard settings.",
+    "openDossier": "Open the Deonar dossier (PDF)"
+  },
+  "Honest": {
+    "kicker": "Honest by design",
+    "title": "A free screener, then a confirmation",
+    "tier1": "Tier 1: free screener",
+    "tier1Text": "Sentinel-2, every new pass, every site. Finds candidates and rules out most surface changes.",
+    "tier2": "Tier 2: confirmation",
+    "tier2Text": "Hyperspectral satellite, OGI drone or ground survey on the flagged cell.",
+    "outcome": "Enforcement or carbon crediting",
+    "boundsTitle": "Persistent-emission upper bounds (95%)",
+    "boundsMeaning": "A steady emitter at or above this rate would have produced more flags than we saw.",
+    "limitsTitle": "Limits, stated plainly",
+    "limits": {
+      "perPass": "Over dense Indian landfills a single pass catches about {share} of plumes of {tph} t/h or more.",
+      "small": "Below 1 t/h the model finds {recall} of plumes.",
+      "finetune": "Fine-tuning on Indian backgrounds did not improve held-out detection (AUC ≈ {auc}). The limit is the Sentinel-2 signal against dense urban backgrounds, which is why VayuNetra has two tiers.",
+      "truth": "In a known-truth test on an Indian background, the estimated rate was {ratio}× the injected rate at {tph} t/h.",
+      "deonar": "The Deonar T1 event stays unconfirmed until the hyperspectral check.",
+      "screening": "Every rate on this page is screening-grade."
+    }
+  },
+  "Film": {
+    "kicker": "The film",
+    "title": "VayuNetra in five minutes",
+    "chapters": "Chapters",
+    "chapter": {
+      "problem": "The problem",
+      "signal": "The invisible signal",
+      "how": "How it works",
+      "field": "India field test",
+      "action": "From detection to action",
+      "honest": "Honest by design"
+    },
+    "playerTitle": "VayuNetra film"
+  },
+  "Initiative": {
+    "kicker": "Our initiative",
+    "title": "Why we built VayuNetra",
+    "why": "Landfill gas can be captured and burned for power, but only where someone has found it. Sentinel-2 is free and passes over every Indian city about every {days} days. We built VayuNetra to turn those passes into site-by-site evidence a municipal corporation or pollution control board can act on.",
+    "team": "Team",
+    "teamText": "Team lead: Jiyad Hussain, Amity University, Noida. Built for the Net Zero AI Architecture hackathon.",
+    "open": "Open source",
+    "openText": "The code is MIT-licensed on GitHub: the worker, the database schema and this website.",
+    "roadmap": "Roadmap",
+    "road": {
+      "now": "5 landfills",
+      "nowText": "Delhi, Mumbai and Ahmedabad, with control points",
+      "next": "50 dumpsites",
+      "nextText": "Legacy dumpsites in the remediation programme",
+      "then": "State-wide monitoring",
+      "thenText": "Every new pass, every site in a state"
+    },
+    "alignment": "Alignment",
+    "sbm": "Swachh Bharat Mission-Urban 2.0 targets legacy dumpsite remediation.",
+    "netZero": "India's net-zero target is {year}.",
+    "partner": "Partner with us",
+    "partnerText": "For municipal corporations, SPCBs and CPCB: we will screen your sites and share the dossiers.",
+    "partnerCta": "Partner with us",
+    "github": "View on GitHub"
+  },
+  "Footer": {
+    "requestTitle": "Request access",
+    "requestText": "Officials and researchers can request a dashboard account.",
+    "name": "Name",
+    "org": "Organisation",
+    "email": "Email",
+    "state": "State",
+    "message": "Message (optional)",
+    "submit": "Send request",
+    "sending": "Sending…",
+    "sent": "Request received. We will reply by email.",
+    "error": "The request could not be sent. Please try again later.",
+    "invalid": "Please enter your name, organisation and a valid email.",
+    "limited": "Too many requests from this connection. Please try again in an hour.",
+    "credits": "Data credits",
+    "creditS2": "Contains modified Copernicus Sentinel data (2024–2025).",
+    "creditEra5": "ERA5-Land wind: Copernicus Climate Change Service information (2024–2025).",
+    "creditMethaneSet": "MethaneSET training data (CC BY-NC-SA 4.0).",
+    "creditMars": "UNEP IMEO MARS published plume rates.",
+    "github": "GitHub",
+    "licence": "Code: MIT licence.",
+    "model": "Model {version}",
+    "disclaimer": "Every satellite estimate on this site is screening-grade. Confirm with a hyperspectral satellite, an OGI drone or a ground survey before enforcement or carbon crediting."
+  },
+  "Places": {
+    "sites": {
+      "ghazipur": "Ghazipur",
+      "bhalswa": "Bhalswa",
+      "okhla": "Okhla",
+      "deonar": "Deonar",
+      "pirana": "Pirana"
+    },
+    "regions": {
+      "Delhi": "Delhi",
+      "Mumbai": "Mumbai",
+      "Ahmedabad": "Ahmedabad",
+      "Maharashtra": "Maharashtra",
+      "Gujarat": "Gujarat"
+    }
+  },
+  "Login": {
+    "title": "Sign in to the VayuNetra dashboard",
+    "text": "Access is by invitation. Enter the email your administrator invited and we will send a sign-in link.",
+    "email": "Email",
+    "submit": "Send sign-in link",
+    "sending": "Sending…",
+    "sent": "Check your inbox: a sign-in link is on its way to {email}.",
+    "notInvited": "This email has not been invited. Ask an administrator, or request access on the public site.",
+    "error": "The link could not be sent. Try again in a minute.",
+    "invalid": "Enter a valid email address.",
+    "linkExpired": "That sign-in link has expired or was already used. Request a new one below.",
+    "invited": "Signing you in…",
+    "invitedHint": "You were invited. If the sign-in did not finish, request a link with your email.",
+    "back": "Back to the public site",
+    "requestAccess": "Request access"
+  },
+  "PublicMap": {
+    "title": "VayuNetra map",
+    "intro": "Read-only view of the monitored landfills, from Sentinel-2 screening.",
+    "signIn": "Officials: sign in",
+    "unavailable": "The live map is not available right now.",
+    "back": "All sites"
+  },
+  "Dash": {
+    "title": "VayuNetra dashboard",
+    "notConfigured": "The dashboard needs NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.",
+    "nav": {
+      "skip": "Skip to content",
+      "label": "Dashboard",
+      "overview": "Overview",
+      "map": "Public map",
+      "settings": "Settings",
+      "language": "हिन्दी",
+      "signOut": "Sign out",
+      "role": {
+        "viewer": "viewer",
+        "officer": "officer",
+        "admin": "admin"
+      }
+    },
+    "status": {
+      "priority": "T1 methane evidence",
+      "watch": "T2 probable",
+      "surface_activity": "Surface activity",
+      "no_large_events": "Clear"
+    },
+    "map": {
+      "label": "Monitored sites coloured by status",
+      "schematic": "Schematic positions; a Mapbox token adds the basemap."
+    },
+    "overview": {
+      "title": "Overview",
+      "model": "Model {version}",
+      "openTitle": "Open T1 and T2 events",
+      "openEmpty": "No open T1 or T2 events.",
+      "noAction": "no action yet",
+      "rate": "≈ {tph} t/h",
+      "kpi": {
+        "sites": "Sites monitored",
+        "month": "Scenes this month",
+        "open": "Open T1/T2",
+        "last": "Last scan",
+        "worker": "Worker",
+        "online": "online",
+        "offline": "offline",
+        "seen": "last seen {when}",
+        "never": "no heartbeat yet"
+      },
+      "feed": {
+        "title": "Event feed",
+        "empty": "Nothing yet.",
+        "flag": "{tier} flag at {site} on {date}",
+        "actionInsert": "Action opened at {site}: {status}",
+        "actionUpdate": "Action at {site} moved to {status}",
+        "job": "{kind} {status} {site}"
+      },
+      "table": {
+        "title": "Sites",
+        "site": "Site",
+        "status": "Status",
+        "passes": "Passes",
+        "flags": "Flags",
+        "control": "Control flags",
+        "last": "Last pass"
+      }
+    },
+    "site": {
+      "breadcrumb": "Breadcrumb",
+      "back": "← All sites",
+      "counts": "{passes} clear passes · {flags} flags · T1 {t1} · T2 {t2} · T3 {t3}",
+      "timeline": "Scene score of every pass",
+      "timelineLabel": "Scene scores of {passes} passes, {flags} flagged, threshold {threshold}",
+      "threshold": "threshold {value}",
+      "noScans": "No scans for this site yet.",
+      "evidence": "Flagged passes ({count})",
+      "noFlags": "No pass at this site has been flagged.",
+      "ground": "Ground view"
+    },
+    "evidence": {
+      "score": "score {score}",
+      "tabsLabel": "Evidence view",
+      "tabs": {
+        "rgb": "True colour",
+        "mbmp": "Methane signal",
+        "mask": "Mask",
+        "map": "3D map"
+      },
+      "none": "Evidence images for this pass have not been uploaded yet.",
+      "mapLabel": "3D map of {site} on {date} with the plume outline and wind",
+      "alt": {
+        "rgb": "Sentinel-2 true-colour chip of {site} on {date}",
+        "mbmp": "MBMP methane signal of {site} on {date}: red where shortwave-infrared band 12 is darker than in clean passes",
+        "mask": "VayuNetra plume mask over {site} on {date}"
+      },
+      "windLabel": "ERA5-Land wind {wind} m/s, arrow points where it blows",
+      "opacity": "Mask opacity",
+      "physics": "Physics checks",
+      "emissions": "Emission rate"
+    },
+    "physics": {
+      "pass": "passes",
+      "fail": "fails",
+      "b12Pass": "B12 dimmed {pct} (more than 1%)",
+      "b12Weak": "B12 dimmed only {pct} (needs more than 1%)",
+      "b12Bright": "B12 brightened {pct}",
+      "b11Pass": "B11 changed {pct}, less than half of B12",
+      "b11Fail": "B11 changed {pct}, as much as B12",
+      "visPass": "Visible and near-infrared changed {pct}, under half of B12",
+      "visFail": "Visible and near-infrared changed {pct}, more than half of B12",
+      "windCompact": "Compact plume (elongation {elong}): wind alignment not required",
+      "windPass": "Plume lies {deg}° from the wind (within 45°)",
+      "windFail": "Plume lies {deg}° from the wind (more than 45°)",
+      "summaryMethane": "B12 dimmed {b12} while visible bands barely changed ({vis}).",
+      "summaryBroadband": "B12 dimmed {b12}, but visible bands changed {vis} too: a surface change, not methane.",
+      "summaryBright": "B12 brightened {b12}: a surface change, not methane."
+    },
+    "emissions": {
+      "title": "Emissions",
+      "rate": "≈ {tph} t/h",
+      "noRate": "No rate for this pass.",
+      "t3": "Rejected as methane: no emission rate is reported for surface change.",
+      "calm": "Calm wind ({wind} m/s): no rate is reported, because the IME method is unreliable in calm air.",
+      "noEvents": "No T1 or T2 event at this site.",
+      "annual100": "t CO₂e per year, GWP100 = {gwp}",
+      "annual20": "t CO₂e per year, GWP20 = {gwp}",
+      "minimum": "Minimum estimate: {kgph} kg/h averaged over {passes} passes, counting T1 days only.",
+      "noAnnual": "No T1 event, so no annual estimate."
+    },
+    "detection": {
+      "title": "Detection and limits",
+      "bound": "Steady emission above {tph} t/h is ruled out (95%).",
+      "noBound": "No persistent-emission bound has been computed for this site yet.",
+      "at": "at {tph} t/h",
+      "generic": "Over dense Indian landfills a single pass catches about {share} of plumes of {tph} t/h or more.",
+      "control": "Control point: {flags} flags in {passes} passes",
+      "p": "p vs control {p}"
+    },
+    "action": {
+      "title": "Actions",
+      "flow": "new → verification requested → confirmed / not methane → mitigation planned → in progress → resolved",
+      "readOnly": "Viewers can follow actions; officers can change them.",
+      "none": "No actions yet.",
+      "status": {
+        "new": "New",
+        "verification_requested": "Verification requested",
+        "confirmed": "Confirmed",
+        "not_methane": "Not methane",
+        "mitigation_planned": "Mitigation planned",
+        "in_progress": "In progress",
+        "resolved": "Resolved"
+      },
+      "forPass": "{tier} pass of {date}",
+      "siteWide": "Whole site",
+      "opened": "opened {date}",
+      "assignee": "Assignee",
+      "unassigned": "Unassigned",
+      "due": "Due date",
+      "note": "Note",
+      "attachment": "Attachment",
+      "openAttachment": "Open",
+      "hasAttachment": "Attached",
+      "moveTo": "Move to: {status}",
+      "edit": "Edit",
+      "save": "Save",
+      "new": "New action",
+      "pass": "Pass",
+      "startAs": "Start as",
+      "create": "Create action",
+      "requestVerification": "Request verification",
+      "saved": "Saved.",
+      "mailed": "Saved. The assignee has been emailed.",
+      "transitionError": "That status change is not allowed.",
+      "error": "Not saved: {reason}"
+    },
+    "jobs": {
+      "title": "Scans",
+      "online": "Worker online",
+      "offline": "Worker offline",
+      "seen": "last seen {when}",
+      "requestScan": "Request scan",
+      "requesting": "Requesting…",
+      "rebuild": "Rebuild dossier",
+      "offlineNote": "The worker is offline, so requests are paused. They open again when it sends a heartbeat.",
+      "none": "No scan requests yet.",
+      "kind": {
+        "scan_site": "Site scan",
+        "monitor_all": "Monitoring run",
+        "rebuild_dossier": "Dossier rebuild"
+      },
+      "status": {
+        "queued": "queued",
+        "running": "running",
+        "done": "done",
+        "failed": "failed"
+      }
+    },
+    "exports": {
+      "label": "Exports",
+      "pdf": "Dossier (PDF)",
+      "noPdf": "Dossier PDF",
+      "noPdfHint": "No dossier yet: an officer can rebuild it from Scans.",
+      "csv": "Scans (CSV)",
+      "geojson": "Tasking list (GeoJSON)",
+      "share": "Copy public link",
+      "copied": "Link copied"
+    },
+    "explain": {
+      "title": "Explain this site",
+      "run": "Write a briefing",
+      "loading": "Writing…",
+      "label": "AI summary — check against the evidence",
+      "model": "Model: {model}",
+      "intro": "A short briefing written from the numbers for this site only.",
+      "error": "No briefing: {reason}",
+      "rateLimited": "Briefing limit reached (10 per hour per user). Try again later.",
+      "notConfigured": "AI briefings need GROQ_API_KEY on the server."
+    },
+    "settings": {
+      "title": "Settings",
+      "adminOnly": "Only administrators can change settings.",
+      "threshold": "Detection threshold",
+      "modelCard": "Model card (0.844)",
+      "india": "India-calibrated (0.793)",
+      "thresholdNote": "Applies to new scans. Stored scans keep the threshold they were scanned with.",
+      "assumptions": "Economic assumptions",
+      "assumptionsNote": "Used for the action-plan figures and shown next to every money figure.",
+      "fields": {
+        "capture_eff": "Gas capture (0–1)",
+        "flare_destruction": "Flare/engine destruction (0–1)",
+        "gwp100": "GWP100",
+        "gwp20": "GWP20",
+        "ch4_lhv_mj_per_kg": "CH₄ heating value (MJ/kg)",
+        "engine_eff": "Engine efficiency (0–1)",
+        "power_price_inr_per_kwh": "Tariff (₹/kWh)",
+        "carbon_price_usd_per_t": "Carbon price ($/t)"
+      },
+      "recipients": "Alert recipients per state",
+      "recipientsHint": "JSON: {\"State\": [\"email\", …]}",
+      "phonesHint": "WhatsApp/SMS numbers per state, used only when ALERTS_TWILIO_ENABLED=true. JSON: {\"State\": [\"+91…\"]}",
+      "save": "Save settings",
+      "saved": "Settings saved.",
+      "error": "Not saved: {reason}",
+      "invite": "Invite a user",
+      "inviteNote": "Invitees receive an email with a sign-in link. Sign-up is otherwise closed.",
+      "email": "Email",
+      "name": "Name",
+      "org": "Organisation",
+      "state": "State",
+      "role": "Role",
+      "roles": {
+        "viewer": "Viewer",
+        "officer": "Officer",
+        "admin": "Admin"
+      },
+      "inviteSubmit": "Send invite",
+      "invited": "Invite sent to {email}.",
+      "users": "Users",
+      "requests": "Access requests",
+      "noRequests": "No access requests."
+    }
+  },
+  "Email": {
+    "brand": "VayuNetra",
+    "footer": "VayuNetra: Sentinel-2 methane screening for Indian landfills",
+    "event": {
+      "subject": "[VayuNetra] {tier}: {site}, {date}",
+      "preview": "{tier} at {site} on {date}. Screening-grade: confirm before acting.",
+      "heading": "New flag at {site}",
+      "intro": "VayuNetra flagged the Sentinel-2 pass of {date} over {site} ({place}).",
+      "meaningT1": "T1 means the flag passed the physics gate: the plume dims the methane band (B12) while the visible bands barely change.",
+      "meaningT2": "T2 means probable, not confirmed: treat it as a lead for verification, not as a methane detection.",
+      "rate": "Emission rate",
+      "rateValue": "about {tph} t/h (68% range {lo}–{hi} t/h)",
+      "rateOnly": "about {tph} t/h",
+      "rateNotEstimated": "not estimated",
+      "wind": "Wind (10 m)",
+      "windValue": "{value} m/s",
+      "calm": "calm wind: the rate cannot be estimated reliably",
+      "pass": "Satellite pass",
+      "passValue": "{date}, {time} UTC",
+      "score": "Scene score",
+      "scoreValue": "{score} (threshold {threshold})",
+      "evidenceAlt": "Sentinel-2 methane enhancement (MBMP) around {site} on {date}",
+      "evidenceCaption": "Methane enhancement (MBMP), 2 km chip centred on the landfill.",
+      "noEvidence": "Evidence images are not uploaded yet. The site page shows the full record.",
+      "cta": "Open the site page",
+      "next": "Next step: on the site page, request verification (hyperspectral satellite, OGI drone or ground survey) and assign an officer.",
+      "why": "You receive this because you are listed as an alert recipient for {state}. An admin can change recipients under Dashboard, Settings."
+    },
+    "offline": {
+      "subject": "[VayuNetra] Worker {worker} offline since {since} IST",
+      "preview": "No heartbeat from {worker} for {hours} hours.",
+      "heading": "The VayuNetra worker is offline",
+      "body": "Worker {worker} last reported at {since} IST, {hours} hours ago. New Sentinel-2 passes are not scanned and Request scan stays disabled until it reconnects.",
+      "fix": "Check the machine and its network, then restart the service:",
+      "linux": "Linux: sudo systemctl restart vayunetra-worker",
+      "windows": "Windows: Task Scheduler > VayuNetra worker > Run",
+      "cta": "Open the dashboard",
+      "why": "Sent once per outage to VayuNetra admins."
+    },
+    "monthly": {
+      "subject": "[VayuNetra] {state} monthly report, {month}",
+      "preview": "{passes} passes scanned, {events} T1/T2 events, {closed} actions closed.",
+      "heading": "{state}: monthly report for {month}",
+      "intro": "Sentinel-2 screening of the landfills monitored in {state}. The full report is attached as a PDF.",
+      "passes": "Clear landfill passes scanned",
+      "controls": "Control passes (false alarms)",
+      "t1": "T1 methane-confident",
+      "t2": "T2 probable, needs confirmation",
+      "t3": "T3 surface change, rejected as methane",
+      "closed": "Actions closed",
+      "co2": "Minimum estimate, t CO₂e per year (GWP100 = {gwp})",
+      "co2Value": "about {value}",
+      "co2None": "not estimated",
+      "co2Note": "Minimum estimate: the lowest steady rate consistent with every pass to date, for the sites listed. Not a measured total.",
+      "events": "Events this month",
+      "noEvents": "No T1 or T2 events this month.",
+      "cta": "Open the dashboard",
+      "why": "You receive this because you are listed as an alert recipient for {state}."
+    }
+  }
+}

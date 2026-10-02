@@ -1,0 +1,40 @@
+# Secrets and model weights: never commit
+models/
+secrets/
+.env*
+!.env.example
+*-key.json
+*_key.json
+service-account*.json
+
+# Worker
+worker/cache/
+*.npy
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Node / Next.js / Remotion
+node_modules/
+.next/
+video/out/
+video/build/
+*.tsbuildinfo
+
+# Local tooling
+.claude/settings.local.json
+.DS_Store
+Thumbs.db
+
+# Raw source material kept at the repo root (datasets, original downloads); not part of the repo
+/.cache/
+/*.zip
+/*.tacozip
+/methaneset-s2-finetune/
+/vayunetra_best_model_*/
+/vayunetra_ops_*/
+/vayunetra*.ipynb
+/index.html
+/Transmittance table.json

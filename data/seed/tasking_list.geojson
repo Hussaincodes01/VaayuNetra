@@ -1,0 +1,65 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     72.9278,
+     19.0717
+    ]
+   },
+   "properties": {
+    "site": "Deonar",
+    "date": "2025-01-06",
+    "tier": "T1",
+    "rate_kgph": 20183,
+    "rate_68": [
+     15054,
+     24974
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.2835,
+     28.5125
+    ]
+   },
+   "properties": {
+    "site": "Okhla",
+    "date": "2024-11-29",
+    "tier": "T2",
+    "rate_kgph": null,
+    "rate_68": [
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.1582,
+     28.7406
+    ]
+   },
+   "properties": {
+    "site": "Bhalswa",
+    "date": "2025-05-18",
+    "tier": "T2",
+    "rate_kgph": 19146,
+    "rate_68": [
+     14611,
+     23245
+    ]
+   }
+  }
+ ]
+}

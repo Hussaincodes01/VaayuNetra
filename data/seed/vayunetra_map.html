@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c96da8ed0012fda74edfd2af7c002a61 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_c96da8ed0012fda74edfd2af7c002a61" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c96da8ed0012fda74edfd2af7c002a61 = L.map(
+                "map_c96da8ed0012fda74edfd2af7c002a61",
+                {
+                    center: [23.5, 78.5],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_11539edcd97092ebbeef27b5592acbb4 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_11539edcd97092ebbeef27b5592acbb4.addTo(map_c96da8ed0012fda74edfd2af7c002a61);
+        
+    
+            var circle_marker_81ed41e24e0c17614298ac232907b0fd = L.circleMarker(
+                [28.6247, 77.3272],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(map_c96da8ed0012fda74edfd2af7c002a61);
+        
+    
+        var popup_4e65385aa766932ba8bd87920a3c8172 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_218ea02d04eb3a99d0de26c5bca10dc8 = $(`<div id="html_218ea02d04eb3a99d0de26c5bca10dc8" style="width: 100.0%; height: 100.0%;"><b>Ghazipur</b> (Delhi)<br>SURFACE ACTIVITY — no methane confirmed<br>T1 0 · T2 0 · T3 3<br>limit nan t/h<br><a href='dossier_Ghazipur.html' target='_blank'>dossier</a></div>`)[0];
+                popup_4e65385aa766932ba8bd87920a3c8172.setContent(html_218ea02d04eb3a99d0de26c5bca10dc8);
+            
+        
+
+        circle_marker_81ed41e24e0c17614298ac232907b0fd.bindPopup(popup_4e65385aa766932ba8bd87920a3c8172)
+        ;
+
+        
+    
+    
+            var circle_marker_595e8555d4db503395df1df420a5c176 = L.circleMarker(
+                [28.7406, 77.1582],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(map_c96da8ed0012fda74edfd2af7c002a61);
+        
+    
+        var popup_f5dfa7da79ee0d3762aac3c17393ac4c = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_014307af39027fbdf437e33ff1b44b97 = $(`<div id="html_014307af39027fbdf437e33ff1b44b97" style="width: 100.0%; height: 100.0%;"><b>Bhalswa</b> (Delhi)<br>WATCH — probable plume, needs confirmation<br>T1 0 · T2 1 · T3 1<br>limit nan t/h<br><a href='dossier_Bhalswa.html' target='_blank'>dossier</a></div>`)[0];
+                popup_f5dfa7da79ee0d3762aac3c17393ac4c.setContent(html_014307af39027fbdf437e33ff1b44b97);
+            
+        
+
+        circle_marker_595e8555d4db503395df1df420a5c176.bindPopup(popup_f5dfa7da79ee0d3762aac3c17393ac4c)
+        ;
+
+        
+    
+    
+            var circle_marker_5473a98b0dde8a11c46d3dea1d052f9d = L.circleMarker(
+                [28.5125, 77.2835],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(map_c96da8ed0012fda74edfd2af7c002a61);
+        
+    
+        var popup_816b413e5eb687da93136dab1434c51f = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_6bc78019d42171bf7070bd75eda748ff = $(`<div id="html_6bc78019d42171bf7070bd75eda748ff" style="width: 100.0%; height: 100.0%;"><b>Okhla</b> (Delhi)<br>WATCH — probable plume, needs confirmation<br>T1 0 · T2 1 · T3 4<br>limit nan t/h<br><a href='dossier_Okhla.html' target='_blank'>dossier</a></div>`)[0];
+                popup_816b413e5eb687da93136dab1434c51f.setContent(html_6bc78019d42171bf7070bd75eda748ff);
+            
+        
+
+        circle_marker_5473a98b0dde8a11c46d3dea1d052f9d.bindPopup(popup_816b413e5eb687da93136dab1434c51f)
+        ;
+
+        
+    
+    
+            var circle_marker_6e98b90565d2b1dcb5fdc3785bcf988f = L.circleMarker(
+                [19.0717, 72.9278],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(map_c96da8ed0012fda74edfd2af7c002a61);
+        
+    
+        var popup_69837e529976395ca5276d7603636468 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_1c9642b6d2a9f056c12268d6cecf635e = $(`<div id="html_1c9642b6d2a9f056c12268d6cecf635e" style="width: 100.0%; height: 100.0%;"><b>Deonar</b> (Mumbai)<br>PRIORITY — methane plume evidence<br>T1 1 · T2 0 · T3 2<br>limit nan t/h<br><a href='dossier_Deonar.html' target='_blank'>dossier</a></div>`)[0];
+                popup_69837e529976395ca5276d7603636468.setContent(html_1c9642b6d2a9f056c12268d6cecf635e);
+            
+        
+
+        circle_marker_6e98b90565d2b1dcb5fdc3785bcf988f.bindPopup(popup_69837e529976395ca5276d7603636468)
+        ;
+
+        
+    
+    
+            var circle_marker_9259b6b53fc918db037d9a6e4882fdce = L.circleMarker(
+                [22.9762, 72.5656],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(map_c96da8ed0012fda74edfd2af7c002a61);
+        
+    
+        var popup_d0c46585d0fee5dd59d4ef95acc88f61 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_cbc22ad4cb147b116f0cb92735f642df = $(`<div id="html_cbc22ad4cb147b116f0cb92735f642df" style="width: 100.0%; height: 100.0%;"><b>Pirana</b> (Ahmedabad)<br>SURFACE ACTIVITY — no methane confirmed<br>T1 0 · T2 0 · T3 1<br>limit nan t/h<br><a href='dossier_Pirana.html' target='_blank'>dossier</a></div>`)[0];
+                popup_d0c46585d0fee5dd59d4ef95acc88f61.setContent(html_cbc22ad4cb147b116f0cb92735f642df);
+            
+        
+
+        circle_marker_9259b6b53fc918db037d9a6e4882fdce.bindPopup(popup_d0c46585d0fee5dd59d4ef95acc88f61)
+        ;
+
+        
+    
+    
+            var circle_marker_59431ad9c60794215b5f0df3cfcb7d1a = L.circleMarker(
+                [28.669700000000002, 77.3272],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c96da8ed0012fda74edfd2af7c002a61);
+        
+    
+        var popup_dbf5f467ba60c33f615de2a4a10eff67 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_88878e60dac30b3b4a5d482b8a41b0f3 = $(`<div id="html_88878e60dac30b3b4a5d482b8a41b0f3" style="width: 100.0%; height: 100.0%;">Ghazipur control</div>`)[0];
+                popup_dbf5f467ba60c33f615de2a4a10eff67.setContent(html_88878e60dac30b3b4a5d482b8a41b0f3);
+            
+        
+
+        circle_marker_59431ad9c60794215b5f0df3cfcb7d1a.bindPopup(popup_dbf5f467ba60c33f615de2a4a10eff67)
+        ;
+
+        
+    
+    
+            var circle_marker_1aa95be99a96739dbfea44438b6260d0 = L.circleMarker(
+                [28.785600000000002, 77.1582],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c96da8ed0012fda74edfd2af7c002a61);
+        
+    
+        var popup_38b25c2ca0840eb8256afcd30be8301a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f95ecfb0781e73ad42d9bbee2058d23b = $(`<div id="html_f95ecfb0781e73ad42d9bbee2058d23b" style="width: 100.0%; height: 100.0%;">Bhalswa control</div>`)[0];
+                popup_38b25c2ca0840eb8256afcd30be8301a.setContent(html_f95ecfb0781e73ad42d9bbee2058d23b);
+            
+        
+
+        circle_marker_1aa95be99a96739dbfea44438b6260d0.bindPopup(popup_38b25c2ca0840eb8256afcd30be8301a)
+        ;
+
+        
+    
+    
+            var circle_marker_4fa699769ec364f5f12315356ae7ad90 = L.circleMarker(
+                [28.5575, 77.2835],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c96da8ed0012fda74edfd2af7c002a61);
+        
+    
+        var popup_431094e3d97ec13ac0d1d54a14ea32f0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b0315b30a0a5936fcb70be75b1136dab = $(`<div id="html_b0315b30a0a5936fcb70be75b1136dab" style="width: 100.0%; height: 100.0%;">Okhla control</div>`)[0];
+                popup_431094e3d97ec13ac0d1d54a14ea32f0.setContent(html_b0315b30a0a5936fcb70be75b1136dab);
+            
+        
+
+        circle_marker_4fa699769ec364f5f12315356ae7ad90.bindPopup(popup_431094e3d97ec13ac0d1d54a14ea32f0)
+        ;
+
+        
+    
+    
+            var circle_marker_384232098379286c27bf4170603dd4ab = L.circleMarker(
+                [19.1167, 72.9278],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c96da8ed0012fda74edfd2af7c002a61);
+        
+    
+        var popup_a4964f5fd296a27bc0b26d3d09b7adad = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5030b999c8975104187e2ccf1ff179e9 = $(`<div id="html_5030b999c8975104187e2ccf1ff179e9" style="width: 100.0%; height: 100.0%;">Deonar control</div>`)[0];
+                popup_a4964f5fd296a27bc0b26d3d09b7adad.setContent(html_5030b999c8975104187e2ccf1ff179e9);
+            
+        
+
+        circle_marker_384232098379286c27bf4170603dd4ab.bindPopup(popup_a4964f5fd296a27bc0b26d3d09b7adad)
+        ;
+
+        
+    
+    
+            var circle_marker_a00f45ce996a781c586bfadba2a33f8e = L.circleMarker(
+                [23.0212, 72.5656],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_c96da8ed0012fda74edfd2af7c002a61);
+        
+    
+        var popup_902a8ca5adbb066d6224aa60d8d215ab = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7c8ffa4d108720e19eccef38992be127 = $(`<div id="html_7c8ffa4d108720e19eccef38992be127" style="width: 100.0%; height: 100.0%;">Pirana control</div>`)[0];
+                popup_902a8ca5adbb066d6224aa60d8d215ab.setContent(html_7c8ffa4d108720e19eccef38992be127);
+            
+        
+
+        circle_marker_a00f45ce996a781c586bfadba2a33f8e.bindPopup(popup_902a8ca5adbb066d6224aa60d8d215ab)
+        ;
+
+        
+    
+</script>
+</html>
