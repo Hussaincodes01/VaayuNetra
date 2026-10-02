@@ -162,7 +162,7 @@ site_url = "http://localhost:3000"
 # external_url = ""
 # A list of *exact* URLs that auth providers are permitted to redirect to post authentication.
 # VayuNetra: local dev server and the production build served on 3100 during testing.
-additional_redirect_urls = ["http://localhost:3000/**", "http://localhost:3100/**", "https://vayunetra.vercel.app/**"]
+additional_redirect_urls = ["http://localhost:3000/**", "http://localhost:3100/**", "https://vayunetra-india.vercel.app/**"]
 # How long tokens are valid for, in seconds. Defaults to 3600 (1 hour), maximum 604,800 (1 week).
 jwt_expiry = 3600
 # JWT issuer URL. If not set, defaults to auth.external_url.

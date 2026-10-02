@@ -149,8 +149,8 @@ as a backstop and `.github/workflows/alerts.yml` calls it every 15 minutes from 
 in DEPLOY.md step 4.5). Any scheduler can call the routes with the same bearer token:
 
 ```bash
-curl -H "Authorization: Bearer $CRON_SECRET" https://vayunetra.vercel.app/api/cron/alerts
-curl -H "Authorization: Bearer $CRON_SECRET" "https://vayunetra.vercel.app/api/cron/monthly?period=2025-01"
+curl -H "Authorization: Bearer $CRON_SECRET" https://vayunetra-india.vercel.app/api/cron/alerts
+curl -H "Authorization: Bearer $CRON_SECRET" "https://vayunetra-india.vercel.app/api/cron/monthly?period=2025-01"
 ```
 
 Staging check (the acceptance test): `web/scripts/alert-smoke.mjs` inserts a fake T1 scan, waits for

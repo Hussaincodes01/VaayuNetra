@@ -1,7 +1,7 @@
 // Invite the first dashboard administrator. Sign-up is invite-only, so the first admin cannot sign up;
 // later admins and officers are invited from Dashboard, Settings.
 //
-//   SUPABASE_URL=https://<ref>.supabase.co SUPABASE_SERVICE_ROLE_KEY=... SITE_URL=https://vayunetra.vercel.app \
+//   SUPABASE_URL=https://<ref>.supabase.co SUPABASE_SERVICE_ROLE_KEY=... SITE_URL=https://vayunetra-india.vercel.app \
 //     node scripts/create-admin.mjs you@example.org "Your Name"
 //
 // Sends the Supabase invite email (through the SMTP set in DEPLOY.md step 2) and makes the profile an

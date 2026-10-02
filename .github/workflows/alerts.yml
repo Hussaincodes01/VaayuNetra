@@ -6,7 +6,7 @@ name: alerts
 #
 # Needs, in Settings -> Secrets and variables -> Actions:
 #   secret   CRON_SECRET    the same value as CRON_SECRET in the Vercel project
-#   variable VAYU_SITE_URL  the production URL, e.g. https://vayunetra.vercel.app
+#   variable VAYU_SITE_URL  the production URL, e.g. https://vayunetra-india.vercel.app
 # Without them the job only prints a notice. GitHub pauses scheduled workflows in a public repository
 # after 60 days without commits; re-enable it under Actions -> alerts if that happens.
 

@@ -72,8 +72,8 @@ mailer is meant for testing and has a low hourly limit, so send through Resend.
 4. In **Authentication → Sign In / Providers**: keep **Email** enabled and turn **Allow new users to
    sign up** off. People join only by invitation.
 5. In **Authentication → URL Configuration**:
-   - Site URL: `https://vayunetra.vercel.app`, or your custom domain (step 4.6)
-   - Redirect URLs: `https://vayunetra.vercel.app/**` and, for preview deployments,
+   - Site URL: `https://vayunetra-india.vercel.app`, or your custom domain (step 4.6)
+   - Redirect URLs: `https://vayunetra-india.vercel.app/**` and, for preview deployments,
      `https://*-<your-vercel-team-slug>.vercel.app/**`
 
 Check: **Authentication → Emails** shows the SMTP sender as your Resend address.
@@ -104,7 +104,7 @@ cp .env.example .env.production
 | `NEXT_PUBLIC_SUPABASE_URL`           | Project URL from step 1                               | yes                                 |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY`      | `anon` key                                            | yes                                 |
 | `SUPABASE_SERVICE_ROLE_KEY`          | `service_role` key                                    | yes                                 |
-| `NEXT_PUBLIC_SITE_URL`               | `https://vayunetra.vercel.app` or your domain         | yes                                 |
+| `NEXT_PUBLIC_SITE_URL`               | `https://vayunetra-india.vercel.app` or your domain   | yes                                 |
 | `RESEND_API_KEY`, `ALERT_FROM_EMAIL` | from step 2                                           | yes, for alerts and reports         |
 | `CRON_SECRET`                        | the random value above                                | yes, for alerts and reports         |
 | `NEXT_PUBLIC_MAPBOX_TOKEN`           | Mapbox public token                                   | yes, for the maps                   |
@@ -120,6 +120,9 @@ Check: every "yes" row has a value.
 ## 4. Vercel
 
 ### 4.1 Create the project
+
+The plain `vayunetra.vercel.app` belongs to another Vercel team, so this project uses
+`vayunetra-india.vercel.app` (Vercel also assigned `vayunetra-vert.vercel.app`, which serves the same site).
 
 1. Push the repository to GitHub if it is not there yet.
 2. In Vercel: **Add New → Project → Import** the `VaayuNetra` repository.
@@ -160,7 +163,7 @@ Analytics component, which runs only on Vercel.
 ```bash
 cd web
 SUPABASE_URL=https://<ref>.supabase.co SUPABASE_SERVICE_ROLE_KEY=<service_role> \
-  SITE_URL=https://vayunetra.vercel.app node scripts/create-admin.mjs you@example.org "Your Name"
+  SITE_URL=https://vayunetra-india.vercel.app node scripts/create-admin.mjs you@example.org "Your Name"
 ```
 
 Open the invite email and follow the link, then sign in at `/login`. Invite everyone else from
@@ -183,7 +186,7 @@ database before it is sent, so the daily Vercel run and the 15-minute run never 
 1. Open https://github.com/Hussaincodes01/VaayuNetra/settings/secrets/actions/new and add a secret
    named `CRON_SECRET` with the same value as `CRON_SECRET` in `web/.env.production`.
 2. Open https://github.com/Hussaincodes01/VaayuNetra/settings/variables/actions/new and add a
-   variable named `VAYU_SITE_URL` with the production URL, `https://vayunetra.vercel.app`.
+   variable named `VAYU_SITE_URL` with the production URL, `https://vayunetra-india.vercel.app`.
 3. Open https://github.com/Hussaincodes01/VaayuNetra/actions/workflows/alerts.yml and click
    **Run workflow** once. The log shows `ok: true | events: 0 | worker alerts: 0`.
 
@@ -194,7 +197,7 @@ commits; re-enable it on the workflow page if that happens.
 Check: **Settings → Cron Jobs** in Vercel lists both jobs. Then call the alerts job by hand:
 
 ```bash
-curl -H "Authorization: Bearer <CRON_SECRET>" https://vayunetra.vercel.app/api/cron/alerts
+curl -H "Authorization: Bearer <CRON_SECRET>" https://vayunetra-india.vercel.app/api/cron/alerts
 ```
 
 It answers `{"ok":true,...}`. Without the header it answers 401.
@@ -215,7 +218,7 @@ It answers `{"ok":true,...}`. Without the header it answers 401.
 3. Check the security headers:
 
    ```bash
-   curl -sI https://vayunetra.vercel.app/ | grep -iE "content-security-policy|strict-transport-security"
+   curl -sI https://vayunetra-india.vercel.app/ | grep -iE "content-security-policy|strict-transport-security"
    ```
 
 4. Sign in as the admin. The overview shows 5 sites and "Worker offline" until step 6 is done.
@@ -225,7 +228,7 @@ It answers `{"ok":true,...}`. Without the header it answers 401.
    ```bash
    cd web
    SUPABASE_URL=https://<ref>.supabase.co SUPABASE_SERVICE_ROLE_KEY=<service_role> CRON_SECRET=<secret> \
-     node scripts/alert-smoke.mjs --trigger https://vayunetra.vercel.app
+     node scripts/alert-smoke.mjs --trigger https://vayunetra-india.vercel.app
    ```
 
    It prints `PASS`, and the recipient gets one email.
