@@ -1,0 +1,14 @@
+# What `vercel deploy` uploads from the repository root (Git deployments ignore this file).
+# Only the web app is deployed: the root also holds datasets and model weights (several GB).
+/*
+!/web
+/web/node_modules
+/web/.next
+/web/.vercel
+/web/.env*
+!/web/.env.example
+/web/test-results
+/web/playwright-report
+/web/e2e/.auth
+/web/lighthouse
+/web/*.tsbuildinfo

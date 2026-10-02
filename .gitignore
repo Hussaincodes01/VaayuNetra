@@ -38,3 +38,6 @@ Thumbs.db
 /vayunetra*.ipynb
 /index.html
 /Transmittance table.json
+
+# Vercel CLI link (per machine)
+.vercel/

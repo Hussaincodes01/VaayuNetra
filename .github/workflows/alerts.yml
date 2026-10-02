@@ -1,0 +1,47 @@
+name: alerts
+
+# Vercel's Hobby plan runs cron jobs at most once a day, so this schedule calls the alert cron route
+# every 15 minutes instead (web/vercel.json keeps a daily run as a backstop). The route is idempotent:
+# each email is claimed in the database before it is sent, so overlapping runs cannot send twice.
+#
+# Needs, in Settings -> Secrets and variables -> Actions:
+#   secret   CRON_SECRET    the same value as CRON_SECRET in the Vercel project
+#   variable VAYU_SITE_URL  the production URL, e.g. https://vayunetra.vercel.app
+# Without them the job only prints a notice. GitHub pauses scheduled workflows in a public repository
+# after 60 days without commits; re-enable it under Actions -> alerts if that happens.
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: alerts
+  cancel-in-progress: false
+
+jobs:
+  alerts:
+    name: call /api/cron/alerts
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Call the alert cron route
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          SITE_URL: ${{ vars.VAYU_SITE_URL }}
+        run: |
+          if [ -z "$CRON_SECRET" ] || [ -z "$SITE_URL" ]; then
+            echo "::notice::Set the CRON_SECRET secret and the VAYU_SITE_URL variable to turn on 15-minute alerts."
+            exit 0
+          fi
+          code=$(curl -sS -o response.json -w '%{http_code}' -m 90 \
+            -H "Authorization: Bearer $CRON_SECRET" "${SITE_URL%/}/api/cron/alerts")
+          # The log of a public repository is public: print counts only, never recipients or errors.
+          jq -r '"ok: \(.ok) | events: \(.events // [] | length) | worker alerts: \(.worker // [] | length)"' response.json || true
+          if [ "$code" != "200" ]; then
+            echo "::error::/api/cron/alerts answered HTTP $code (see the Vercel function logs for details)"
+            exit 1
+          fi

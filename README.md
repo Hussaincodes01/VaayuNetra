@@ -133,10 +133,10 @@ a backfill, add a landfill): [RUNBOOK.md](RUNBOOK.md).
 `RESEND_API_KEY` and `ALERT_FROM_EMAIL` in the Vercel project, and recipients per state under
 Dashboard, Settings.
 
-| Route               | Schedule (UTC)               | What it sends                                                                                                                                                                                     |
-| ------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/api/cron/alerts`  | every 15 min                 | One email per recipient for each new T1/T2 pass (pass date in the last 30 days) at a landfill in their state. Admins get one email per outage when a worker's heartbeat is more than 2 hours old. |
-| `/api/cron/monthly` | 02:30 on the 1st (08:00 IST) | Per state: a PDF for the previous month (passes, T1/T2/T3, actions closed, minimum CO₂e estimate), stored in the private `reports` bucket and attached to the email.                              |
+| Route               | Schedule (UTC)                                      | What it sends                                                                                                                                                                                     |
+| ------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/api/cron/alerts`  | every 15 min (GitHub Actions), daily 03:00 (Vercel) | One email per recipient for each new T1/T2 pass (pass date in the last 30 days) at a landfill in their state. Admins get one email per outage when a worker's heartbeat is more than 2 hours old. |
+| `/api/cron/monthly` | 02:30 on the 1st (08:00 IST)                        | Per state: a PDF for the previous month (passes, T1/T2/T3, actions closed, minimum CO₂e estimate), stored in the private `reports` bucket and attached to the email.                              |
 
 Each send is claimed in the database first (`alerts` unique on scan and channel, `ops_alerts`,
 `reports`), so overlapping runs cannot email twice; a failed send is retried by the next run, up to
@@ -144,9 +144,9 @@ Each send is claimed in the database first (`alerts` unique on scan and channel,
 WhatsApp/SMS through Twilio is off unless `ALERTS_TWILIO_ENABLED=true` and the `TWILIO_*` values
 are set; numbers go in the `alert_phones` setting.
 
-Vercel's Hobby plan runs cron jobs at most once a day, so the 15-minute schedule needs the Pro plan.
-On Hobby, deployment fails with the `*/15` schedule; change it to a daily one (for example
-`0 3 * * *`) or call the route from another scheduler with the same bearer token:
+Vercel's Hobby plan runs a cron job at most once a day, so `web/vercel.json` runs the alerts job daily
+as a backstop and `.github/workflows/alerts.yml` calls it every 15 minutes from GitHub Actions (setup
+in DEPLOY.md step 4.5). Any scheduler can call the routes with the same bearer token:
 
 ```bash
 curl -H "Authorization: Bearer $CRON_SECRET" https://vayunetra.vercel.app/api/cron/alerts

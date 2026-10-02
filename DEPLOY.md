@@ -8,17 +8,17 @@ Commands run from the repository root unless a step says `cd web` or `cd worker`
 
 ## 0. Accounts and tools
 
-| Service | Needed for | Plan |
-|---|---|---|
-| GitHub | the repository; CI runs on every push | free |
-| Supabase | database, sign-in, file storage | free tier works |
-| Vercel | website, dashboard, cron jobs | **Pro** for the 15-minute alert cron (see step 4.5) |
-| Resend | magic-link sign-in emails, alerts, monthly reports | free tier works; needs a domain you control |
-| Mapbox | the 3D globe and site maps | free tier; public token |
-| Mapillary | street-level photos on the landing page (optional) | free |
-| Groq | "Explain this site" AI briefings (optional) | free tier works |
-| Twilio | WhatsApp/SMS alerts (optional, off by default) | pay as you go |
-| Google Earth Engine | the worker's Sentinel-2 and ERA5-Land data | service account on a Cloud project |
+| Service             | Needed for                                         | Plan                                                           |
+| ------------------- | -------------------------------------------------- | -------------------------------------------------------------- |
+| GitHub              | the repository; CI runs on every push              | free                                                           |
+| Supabase            | database, sign-in, file storage                    | free tier works                                                |
+| Vercel              | website, dashboard, cron jobs                      | Hobby works: 15-minute alerts run in GitHub Actions (step 4.5) |
+| Resend              | magic-link sign-in emails, alerts, monthly reports | free tier works; needs a domain you control                    |
+| Mapbox              | the 3D globe and site maps                         | free tier; public token                                        |
+| Mapillary           | street-level photos on the landing page (optional) | free                                                           |
+| Groq                | "Explain this site" AI briefings (optional)        | free tier works                                                |
+| Twilio              | WhatsApp/SMS alerts (optional, off by default)     | pay as you go                                                  |
+| Google Earth Engine | the worker's Sentinel-2 and ERA5-Land data         | service account on a Cloud project                             |
 
 Tools on your computer: Git, Node 24 with Corepack (`corepack enable` gives you pnpm 10), the Supabase
 CLI 2.119 or newer, and for the worker Python 3.11 with [uv](https://docs.astral.sh/uv/).
@@ -99,21 +99,21 @@ cd web
 cp .env.example .env.production
 ```
 
-| Variable | Value | Required |
-|---|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | Project URL from step 1 | yes |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `anon` key | yes |
-| `SUPABASE_SERVICE_ROLE_KEY` | `service_role` key | yes |
-| `NEXT_PUBLIC_SITE_URL` | `https://vayunetra.vercel.app` or your domain | yes |
-| `RESEND_API_KEY`, `ALERT_FROM_EMAIL` | from step 2 | yes, for alerts and reports |
-| `CRON_SECRET` | the random value above | yes, for alerts and reports |
-| `NEXT_PUBLIC_MAPBOX_TOKEN` | Mapbox public token | yes, for the maps |
-| `NEXT_PUBLIC_MAPILLARY_TOKEN` | Mapillary client token | optional |
-| `GROQ_API_KEY` (and `GROQ_MODEL`) | Groq key; model defaults to `llama-3.3-70b-versatile` | optional |
-| `NEXT_PUBLIC_VIDEO_URL` | YouTube/Vimeo link or file URL of the film | optional; the film section needs it |
-| `ALERT_LOOKBACK_DAYS` | default 30 | optional |
-| `ALERTS_TWILIO_ENABLED`, `TWILIO_*` | `true` plus Twilio SID, token and sender | optional |
-| `ANTHROPIC_API_KEY` | not used by the current code | leave empty |
+| Variable                             | Value                                                 | Required                            |
+| ------------------------------------ | ----------------------------------------------------- | ----------------------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`           | Project URL from step 1                               | yes                                 |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY`      | `anon` key                                            | yes                                 |
+| `SUPABASE_SERVICE_ROLE_KEY`          | `service_role` key                                    | yes                                 |
+| `NEXT_PUBLIC_SITE_URL`               | `https://vayunetra.vercel.app` or your domain         | yes                                 |
+| `RESEND_API_KEY`, `ALERT_FROM_EMAIL` | from step 2                                           | yes, for alerts and reports         |
+| `CRON_SECRET`                        | the random value above                                | yes, for alerts and reports         |
+| `NEXT_PUBLIC_MAPBOX_TOKEN`           | Mapbox public token                                   | yes, for the maps                   |
+| `NEXT_PUBLIC_MAPILLARY_TOKEN`        | Mapillary client token                                | optional                            |
+| `GROQ_API_KEY` (and `GROQ_MODEL`)    | Groq key; model defaults to `llama-3.3-70b-versatile` | optional                            |
+| `NEXT_PUBLIC_VIDEO_URL`              | YouTube/Vimeo link or file URL of the film            | optional; the film section needs it |
+| `ALERT_LOOKBACK_DAYS`                | default 30                                            | optional                            |
+| `ALERTS_TWILIO_ENABLED`, `TWILIO_*`  | `true` plus Twilio SID, token and sender              | optional                            |
+| `ANTHROPIC_API_KEY`                  | not used by the current code                          | leave empty                         |
 
 Check: every "yes" row has a value.
 
@@ -166,20 +166,32 @@ SUPABASE_URL=https://<ref>.supabase.co SUPABASE_SERVICE_ROLE_KEY=<service_role> 
 Open the invite email and follow the link, then sign in at `/login`. Invite everyone else from
 **Dashboard → Settings**, and set the alert recipients per state there.
 
-### 4.5 Cron jobs
+### 4.5 Cron jobs and the 15-minute alert schedule
 
-`web/vercel.json` declares two cron jobs, and Vercel turns them on with the production deployment:
+`web/vercel.json` declares two Vercel cron jobs, which turn on with the production deployment. They
+fit the Hobby plan, which allows at most one run a day per job:
 
-| Path | Schedule (UTC) | Job |
-|---|---|---|
-| `/api/cron/alerts` | `*/15 * * * *` | new T1/T2 events to state recipients; worker-offline email to admins |
-| `/api/cron/monthly` | `30 2 1 * *` | monthly PDF report per state |
+| Path                | Schedule (UTC)               | Job                                                                  |
+| ------------------- | ---------------------------- | -------------------------------------------------------------------- |
+| `/api/cron/alerts`  | `0 3 * * *` (daily backstop) | new T1/T2 events to state recipients; worker-offline email to admins |
+| `/api/cron/monthly` | `30 2 1 * *`                 | monthly PDF report per state                                         |
 
-The Hobby plan allows cron jobs at most once a day and rejects the deployment with
-`*/15 * * * *` ("Hobby accounts are limited to daily cron jobs"). Use the Pro plan, or on Hobby change
-the alerts schedule in `web/vercel.json` to a daily one such as `0 3 * * *` and push.
+The 15-minute alert schedule runs in GitHub Actions (`.github/workflows/alerts.yml`), free for a
+public repository. It calls the same route with the same secret. Every email is claimed in the
+database before it is sent, so the daily Vercel run and the 15-minute run never send twice. Turn it on:
 
-Check: **Settings → Cron Jobs** lists both jobs. Then call the alerts job by hand:
+1. Open https://github.com/Hussaincodes01/VaayuNetra/settings/secrets/actions/new and add a secret
+   named `CRON_SECRET` with the same value as `CRON_SECRET` in `web/.env.production`.
+2. Open https://github.com/Hussaincodes01/VaayuNetra/settings/variables/actions/new and add a
+   variable named `VAYU_SITE_URL` with the production URL, `https://vayunetra.vercel.app`.
+3. Open https://github.com/Hussaincodes01/VaayuNetra/actions/workflows/alerts.yml and click
+   **Run workflow** once. The log shows `ok: true | events: 0 | worker alerts: 0`.
+
+On the Pro plan you can instead set the alerts schedule in `web/vercel.json` to `*/15 * * * *` and
+delete the workflow. GitHub pauses scheduled workflows in a public repository after 60 days without
+commits; re-enable it on the workflow page if that happens.
+
+Check: **Settings → Cron Jobs** in Vercel lists both jobs. Then call the alerts job by hand:
 
 ```bash
 curl -H "Authorization: Bearer <CRON_SECRET>" https://vayunetra.vercel.app/api/cron/alerts
