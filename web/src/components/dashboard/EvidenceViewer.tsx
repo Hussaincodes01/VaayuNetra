@@ -58,19 +58,19 @@ function WindBadge({
         role="img"
         aria-label={label}
       >
-        <circle r={11} fill="#05070D" stroke="#2DD4BF55" />
+        <circle r={11} fill="#FFFFFF" stroke="#1E7B4555" />
         <line
           x1={-dx * 7}
           y1={-dy * 7}
           x2={dx * 5}
           y2={dy * 5}
-          stroke="#2DD4BF"
+          stroke="#1E7B45"
           strokeWidth={2}
           strokeLinecap="round"
         />
         <path
           d={`M${dx * 8},${dy * 8} L${dx * 3 - dy * 3},${dy * 3 + dx * 3} L${dx * 3 + dy * 3},${dy * 3 - dx * 3}Z`}
-          fill="#2DD4BF"
+          fill="#1E7B45"
         />
       </svg>
       <span className="font-mono">{speed}</span>
@@ -110,11 +110,11 @@ export function PhysicsChips({ scan }: { scan: ScanRow }) {
           >
             {c.pass ? (
               <Check
-                className="size-3.5 text-[#86EFAC]"
+                className="size-3.5 text-tier-clear-ink"
                 aria-label={t("pass")}
               />
             ) : (
-              <X className="size-3.5 text-[#FCD34D]" aria-label={t("fail")} />
+              <X className="size-3.5 text-tier-3-ink" aria-label={t("fail")} />
             )}
             {t(c.message as never, fmt(c.values) as never)}
           </li>
@@ -132,7 +132,7 @@ export function PassEmissions({ scan }: { scan: ScanRow }) {
     return <p className="text-sm text-muted-foreground">{t("t3")}</p>;
   if (scan.u10 !== null && scan.u10 < CALM_WIND_MS) {
     return (
-      <p className="text-sm text-[#FCD34D]">
+      <p className="text-sm text-tier-3-ink">
         {t("calm", { wind: f.num(scan.u10, 1) })}
       </p>
     );
@@ -140,7 +140,7 @@ export function PassEmissions({ scan }: { scan: ScanRow }) {
   if (scan.qMed !== null) {
     return (
       <div>
-        <p className="font-mono text-xl text-methane-low">
+        <p className="font-mono text-xl text-canopy">
           {t("rate", { tph: f.tph(scan.qMed) })}
         </p>
         {scan.qLo !== null && scan.qHi !== null && (
@@ -199,7 +199,7 @@ function QuickVerification({
           id={`${id}-assignee`}
           name="assignee"
           defaultValue=""
-          className="mt-1 block w-48 rounded-md border border-white/15 bg-background px-2 py-1.5 text-sm"
+          className="mt-1 block w-48 rounded-md border border-input bg-background px-2 py-1.5 text-sm"
         >
           <option value="">{t("unassigned")}</option>
           {assignees.map((a) => (
@@ -215,7 +215,7 @@ function QuickVerification({
           id={`${id}-due`}
           type="date"
           name="dueDate"
-          className="mt-1 block rounded-md border border-white/15 bg-background px-2 py-1 text-sm"
+          className="mt-1 block rounded-md border border-input bg-background px-2 py-1 text-sm"
         />
       </label>
       <button
@@ -294,7 +294,7 @@ export function EvidenceViewer({
   return (
     <article
       id={`pass-${scan.passDate}`}
-      className="scroll-mt-20 rounded-xl border border-white/10 bg-card p-5"
+      className="scroll-mt-20 rounded-xl border border-border bg-card p-5"
     >
       <header className="flex flex-wrap items-center gap-3">
         <TierBadge tier={scan.tier as "T1" | "T2" | "T3"} long />
@@ -309,7 +309,7 @@ export function EvidenceViewer({
         {action && (
           <a
             href="#actions"
-            className="ml-auto rounded-full border border-white/15 px-2.5 py-0.5 text-xs hover:bg-white/5"
+            className="ml-auto rounded-full border border-input px-2.5 py-0.5 text-xs hover:bg-muted"
           >
             {ta(action.status)}
           </a>
@@ -321,7 +321,7 @@ export function EvidenceViewer({
           <div
             role="tablist"
             aria-label={t("tabsLabel")}
-            className="flex gap-1 rounded-lg bg-white/5 p-1 text-xs"
+            className="flex gap-1 rounded-lg bg-muted p-1 text-xs"
           >
             {TABS.map((k) => (
               <button
@@ -347,7 +347,7 @@ export function EvidenceViewer({
             id={`${uid}-panel`}
             role="tabpanel"
             aria-labelledby={`${uid}-${tab}`}
-            className="relative mt-2 aspect-square overflow-hidden rounded-lg border border-white/10 bg-black"
+            className="relative mt-2 aspect-square overflow-hidden rounded-lg border border-border bg-muted"
           >
             {!ev ? (
               <p className="flex h-full items-center justify-center p-6 text-center text-sm text-muted-foreground">
@@ -423,7 +423,7 @@ export function EvidenceViewer({
                 step={0.05}
                 value={opacity}
                 onChange={(e) => setOpacity(Number(e.target.value))}
-                className="flex-1 accent-[#2DD4BF]"
+                className="flex-1 accent-[#1E7B45]"
               />
               <span className="w-10 text-right font-mono">
                 {f.pct(opacity)}
@@ -434,7 +434,7 @@ export function EvidenceViewer({
 
         <div className="space-y-5">
           <section>
-            <h4 className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
+            <h4 className="text-sm font-medium text-muted-foreground">
               {t("physics")}
             </h4>
             <div className="mt-2">
@@ -442,7 +442,7 @@ export function EvidenceViewer({
             </div>
           </section>
           <section>
-            <h4 className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
+            <h4 className="text-sm font-medium text-muted-foreground">
               {t("emissions")}
             </h4>
             <div className="mt-2">

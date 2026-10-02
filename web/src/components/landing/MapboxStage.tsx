@@ -113,7 +113,7 @@ export default function MapboxStage({
       style: "mapbox://styles/mapbox/standard-satellite",
       config: {
         basemap: {
-          lightPreset: "night",
+          lightPreset: "day",
           showPointOfInterestLabels: false,
           showTransitLabels: false,
         },
@@ -194,7 +194,7 @@ export default function MapboxStage({
             map.setPaintProperty(`wind-head-${i}`, "fill-opacity", 0);
           markers[i]?.forEach((m) => (m.getElement().style.display = "none"));
         });
-        map.setConfigProperty("basemap", "lightPreset", "night");
+        map.setConfigProperty("basemap", "lightPreset", "day");
       }
       const cam = heroCamera(progress);
       if (progress < 0.01 && !reducedMotion) cam.center[0] += spin;
@@ -330,7 +330,7 @@ export default function MapboxStage({
             slot: "top",
             filter: ["==", ["geometry-type"], "LineString"],
             paint: {
-              "line-color": "#2DD4BF",
+              "line-color": "#FFFFFF",
               "line-width": 4,
               "line-opacity": 0,
               "line-opacity-transition": { duration: 900 },
@@ -344,7 +344,7 @@ export default function MapboxStage({
             slot: "top",
             filter: ["==", ["geometry-type"], "Polygon"],
             paint: {
-              "fill-color": "#2DD4BF",
+              "fill-color": "#FFFFFF",
               "fill-opacity": 0,
               "fill-opacity-transition": { duration: 900 },
               "fill-emissive-strength": 1,
@@ -365,7 +365,7 @@ export default function MapboxStage({
         if (site.control) {
           markers[i].push(
             new mapboxgl.Marker({
-              element: badgeEl(controlLabel, "#8A93A6"),
+              element: badgeEl(controlLabel, "#4A6355"),
               anchor: "bottom",
             })
               .setLngLat([site.control.lon, site.control.lat])

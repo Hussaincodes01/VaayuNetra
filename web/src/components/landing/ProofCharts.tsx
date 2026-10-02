@@ -7,8 +7,9 @@ import { scaleBand, scaleLinear } from "@visx/scale";
 import { Bar } from "@visx/shape";
 import { BENCHMARK } from "@/content/facts";
 
-const TEAL = "#2DD4BF";
-const GREY = "#5B6478";
+// Validated pair on white (dataviz validate_palette.js: CVD ΔE 19.5, normal 21.5, both >= 3:1).
+const VAYU = "#1E7B45"; // VayuNetra
+const MBMP = "#4A86CF"; // classic MBMP
 const W = 360;
 
 type ChartProps = {
@@ -81,7 +82,7 @@ function PairBars({
                 width={W - 56}
                 height={y.bandwidth()}
                 rx={4}
-                fill="#ffffff0d"
+                fill="#0E3B2A0D"
               />
               <Bar
                 x={0}
@@ -89,7 +90,7 @@ function PairBars({
                 width={bw}
                 height={y.bandwidth()}
                 rx={4}
-                fill={i === 0 ? TEAL : GREY}
+                fill={i === 0 ? VAYU : MBMP}
                 style={grow(animate, i * 150)}
               />
               <text
@@ -109,7 +110,7 @@ function PairBars({
               x2={x(reference)}
               y1={14}
               y2={h - 10}
-              stroke="#E8ECF4"
+              stroke="#0E3B2A"
               strokeDasharray="3 4"
               strokeOpacity={0.6}
             />
@@ -180,7 +181,7 @@ export function RecallChart({
     >
       {[0, 0.1, 0.2, 0.3, 0.4].map((v) => (
         <g key={v}>
-          <line x1={28} x2={W - 4} y1={y(v)} y2={y(v)} stroke="#ffffff14" />
+          <line x1={28} x2={W - 4} y1={y(v)} y2={y(v)} stroke="#0E3B2A1A" />
           <text
             x={0}
             y={y(v) + 4}
@@ -205,7 +206,7 @@ export function RecallChart({
                     width={inner.bandwidth()}
                     height={y(0) - y(value)}
                     rx={3}
-                    fill={k === "v" ? TEAL : GREY}
+                    fill={k === "v" ? VAYU : MBMP}
                     style={growUp(animate, i * 120 + (k === "m" ? 60 : 0))}
                   />
                   <text
@@ -231,11 +232,11 @@ export function RecallChart({
         );
       })}
       <g transform={`translate(34, 2)`}>
-        <rect width={10} height={10} rx={2} fill={TEAL} />
+        <rect width={10} height={10} rx={2} fill={VAYU} />
         <text x={14} y={9} className="fill-muted-foreground text-[10px]">
           {names[0]}
         </text>
-        <rect x={78} width={10} height={10} rx={2} fill={GREY} />
+        <rect x={78} width={10} height={10} rx={2} fill={MBMP} />
         <text x={92} y={9} className="fill-muted-foreground text-[10px]">
           {names[1]}
         </text>
@@ -279,7 +280,7 @@ export function AccuracyChart({
             width={cell}
             height={cell}
             rx={3}
-            fill={on ? TEAL : "#ffffff14"}
+            fill={on ? VAYU : "#0E3B2A1F"}
             style={{
               opacity: animate || !on ? 1 : 0.15,
               transition: `opacity 400ms ease ${i * 12}ms`,
@@ -288,11 +289,11 @@ export function AccuracyChart({
         );
       })}
       <g transform={`translate(${size + 18}, ${size / 2 - 24})`}>
-        <rect width={10} height={10} rx={2} fill={TEAL} />
+        <rect width={10} height={10} rx={2} fill={VAYU} />
         <text x={16} y={9} className="fill-muted-foreground text-[11px]">
           {inside}
         </text>
-        <rect y={22} width={10} height={10} rx={2} fill="#ffffff26" />
+        <rect y={22} width={10} height={10} rx={2} fill="#0E3B2A33" />
         <text x={16} y={31} className="fill-muted-foreground text-[11px]">
           {outside}
         </text>

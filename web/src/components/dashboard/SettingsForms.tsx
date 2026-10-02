@@ -10,7 +10,7 @@ import {
 import { useRouter } from "@/i18n/navigation";
 
 const field =
-  "mt-1 block w-full rounded-md border border-white/15 bg-background px-2 py-1.5 text-sm";
+  "mt-1 block w-full rounded-md border border-input bg-background px-2 py-1.5 text-sm";
 
 function useAction(
   fn: (form: FormData) => Promise<Result>,
@@ -45,7 +45,7 @@ function Status({
     <p
       role="status"
       className={
-        message.ok ? "text-sm text-[#86EFAC]" : "text-sm text-[#FCA5A5]"
+        message.ok ? "text-sm text-tier-clear-ink" : "text-sm text-tier-1-ink"
       }
     >
       {message.text}
@@ -76,7 +76,7 @@ export function SettingsForm({
   const mode = String(settings.threshold_mode ?? "model_card");
   return (
     <form action={action} className="space-y-6">
-      <fieldset className="rounded-xl border border-white/10 bg-card p-5">
+      <fieldset className="rounded-xl border border-border bg-card p-5">
         <legend className="px-1 font-heading text-lg font-semibold">
           {t("threshold")}
         </legend>
@@ -88,7 +88,7 @@ export function SettingsForm({
                 name="threshold_mode"
                 value={m}
                 defaultChecked={mode === m}
-                className="accent-[#2DD4BF]"
+                className="accent-[#1E7B45]"
               />
               {t(m === "model_card" ? "modelCard" : "india")}
             </label>
@@ -98,7 +98,7 @@ export function SettingsForm({
           {t("thresholdNote")}
         </p>
       </fieldset>
-      <fieldset className="rounded-xl border border-white/10 bg-card p-5">
+      <fieldset className="rounded-xl border border-border bg-card p-5">
         <legend className="px-1 font-heading text-lg font-semibold">
           {t("assumptions")}
         </legend>
@@ -121,7 +121,7 @@ export function SettingsForm({
           {t("assumptionsNote")}
         </p>
       </fieldset>
-      <fieldset className="rounded-xl border border-white/10 bg-card p-5">
+      <fieldset className="rounded-xl border border-border bg-card p-5">
         <legend className="px-1 font-heading text-lg font-semibold">
           {t("recipients")}
         </legend>

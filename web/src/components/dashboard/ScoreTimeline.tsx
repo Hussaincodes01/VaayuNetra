@@ -33,7 +33,8 @@ export function ScoreTimeline({ scans }: { scans: ScanRow[] }) {
       <svg
         viewBox={`0 0 ${W} ${H}`}
         className="h-auto w-full"
-        role="img"
+        // A labelled group, not an image: it holds links to each flagged pass.
+        role="group"
         aria-label={t("timelineLabel", {
           passes: scans.length,
           flags: flagged.length,
@@ -47,7 +48,7 @@ export function ScoreTimeline({ scans }: { scans: ScanRow[] }) {
               x2={W - m.r}
               y1={y(v)}
               y2={y(v)}
-              stroke="#ffffff10"
+              stroke="#0E3B2A14"
             />
             <text
               x={m.l - 8}
@@ -75,7 +76,7 @@ export function ScoreTimeline({ scans }: { scans: ScanRow[] }) {
           x2={W - m.r}
           y1={y(threshold)}
           y2={y(threshold)}
-          stroke="#E8ECF4"
+          stroke="#0E3B2A"
           strokeDasharray="4 4"
           strokeOpacity={0.6}
         />
@@ -95,7 +96,7 @@ export function ScoreTimeline({ scans }: { scans: ScanRow[] }) {
               cx={x(new Date(`${s.passDate}T00:00:00Z`))}
               cy={y(s.sceneScore)}
               r={3}
-              fill="#8A93A6"
+              fill="#4A6355"
               opacity={0.55}
             >
               <title>{`${f.date(s.passDate)} · ${f.num(s.sceneScore, 3)}`}</title>
@@ -112,7 +113,7 @@ export function ScoreTimeline({ scans }: { scans: ScanRow[] }) {
               cy={y(s.sceneScore)}
               r={7}
               fill={TIER_COLOUR[s.tier as "T1" | "T2" | "T3"]}
-              stroke="#05070D"
+              stroke="#FFFFFF"
               strokeWidth={2}
             >
               <title>{`${s.tier} · ${f.date(s.passDate)} · ${f.num(s.sceneScore, 3)}`}</title>

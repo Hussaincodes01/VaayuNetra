@@ -34,11 +34,11 @@ export const TIER_COLOUR = {
   T2: "#A855F7",
   T3: "#F59E0B",
 } as const;
-// Lighter tints of the tier colours for text on the dark background (WCAG AA).
+// Darker shades of the tier colours for text on white and the page ground (WCAG AA).
 export const TIER_TEXT = {
-  T1: "#FCA5A5",
-  T2: "#D8B4FE",
-  T3: "#FCD34D",
+  T1: "#B91C1C",
+  T2: "#7E22CE",
+  T3: "#B45309",
 } as const;
 
 /** Message key (Common.surfaceKind.*) for why a flag landed in its tier. */

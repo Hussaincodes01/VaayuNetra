@@ -1,15 +1,16 @@
 import type { ReactNode } from "react";
 
 // Email-safe building blocks: tables and inline styles only (no CSS classes, no web fonts required).
-// Light body so clients that force light or dark mode keep the contrast; dark header band.
+// Light throughout (white header with a green rule) so clients that force light or dark mode keep the contrast.
 
 export const colors = {
-  night: "#05070D",
-  text: "#111827",
-  muted: "#4B5563",
-  rule: "#E5E7EB",
-  link: "#0F766E",
-  teal: "#2DD4BF",
+  canopy: "#0E3B2A",
+  leaf: "#1E7B45",
+  sprout: "#CDEFC0",
+  text: "#15301F",
+  muted: "#4A6355",
+  rule: "#DBE5D8",
+  link: "#1E7B45",
   T1: "#DC2626",
   T2: "#A855F7",
   amberBg: "#FEF3C7",
@@ -42,7 +43,7 @@ export function Layout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="color-scheme" content="light" />
       </head>
-      <body style={{ margin: 0, padding: 0, backgroundColor: "#F3F4F6" }}>
+      <body style={{ margin: 0, padding: 0, backgroundColor: "#F6F8F3" }}>
         {/* Inbox preview line; hidden in the body. */}
         <div
           style={{
@@ -61,7 +62,7 @@ export function Layout({
           width="100%"
           cellPadding={0}
           cellSpacing={0}
-          style={{ backgroundColor: "#F3F4F6", padding: "24px 12px" }}
+          style={{ backgroundColor: "#F6F8F3", padding: "24px 12px" }}
         >
           <tbody>
             <tr>
@@ -84,15 +85,16 @@ export function Layout({
                     <tr>
                       <td
                         style={{
-                          backgroundColor: colors.night,
+                          backgroundColor: "#FFFFFF",
+                          borderBottom: `3px solid ${colors.leaf}`,
                           padding: "16px 24px",
-                          color: "#E8ECF4",
+                          color: colors.canopy,
                           fontSize: 18,
                           fontWeight: 700,
-                          letterSpacing: locale === "hi" ? 0 : 0.5,
+                          letterSpacing: locale === "hi" ? 0 : 0.2,
                         }}
                       >
-                        <span style={{ color: colors.teal }}>●</span> {brand}
+                        <span style={{ color: colors.leaf }}>●</span> {brand}
                       </td>
                     </tr>
                     <tr>
@@ -222,7 +224,7 @@ export function Button({
     >
       <tbody>
         <tr>
-          <td style={{ backgroundColor: colors.night, borderRadius: 6 }}>
+          <td style={{ backgroundColor: colors.leaf, borderRadius: 999 }}>
             <a
               href={href}
               style={{
@@ -277,7 +279,7 @@ export function TierBadge({
         borderRadius: 999,
         backgroundColor: colors[tier],
         // White on T1 red, near-black on T2 purple: both above 4.5:1.
-        color: tier === "T1" ? "#FFFFFF" : colors.night,
+        color: tier === "T1" ? "#FFFFFF" : colors.canopy,
         fontSize: 13,
         fontWeight: 700,
       }}

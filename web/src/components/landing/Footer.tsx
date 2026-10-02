@@ -7,7 +7,7 @@ import { requestAccess, type RequestState } from "@/app/[locale]/actions";
 import { SOURCES } from "@/content/facts";
 
 const input =
-  "mt-1 w-full rounded-md border border-white/15 bg-background px-3 py-2 text-sm outline-none focus-visible:border-signal focus-visible:ring-2 focus-visible:ring-signal/40";
+  "mt-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none focus-visible:border-signal focus-visible:ring-2 focus-visible:ring-signal/40";
 
 function RequestAccessForm() {
   const t = useTranslations("Footer");
@@ -90,7 +90,7 @@ function RequestAccessForm() {
         >
           {pending ? t("sending") : t("submit")}
         </button>
-        <p role="status" aria-live="polite" className="text-sm text-[#FCA5A5]">
+        <p role="status" aria-live="polite" className="text-sm text-tier-1-ink">
           {state.status === "error"
             ? t("error")
             : state.status === "invalid"
@@ -113,7 +113,7 @@ export function Footer({
 }) {
   const t = useTranslations("Footer");
   return (
-    <footer className="relative z-10 border-t border-white/10 bg-[#03050a]">
+    <footer className="relative z-10 border-t border-border bg-[#EAF2E5]">
       <div className="mx-auto grid max-w-7xl gap-14 px-4 py-20 md:px-8 lg:grid-cols-[1.3fr_1fr]">
         <section
           id="request"
@@ -151,11 +151,11 @@ export function Footer({
               {t("github")}
             </a>
             <span className="text-foreground/75">{t("licence")}</span>
-            <span className="font-mono text-foreground/60">
+            <span className="font-mono text-muted-foreground">
               {t("model", { version: modelVersion })}
             </span>
           </div>
-          <LastUpdated at={lastUpdated} className="text-foreground/60" />
+          <LastUpdated at={lastUpdated} className="text-muted-foreground" />
           <p className="rounded-lg border border-methane-mid/30 bg-methane-mid/[0.06] p-4 leading-relaxed text-foreground/85">
             {t("disclaimer")}
           </p>

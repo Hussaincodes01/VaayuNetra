@@ -20,28 +20,29 @@ export default async function OpenGraphImage() {
         width: "100%",
         height: "100%",
         display: "flex",
-        background: "#05070D",
-        color: "#E8ECF4",
+        background:
+          "linear-gradient(180deg, #D3E8EF 0%, #E6F1F0 50%, #F6F8F3 100%)",
+        color: "#0E3B2A",
         padding: 64,
         gap: 56,
         alignItems: "center",
       }}
     >
       <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-        <div style={{ fontSize: 28, color: "#2DD4BF", letterSpacing: 4 }}>
-          VAYUNETRA
+        <div style={{ fontSize: 30, color: "#1E7B45", fontWeight: 700 }}>
+          VayuNetra
         </div>
         <div
           style={{
             fontSize: 62,
-            fontWeight: 700,
+            fontWeight: 600,
             lineHeight: 1.08,
             marginTop: 24,
           }}
         >
           Methane is invisible. VayuNetra makes it visible.
         </div>
-        <div style={{ fontSize: 26, color: "#8A93A6", marginTop: 28 }}>
+        <div style={{ fontSize: 26, color: "#4A6355", marginTop: 28 }}>
           Satellite methane screening for Indian landfills · Deonar, Mumbai, 6
           January 2025
         </div>
@@ -52,7 +53,11 @@ export default async function OpenGraphImage() {
         width={420}
         height={420}
         alt=""
-        style={{ borderRadius: 20, border: "2px solid #F59E0B" }}
+        style={{
+          borderRadius: 24,
+          border: "6px solid #FFFFFF",
+          boxShadow: "0 12px 40px rgba(14, 59, 42, 0.18)",
+        }}
       />
     </div>,
     size,

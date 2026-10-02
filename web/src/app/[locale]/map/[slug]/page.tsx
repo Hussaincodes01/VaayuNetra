@@ -72,7 +72,7 @@ export default async function PublicSitePage({ params }: Params) {
 
   return (
     <main id="main" className="min-h-dvh bg-background">
-      <header className="border-b border-white/10">
+      <header className="border-b border-border">
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 md:px-8">
           <Link
             href="/map"
@@ -100,7 +100,7 @@ export default async function PublicSitePage({ params }: Params) {
             t3: site.t3,
           })}
         </p>
-        <section className="rounded-xl border border-white/10 bg-card p-5">
+        <section className="rounded-xl border border-border bg-card p-5">
           <h2 className="font-heading text-lg font-semibold">
             {td("timeline")}
           </h2>

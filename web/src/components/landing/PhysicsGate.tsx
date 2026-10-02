@@ -54,7 +54,7 @@ function Card({
         </div>
         <div
           aria-hidden
-          className="absolute inset-0 flex [transform:rotateY(180deg)] items-center justify-between rounded-lg border border-white/10 bg-white/[0.03] px-3 [backface-visibility:hidden]"
+          className="absolute inset-0 flex [transform:rotateY(180deg)] items-center justify-between rounded-lg border border-border bg-white/[0.03] px-3 [backface-visibility:hidden]"
         >
           <span className="font-mono text-xs text-muted-foreground">
             #{String(order + 1).padStart(2, "0")}

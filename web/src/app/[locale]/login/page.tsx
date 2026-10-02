@@ -34,7 +34,7 @@ export default async function LoginPage({
       id="main"
       className="flex min-h-dvh items-center justify-center bg-background px-4"
     >
-      <div className="w-full max-w-md rounded-2xl border border-white/10 bg-card p-8 shadow-2xl">
+      <div className="w-full max-w-md rounded-2xl border border-border bg-card p-8 shadow-2xl">
         <Link href="/" className="font-heading text-lg font-semibold">
           Vayu<span className="text-signal">Netra</span>
         </Link>

@@ -49,19 +49,19 @@ export function KpiCards({ k }: { k: Kpis }) {
       {cards.map(({ icon: Icon, label, value, accent }) => (
         <div
           key={label}
-          className="rounded-xl border border-white/10 bg-card p-4"
+          className="rounded-xl border border-border bg-card p-4"
         >
           <dt className="flex items-center gap-2 text-xs text-muted-foreground">
             <Icon className="size-3.5" aria-hidden /> {label}
           </dt>
           <dd
-            className={`mt-2 font-mono text-2xl ${accent ? "text-[#FCA5A5]" : ""}`}
+            className={`mt-2 font-mono text-2xl ${accent ? "text-tier-1-ink" : ""}`}
           >
             {value}
           </dd>
         </div>
       ))}
-      <div className="col-span-2 rounded-xl border border-white/10 bg-card p-4 lg:col-span-1">
+      <div className="col-span-2 rounded-xl border border-border bg-card p-4 lg:col-span-1">
         <dt className="flex items-center gap-2 text-xs text-muted-foreground">
           <Server className="size-3.5" aria-hidden /> {t("worker")}
         </dt>
@@ -76,11 +76,11 @@ export function KpiCards({ k }: { k: Kpis }) {
           />
           {k.heartbeat?.online ? t("online") : t("offline")}
         </dd>
-        <p className="mt-1 text-xs text-muted-foreground">
+        <dd className="mt-1 text-xs text-muted-foreground">
           {k.heartbeat
             ? t("seen", { when: f.dateTime(k.heartbeat.lastSeen) })
             : t("never")}
-        </p>
+        </dd>
       </div>
     </dl>
   );
@@ -94,7 +94,7 @@ export function OpenEvents({ open }: { open: OpenEvent[] }) {
   return (
     <section
       aria-labelledby="open-title"
-      className="rounded-xl border border-white/10 bg-card p-5"
+      className="rounded-xl border border-border bg-card p-5"
     >
       <h2 id="open-title" className="font-heading text-lg font-semibold">
         {t("openTitle")}
@@ -102,12 +102,12 @@ export function OpenEvents({ open }: { open: OpenEvent[] }) {
       {open.length === 0 ? (
         <p className="mt-3 text-sm text-muted-foreground">{t("openEmpty")}</p>
       ) : (
-        <ul className="mt-3 divide-y divide-white/5">
+        <ul className="mt-3 divide-y divide-border">
           {open.map(({ scan, site, action }) => (
             <li key={scan.id}>
               <Link
                 href={`/dashboard/sites/${site.slug}#pass-${scan.passDate}`}
-                className="-mx-2 flex items-center gap-3 rounded-md px-2 py-3 transition-colors hover:bg-white/5"
+                className="-mx-2 flex items-center gap-3 rounded-md px-2 py-3 transition-colors hover:bg-muted"
               >
                 <TierBadge tier={scan.tier as "T1" | "T2"} />
                 <span className="min-w-0 flex-1">
@@ -154,7 +154,7 @@ export function EventFeed({
   return (
     <section
       aria-labelledby="feed-title"
-      className="rounded-xl border border-white/10 bg-card p-5"
+      className="rounded-xl border border-border bg-card p-5"
     >
       <h2
         id="feed-title"
@@ -226,7 +226,7 @@ export function SitesTable({
   return (
     <section
       aria-labelledby="sites-title"
-      className="overflow-x-auto rounded-xl border border-white/10 bg-card"
+      className="overflow-x-auto rounded-xl border border-border bg-card"
     >
       <h2
         id="sites-title"
@@ -236,7 +236,7 @@ export function SitesTable({
       </h2>
       <table className="mt-3 w-full min-w-[720px] text-sm">
         <thead className="text-left text-xs text-muted-foreground">
-          <tr className="border-b border-white/10">
+          <tr className="border-b border-border">
             <th className="px-5 py-2 font-medium">{t("site")}</th>
             <th className="px-3 py-2 font-medium">{t("status")}</th>
             <th className="px-3 py-2 text-right font-medium">{t("passes")}</th>
@@ -250,7 +250,7 @@ export function SitesTable({
           {sites.map((s) => (
             <tr
               key={s.slug}
-              className="border-b border-white/5 last:border-0 hover:bg-white/[0.03]"
+              className="border-b border-border/70 last:border-0 hover:bg-white/[0.03]"
             >
               <td className="px-5 py-3">
                 <Link

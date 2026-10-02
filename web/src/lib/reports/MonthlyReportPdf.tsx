@@ -14,11 +14,12 @@ import { makeFormat } from "@/lib/format";
 // English PDF in the built-in Helvetica (WinAnsi): plain ASCII for units, so "CO2e" and "t/h".
 
 const C = {
-  night: "#05070D",
-  teal: "#2DD4BF",
-  text: "#111827",
-  muted: "#4B5563",
-  rule: "#E5E7EB",
+  canopy: "#0E3B2A",
+  leaf: "#1E7B45",
+  band: "#EAF2E5",
+  text: "#15301F",
+  muted: "#4A6355",
+  rule: "#DBE5D8",
   T1: "#DC2626",
   T2: "#A855F7",
   amberBg: "#FEF3C7",
@@ -34,19 +35,21 @@ const s = StyleSheet.create({
     color: C.text,
   },
   band: {
-    backgroundColor: C.night,
+    backgroundColor: C.band,
+    borderBottomWidth: 3,
+    borderBottomColor: C.leaf,
     paddingVertical: 18,
     paddingHorizontal: 36,
     marginBottom: 18,
   },
-  brand: { color: "#E8ECF4", fontSize: 12, fontFamily: "Helvetica-Bold" },
+  brand: { color: C.leaf, fontSize: 12, fontFamily: "Helvetica-Bold" },
   title: {
-    color: "#FFFFFF",
+    color: C.canopy,
     fontSize: 20,
     fontFamily: "Helvetica-Bold",
     marginTop: 8,
   },
-  subtitle: { color: "#8A93A6", fontSize: 10, marginTop: 4 },
+  subtitle: { color: C.muted, fontSize: 10, marginTop: 4 },
   body: { paddingHorizontal: 36 },
   h2: {
     fontSize: 13,

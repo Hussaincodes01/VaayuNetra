@@ -30,7 +30,7 @@ function ChartCard({
   children: ReactNode;
 }) {
   return (
-    <figure className="flex flex-col rounded-xl border border-white/10 bg-card p-6">
+    <figure className="flex flex-col rounded-xl border border-border bg-card p-6">
       <h3 className="font-heading text-lg font-semibold">{title}</h3>
       <div className="mt-4 flex-1" style={{ minHeight: minH }}>
         {children}

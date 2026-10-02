@@ -6,17 +6,17 @@ Open the `.report.html` files in a browser; the `.report.json` files hold the sa
 
 | Page | Performance | Accessibility | Best practices | SEO | LCP | TBT | CLS |
 |---|---|---|---|---|---|---|---|
-| `/` (English landing) | 98 | 100 | 100 | 100 | 1.0 s | 20 ms | 0 |
-| `/hi` (Hindi landing) | 97 | 100 | 100 | 100 | 1.0 s | 20 ms | 0 |
-| `/map` (public map) | 100 | 100 | 100 | 100 | 0.7 s | 10 ms | 0.001 |
-| `/login` | 100 | 100 | 100 | 90 | 0.7 s | 20 ms | 0 |
+| `/` (English landing) | 97 | 100 | 100 | 100 | 1.1 s | 10 ms | 0 |
+| `/hi` (Hindi landing) | 96 | 100 | 100 | 100 | 1.2 s | 0 ms | 0 |
+| `/map` (public map) | 99 | 100 | 100 | 100 | 0.8 s | 0 ms | 0.001 |
+| `/login` | 100 | 100 | 100 | 90 | 0.6 s | 0 ms | 0 |
 
 Notes:
 
 - `/login` loses SEO points on purpose: the sign-in page is marked `noindex`.
-- No Mapbox token was set, so the maps used their built-in schematic fallback. With a token, the
-  landing page loads the Mapbox globe after the first interaction or 6 seconds, whichever comes
-  first, so these numbers do not include it.
+- Light theme with the 3D Earth hero. Until the first interaction (or 6 seconds) the hero shows a
+  100 KB poster of the Earth; three.js and the 247 KB Earth texture load after that, so these numbers
+  do not include them. No Mapbox token was set, so the maps used their schematic fallback.
 - The pages were served with the production security headers (`next.config.ts`), including the
   Content Security Policy.
 

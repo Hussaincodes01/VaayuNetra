@@ -59,7 +59,7 @@ export function Honest({ stats, sites }: { stats: SiteStat[]; sites: Site[] }) {
             aria-hidden
           />
           <div className="rounded-xl border border-tier-2/50 bg-tier-2/[0.06] p-6">
-            <Plane className="size-6 text-[#D8B4FE]" aria-hidden />
+            <Plane className="size-6 text-tier-2-ink" aria-hidden />
             <h3 className="mt-4 font-heading text-xl font-semibold">
               {t("tier2")}
             </h3>
@@ -69,7 +69,7 @@ export function Honest({ stats, sites }: { stats: SiteStat[]; sites: Site[] }) {
             className="mx-auto hidden size-6 self-center text-muted-foreground lg:block"
             aria-hidden
           />
-          <div className="flex flex-col justify-center rounded-xl border border-white/10 bg-card p-6">
+          <div className="flex flex-col justify-center rounded-xl border border-border bg-card p-6">
             <Scale className="size-6 text-foreground/80" aria-hidden />
             <p className="mt-4 font-heading text-lg font-semibold">
               {t("outcome")}
@@ -93,7 +93,7 @@ export function Honest({ stats, sites }: { stats: SiteStat[]; sites: Site[] }) {
                 >
                   <span>{names.get(b.slug) ?? b.slug}</span>
                   <span
-                    className="h-2.5 overflow-hidden rounded-full bg-white/10"
+                    className="h-2.5 overflow-hidden rounded-full bg-muted"
                     aria-hidden
                   >
                     <span

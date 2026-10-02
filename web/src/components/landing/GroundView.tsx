@@ -93,17 +93,17 @@ export function GroundView({ token, site }: { token: string; site: Site }) {
       <button
         type="button"
         onClick={open}
-        className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-background/60 px-3 py-2 text-sm font-medium backdrop-blur transition-colors hover:bg-white/10"
+        className="inline-flex items-center gap-2 rounded-md border border-input bg-background/60 px-3 py-2 text-sm font-medium backdrop-blur transition-colors hover:bg-muted"
       >
         <Camera className="size-4" aria-hidden /> {t("groundView")}
       </button>
       <dialog
         ref={dialog}
         aria-labelledby={`gv-${site.slug}`}
-        className="m-auto h-[80svh] w-[min(1100px,94vw)] rounded-xl border border-white/10 bg-card p-0 text-foreground backdrop:bg-black/70"
+        className="m-auto h-[80svh] w-[min(1100px,94vw)] rounded-xl border border-border bg-card p-0 text-foreground backdrop:bg-canopy/40"
       >
         <div className="flex h-full flex-col">
-          <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
+          <div className="flex items-center justify-between border-b border-border px-4 py-3">
             <h3 id={`gv-${site.slug}`} className="font-heading font-semibold">
               {t("groundViewTitle", {
                 site: places.site(site.slug, site.name),
@@ -112,7 +112,7 @@ export function GroundView({ token, site }: { token: string; site: Site }) {
             <button
               type="button"
               onClick={close}
-              className="rounded-md p-1.5 hover:bg-white/10"
+              className="rounded-md p-1.5 hover:bg-muted"
               aria-label={t("close")}
             >
               <X className="size-5" aria-hidden />

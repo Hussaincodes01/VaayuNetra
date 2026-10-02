@@ -4,18 +4,30 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Fixed VayuNetra colours (same in both themes). See .claude/CLAUDE.md → Design system. */
+/* VayuNetra colours. See .claude/CLAUDE.md -> Design system. Light only: no dark theme. */
 @theme {
+  /* Brand */
+  --color-canopy: #0e3b2a; /* headings, primary ink: forest green instead of black */
+  --color-leaf: #1e7b45; /* actions, links, focus (white on it: 5.3:1) */
+  --color-sprout: #cdefc0; /* highlight fills only, never text */
+  --color-sky: #dcecf1; /* hero sky, the Earth's halo */
+  --color-cloud: #f6f8f3; /* page ground */
+
   /* Methane ramp: plumes only */
   --color-methane-low: #fde68a;
   --color-methane-mid: #f59e0b;
   --color-methane-high: #dc2626;
 
-  /* Tiers: T1 methane-confident, T2 probable, T3 surface change */
+  /* Tiers: T1 methane-confident, T2 probable, T3 surface change. Fills and markers. */
   --color-tier-1: #dc2626;
   --color-tier-2: #a855f7;
   --color-tier-3: #f59e0b;
   --color-tier-clear: #22c55e;
+  /* The same tiers as text on white or the page ground (WCAG AA, 4.5:1 and up). */
+  --color-tier-1-ink: #b91c1c;
+  --color-tier-2-ink: #7e22ce;
+  --color-tier-3-ink: #b45309;
+  --color-tier-clear-ink: #15803d;
 }
 
 @theme inline {
@@ -65,77 +77,40 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* Light theme (opt-in). Teal is darkened so text passes WCAG AA on white. */
 :root {
-  --signal: #0f766e;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: #0f766e;
+  --signal: #1e7b45;
+  --background: #f6f8f3;
+  --foreground: #15301f;
+  --card: #ffffff;
+  --card-foreground: #15301f;
+  --popover: #ffffff;
+  --popover-foreground: #15301f;
+  --primary: #1e7b45;
   --primary-foreground: #ffffff;
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: #0f766e;
-  --chart-1: #0f766e;
+  --secondary: #eaf2e6;
+  --secondary-foreground: #15301f;
+  --muted: #edf3ea;
+  --muted-foreground: #4a6355;
+  --accent: #e3f0dc;
+  --accent-foreground: #15301f;
+  --destructive: #b91c1c;
+  --border: #dbe5d8;
+  --input: #c6d4c3;
+  --ring: #1e7b45;
+  --chart-1: #1e7b45;
   --chart-2: #a855f7;
   --chart-3: #f59e0b;
   --chart-4: #22c55e;
   --chart-5: #dc2626;
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: #0f766e;
+  --radius: 0.75rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #15301f;
+  --sidebar-primary: #1e7b45;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: #0f766e;
-}
-
-/* Dark theme (default): night-side satellite view. */
-.dark {
-  --signal: #2dd4bf;
-  --background: #05070d;
-  --foreground: #e8ecf4;
-  --card: #0d1220;
-  --card-foreground: #e8ecf4;
-  --popover: #0d1220;
-  --popover-foreground: #e8ecf4;
-  --primary: #2dd4bf;
-  --primary-foreground: #05070d;
-  --secondary: #161d30;
-  --secondary-foreground: #e8ecf4;
-  --muted: #161d30;
-  --muted-foreground: #8a93a6;
-  --accent: #161d30;
-  --accent-foreground: #e8ecf4;
-  --destructive: #dc2626;
-  --border: rgb(232 236 244 / 10%);
-  --input: rgb(232 236 244 / 15%);
-  --ring: #2dd4bf;
-  --chart-1: #2dd4bf;
-  --chart-2: #a855f7;
-  --chart-3: #f59e0b;
-  --chart-4: #22c55e;
-  --chart-5: #dc2626;
-  --sidebar: #0d1220;
-  --sidebar-foreground: #e8ecf4;
-  --sidebar-primary: #2dd4bf;
-  --sidebar-primary-foreground: #05070d;
-  --sidebar-accent: #161d30;
-  --sidebar-accent-foreground: #e8ecf4;
-  --sidebar-border: rgb(232 236 244 / 10%);
-  --sidebar-ring: #2dd4bf;
+  --sidebar-accent: #e3f0dc;
+  --sidebar-accent-foreground: #15301f;
+  --sidebar-border: #dbe5d8;
+  --sidebar-ring: #1e7b45;
 }
 
 @layer base {
@@ -158,22 +133,22 @@ section[id] {
 /* Map markers (tier badge, control point) on the Mapbox stage. */
 .vayu-map-badge {
   border: 1.5px solid var(--badge);
-  background: rgb(5 7 13 / 0.85);
-  color: #e8ecf4;
+  background: rgb(255 255 255 / 0.92);
+  color: #0e3b2a;
   font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
   font-size: 12px;
   line-height: 1;
   padding: 6px 10px;
   border-radius: 999px;
   white-space: nowrap;
-  box-shadow: 0 0 16px color-mix(in srgb, var(--badge) 45%, transparent);
+  box-shadow: 0 2px 10px rgb(14 59 42 / 0.14);
 }
 
 .vayu-map .mapboxgl-ctrl-attrib {
-  background: rgb(5 7 13 / 0.6);
+  background: rgb(255 255 255 / 0.75);
 }
 .vayu-map .mapboxgl-ctrl-attrib a {
-  color: #c2c8d4;
+  color: #2f4a3c;
 }
 
 /* Site markers on the dashboard / public map (keyboard-focusable buttons). */
@@ -182,11 +157,31 @@ section[id] {
   height: 18px;
   border-radius: 999px;
   background: var(--status);
-  border: 2px solid #05070d;
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--status) 35%, transparent);
+  border: 2px solid #ffffff;
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--status) 30%, transparent),
+    0 1px 4px rgb(14 59 42 / 0.25);
   cursor: pointer;
 }
 .vayu-site-marker:focus-visible {
-  outline: 2px solid #2dd4bf;
+  outline: 2px solid #1e7b45;
   outline-offset: 3px;
+}
+
+/* Hero cloud bank: a slow sideways drift. */
+@keyframes vayu-drift {
+  from {
+    transform: translateX(-2.5%);
+  }
+  to {
+    transform: translateX(2.5%);
+  }
+}
+.vayu-drift {
+  animation: vayu-drift 38s ease-in-out infinite alternate;
+}
+@media (prefers-reduced-motion: reduce) {
+  .vayu-drift {
+    animation: none;
+  }
 }

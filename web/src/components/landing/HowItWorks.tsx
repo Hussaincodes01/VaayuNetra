@@ -84,7 +84,7 @@ export function HowItWorks({ still }: { still: boolean }) {
           <div className="relative mt-10 md:mt-14">
             <div
               aria-hidden
-              className="absolute top-6 right-0 left-0 hidden h-px bg-white/10 lg:block"
+              className="absolute top-6 right-0 left-0 hidden h-px bg-muted lg:block"
             >
               <div
                 ref={line}
@@ -113,7 +113,7 @@ export function HowItWorks({ still }: { still: boolean }) {
                         "relative z-10 flex size-12 items-center justify-center rounded-full border bg-background transition-colors duration-700",
                         on
                           ? "border-signal text-signal"
-                          : "border-white/15 text-muted-foreground",
+                          : "border-input text-muted-foreground",
                       )}
                     >
                       <Icon className="size-5" aria-hidden />

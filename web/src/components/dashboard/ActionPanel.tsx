@@ -20,7 +20,7 @@ import { makeFormat } from "@/lib/format";
 type SiteInfo = { id: string; slug: string; name: string };
 
 const field =
-  "mt-1 block w-full rounded-md border border-white/15 bg-background px-2 py-1.5 text-sm";
+  "mt-1 block w-full rounded-md border border-input bg-background px-2 py-1.5 text-sm";
 
 function useSubmit() {
   const t = useTranslations("Dash.action");
@@ -90,7 +90,7 @@ function ActionItem({
   };
 
   return (
-    <li className="rounded-lg border border-white/10 p-4">
+    <li className="rounded-lg border border-border p-4">
       <div className="flex flex-wrap items-center gap-2">
         <span className="rounded-full bg-signal/15 px-2.5 py-0.5 text-xs font-medium text-signal">
           {t(`status.${action.status}`)}
@@ -162,7 +162,7 @@ function ActionItem({
             aria-expanded={editing}
             aria-controls={`${id}-edit`}
             onClick={() => setEditing((v) => !v)}
-            className="rounded-md border border-white/15 px-3 py-1.5 text-xs hover:bg-white/5"
+            className="rounded-md border border-input px-3 py-1.5 text-xs hover:bg-muted"
           >
             {t("edit")}
           </button>
@@ -262,7 +262,7 @@ export function ActionPanel({
     <section
       id="actions"
       aria-labelledby="actions-title"
-      className="scroll-mt-20 rounded-xl border border-white/10 bg-card p-5"
+      className="scroll-mt-20 rounded-xl border border-border bg-card p-5"
     >
       <h2 id="actions-title" className="font-heading text-lg font-semibold">
         {t("title")}
@@ -288,7 +288,7 @@ export function ActionPanel({
         </ul>
       )}
       {canAct && (
-        <details className="mt-5 rounded-lg border border-dashed border-white/15 p-4">
+        <details className="mt-5 rounded-lg border border-dashed border-input p-4">
           <summary className="cursor-pointer text-sm font-medium">
             {t("new")}
           </summary>

@@ -58,7 +58,7 @@ export function Film({ url }: { url: string }) {
           {t("title")}
         </SectionTitle>
         <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_280px]">
-          <div className="aspect-video overflow-hidden rounded-xl border border-white/10 bg-black">
+          <div className="aspect-video overflow-hidden rounded-2xl border border-border bg-muted">
             {embed ? (
               <iframe
                 key={embed}
@@ -88,7 +88,7 @@ export function Film({ url }: { url: string }) {
                   <button
                     type="button"
                     onClick={() => seek(c.start)}
-                    className="flex w-full items-baseline gap-3 rounded-md px-2 py-2 text-left text-sm transition-colors hover:bg-white/5"
+                    className="flex w-full items-baseline gap-3 rounded-md px-2 py-2 text-left text-sm transition-colors hover:bg-muted"
                   >
                     <span className="w-10 font-mono text-xs text-signal">
                       {mmss(c.start)}

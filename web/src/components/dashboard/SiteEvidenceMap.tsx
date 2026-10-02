@@ -122,7 +122,7 @@ export default function SiteEvidenceMap({
           slot: "top",
           filter: ["==", ["geometry-type"], "LineString"],
           paint: {
-            "line-color": "#2DD4BF",
+            "line-color": "#FFFFFF",
             "line-width": 4,
             "line-emissive-strength": 1,
           },
@@ -133,13 +133,13 @@ export default function SiteEvidenceMap({
           source: "wind",
           slot: "top",
           filter: ["==", ["geometry-type"], "Polygon"],
-          paint: { "fill-color": "#2DD4BF", "fill-emissive-strength": 1 },
+          paint: { "fill-color": "#FFFFFF", "fill-emissive-strength": 1 },
         });
       }
       if (control) {
         const el = document.createElement("div");
         el.className = "vayu-map-badge";
-        el.style.setProperty("--badge", "#8A93A6");
+        el.style.setProperty("--badge", "#4A6355");
         el.textContent = controlLabel;
         markers.push(
           new mapboxgl.Marker({ element: el, anchor: "bottom" })

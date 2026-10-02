@@ -6,12 +6,9 @@ import type { Tier } from "@/lib/landing-types";
 import { cn } from "@/lib/utils";
 import { TIER_COLOUR, TIER_TEXT } from "./format";
 
+/** Section label: names the chapter (it matches the header navigation), in sentence case. */
 export function Kicker({ children }: { children: ReactNode }) {
-  return (
-    <p className="font-mono text-xs tracking-[0.22em] text-signal uppercase [&:lang(hi)]:tracking-normal">
-      {children}
-    </p>
-  );
+  return <p className="text-sm font-medium text-leaf">{children}</p>;
 }
 
 export function SectionTitle({
@@ -27,7 +24,7 @@ export function SectionTitle({
     <h2
       id={id}
       className={cn(
-        "font-heading text-3xl font-semibold tracking-tight text-balance md:text-5xl",
+        "font-heading text-3xl font-medium tracking-tight text-balance text-canopy md:text-5xl",
         className,
       )}
     >

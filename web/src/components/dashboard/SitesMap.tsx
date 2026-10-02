@@ -46,7 +46,7 @@ export function SitesMap({
   ));
 
   return (
-    <figure className="overflow-hidden rounded-xl border border-white/10 bg-card">
+    <figure className="overflow-hidden rounded-xl border border-border bg-card">
       <div style={{ height }} className="relative">
         {token ? (
           <MapboxSitesMap
@@ -64,7 +64,7 @@ export function SitesMap({
           />
         )}
       </div>
-      <figcaption className="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 px-4 py-3 text-xs text-muted-foreground">
+      <figcaption className="flex flex-wrap items-center justify-between gap-3 border-t border-border px-4 py-3 text-xs text-muted-foreground">
         <ul className="flex flex-wrap gap-4">{legend}</ul>
         {!token && <span>{t("schematic")}</span>}
       </figcaption>
@@ -113,7 +113,7 @@ function SchematicMap({
       role="group"
       aria-label={label}
     >
-      <rect width={W} height={H} fill="#070b16" />
+      <rect width={W} height={H} fill="#EEF5EC" />
       {grid.map((g) => (
         <g key={`x${g.lon}`}>
           <line
@@ -121,12 +121,12 @@ function SchematicMap({
             x2={px(g.lon)}
             y1={0}
             y2={H}
-            stroke="#ffffff10"
+            stroke="#0E3B2A14"
           />
           <text
             x={px(g.lon) + 4}
             y={H - 8}
-            fill="#8A93A6"
+            fill="#4A6355"
             fontSize={13}
             className="font-mono"
           >
@@ -141,12 +141,12 @@ function SchematicMap({
             x2={W}
             y1={py(g.lat)}
             y2={py(g.lat)}
-            stroke="#ffffff10"
+            stroke="#0E3B2A14"
           />
           <text
             x={6}
             y={py(g.lat) - 4}
-            fill="#8A93A6"
+            fill="#4A6355"
             fontSize={13}
             className="font-mono"
           >
@@ -178,7 +178,7 @@ function SchematicMap({
                 cy={y}
                 r={8}
                 fill={STATUS_COLOUR[s.status]}
-                stroke="#05070D"
+                stroke="#FFFFFF"
                 strokeWidth={2}
               />
               {group.length > 1 && (
@@ -187,13 +187,13 @@ function SchematicMap({
                   y1={y}
                   x2={x + 40}
                   y2={ly + 34 - 6}
-                  stroke="#ffffff30"
+                  stroke="#0E3B2A40"
                 />
               )}
               <text
                 x={x + (group.length > 1 ? 46 : 16)}
                 y={group.length > 1 ? ly + 34 : y + 6}
-                fill="#E8ECF4"
+                fill="#0E3B2A"
                 fontSize={20}
                 className="font-heading group-hover:underline group-focus-visible:underline"
               >

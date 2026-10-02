@@ -58,7 +58,7 @@ function SiteCard({
       : null;
 
   return (
-    <article className="rounded-xl border border-white/10 bg-background/85 p-5 shadow-2xl backdrop-blur-md md:p-6">
+    <article className="rounded-xl border border-border bg-background/85 p-5 shadow-2xl backdrop-blur-md md:p-6">
       <p className="font-mono text-xs text-muted-foreground">
         {t("step", { n: index + 1, total })} · {places.region(site.city)},{" "}
         {places.region(site.state)}
@@ -92,15 +92,13 @@ function SiteCard({
               </>
             )}
           </p>
-          {rate && (
-            <p className="font-mono text-base text-methane-low">{rate}</p>
-          )}
+          {rate && <p className="font-mono text-base text-canopy">{rate}</p>}
         </div>
       ) : (
         <p className="mt-4 text-sm text-muted-foreground">{t("noFlag")}</p>
       )}
       {!compact && stat && (
-        <ul className="mt-4 space-y-1.5 border-t border-white/10 pt-4 text-sm text-foreground/80">
+        <ul className="mt-4 space-y-1.5 border-t border-border pt-4 text-sm text-foreground/80">
           <li className="flex gap-2">
             <span
               aria-hidden
@@ -200,9 +198,9 @@ export function FieldTest({
           <div>
             <dt className="text-sm text-muted-foreground">{t("statTiers")}</dt>
             <dd className="font-mono text-4xl">
-              <span className="text-tier-1">{tiers.t1}</span> ·{" "}
-              <span className="text-[#C084FC]">{tiers.t2}</span> ·{" "}
-              <span className="text-tier-3">{tiers.t3}</span>
+              <span className="text-tier-1-ink">{tiers.t1}</span> ·{" "}
+              <span className="text-tier-2-ink">{tiers.t2}</span> ·{" "}
+              <span className="text-tier-3-ink">{tiers.t3}</span>
             </dd>
           </div>
         </dl>
@@ -293,7 +291,7 @@ export function FieldTest({
                 key={s.site.slug}
                 className={cn(
                   "h-1.5 w-6 rounded-full transition-colors",
-                  i === active ? "bg-signal" : "bg-white/20",
+                  i === active ? "bg-signal" : "bg-input",
                 )}
               />
             ))}

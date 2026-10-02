@@ -77,7 +77,6 @@ export function Landing({ data, env }: { data: LandingData; env: Env }) {
           data={data}
           sites={stops.map((s) => s.site)}
           hasFilm={Boolean(env.videoUrl)}
-          mapMode={mapMode}
           reducedMotion={reduced}
         />
         <Problem reducedMotion={reduced} />

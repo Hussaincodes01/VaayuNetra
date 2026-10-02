@@ -55,9 +55,9 @@ export function Problem({ reducedMotion }: { reducedMotion: boolean }) {
           {t("title")}
         </SectionTitle>
         <div ref={ref} className="mt-14 grid gap-6 md:grid-cols-3">
-          <article className="rounded-xl border border-white/10 bg-card p-6">
+          <article className="rounded-xl border border-border bg-card p-6">
             <p
-              className="font-mono text-5xl text-methane-mid tabular-nums md:text-6xl"
+              className="font-mono text-5xl text-canopy tabular-nums md:text-6xl"
               aria-hidden
             >
               {t("warmingValue", { value: f.num(Math.round(warming)) })}
@@ -69,9 +69,9 @@ export function Problem({ reducedMotion }: { reducedMotion: boolean }) {
               {t("warmingSource", { gwp20: f.num(CONTEXT.gwp20, 1) })}
             </Source>
           </article>
-          <article className="rounded-xl border border-white/10 bg-card p-6">
+          <article className="rounded-xl border border-border bg-card p-6">
             <p
-              className="font-mono text-5xl text-methane-mid tabular-nums md:text-6xl"
+              className="font-mono text-5xl text-canopy tabular-nums md:text-6xl"
               aria-hidden
             >
               {t("maasakkersValue", {
@@ -87,9 +87,9 @@ export function Problem({ reducedMotion }: { reducedMotion: boolean }) {
             </p>
             <Source href={SOURCES.maasakkers}>{t("maasakkersSource")}</Source>
           </article>
-          <article className="rounded-xl border border-white/10 bg-card p-6">
+          <article className="rounded-xl border border-border bg-card p-6">
             <p
-              className="font-mono text-5xl text-methane-high md:text-6xl"
+              className="font-mono text-5xl text-canopy md:text-6xl"
               aria-hidden
             >
               {t("fireValue")}
@@ -98,7 +98,7 @@ export function Problem({ reducedMotion }: { reducedMotion: boolean }) {
             <Source>{t("fireSource")}</Source>
           </article>
         </div>
-        <p className="mt-20 max-w-4xl font-heading text-3xl leading-tight font-medium text-balance md:text-5xl">
+        <p className="mt-20 max-w-4xl font-heading text-3xl leading-tight font-medium text-balance text-canopy md:text-5xl">
           {t("line")}
         </p>
       </div>

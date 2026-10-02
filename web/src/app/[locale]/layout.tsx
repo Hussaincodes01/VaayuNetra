@@ -39,8 +39,8 @@ export function generateStaticParams() {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#05070D",
-  colorScheme: "dark",
+  themeColor: "#F6F8F3",
+  colorScheme: "light",
 };
 
 export async function generateMetadata({
@@ -80,10 +80,10 @@ export default async function LocaleLayout({ children, params }: Props) {
   setRequestLocale(locale);
 
   return (
-    // Dark is the default theme; light mode is opt-in later.
+    // Light only (CLAUDE.md design system): no dark theme class.
     <html
       lang={locale}
-      className={`dark ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} ${devanagari.variable}`}
+      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} ${devanagari.variable}`}
     >
       <body className="antialiased">
         <NextIntlClientProvider>{children}</NextIntlClientProvider>

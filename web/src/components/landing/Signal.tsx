@@ -145,7 +145,7 @@ export function Signal({ flag, still }: { flag: Flag; still: boolean }) {
                   type="button"
                   aria-pressed={stage === s}
                   onClick={() => scrollToProgress(progressOf[s])}
-                  className="rounded-full border border-white/15 px-3 py-1 text-xs transition-colors aria-pressed:border-signal aria-pressed:bg-signal/10 aria-pressed:text-signal"
+                  className="rounded-full border border-input px-3 py-1 text-xs transition-colors aria-pressed:border-leaf aria-pressed:bg-sprout/60 aria-pressed:text-canopy"
                 >
                   {t(`stages.${s}`)}
                 </button>
@@ -170,7 +170,7 @@ export function Signal({ flag, still }: { flag: Flag; still: boolean }) {
           <div className="order-1 md:order-2">
             <div
               ref={stack}
-              className="relative mx-auto aspect-square w-full max-w-[min(560px,46svh)] overflow-hidden rounded-xl border border-white/10 md:max-w-[560px]"
+              className="relative mx-auto aspect-square w-full max-w-[min(560px,46svh)] overflow-hidden rounded-xl border border-border md:max-w-[560px]"
               style={{ ["--a" as string]: 0, ["--b" as string]: 0 }}
             >
               <Image
@@ -211,7 +211,7 @@ export function Signal({ flag, still }: { flag: Flag; still: boolean }) {
               <div
                 ref={handle}
                 aria-hidden
-                className="absolute inset-y-0 left-0 w-0.5 bg-signal opacity-0 shadow-[0_0_12px_#2DD4BF]"
+                className="absolute inset-y-0 left-0 w-0.5 bg-signal opacity-0"
               />
             </div>
             <label className="mx-auto mt-4 block max-w-[560px]">
@@ -224,7 +224,7 @@ export function Signal({ flag, still }: { flag: Flag; still: boolean }) {
                 defaultValue={0}
                 aria-valuetext={t(`stages.${stage}`)}
                 onChange={(e) => scrollToProgress(Number(e.target.value) / 100)}
-                className="w-full accent-[#2DD4BF]"
+                className="w-full accent-[#1E7B45]"
               />
             </label>
             <p className="mx-auto mt-1 max-w-[560px] text-xs text-muted-foreground">

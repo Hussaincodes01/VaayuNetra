@@ -24,7 +24,7 @@ export function EmissionsCard({
   return (
     <section
       aria-labelledby="emissions-title"
-      className="rounded-xl border border-white/10 bg-card p-5"
+      className="rounded-xl border border-border bg-card p-5"
     >
       <h2 id="emissions-title" className="font-heading text-lg font-semibold">
         {t("title")}
@@ -39,12 +39,12 @@ export function EmissionsCard({
                 {s.tier} · {f.date(s.passDate, "short")}
               </span>
               {s.u10 !== null && s.u10 < CALM_WIND_MS ? (
-                <p className="text-[#FCD34D]">
+                <p className="text-tier-3-ink">
                   {t("calm", { wind: f.num(s.u10, 1) })}
                 </p>
               ) : s.qMed !== null ? (
                 <p>
-                  <span className="font-mono text-lg text-methane-low">
+                  <span className="font-mono text-lg text-canopy">
                     {t("rate", { tph: f.tph(s.qMed) })}
                   </span>{" "}
                   {s.qLo !== null && s.qHi !== null && (
@@ -60,32 +60,34 @@ export function EmissionsCard({
           ))}
         </ul>
       )}
-      <div className="mt-4 border-t border-white/10 pt-4">
+      <div className="mt-4 border-t border-border pt-4">
         {hasAnnual ? (
-          <dl className="grid grid-cols-2 gap-3 text-sm">
-            <div>
-              <dt className="text-xs text-muted-foreground">
-                {t("annual100", { gwp: f.num(gwp.g100) })}
-              </dt>
-              <dd className="font-mono text-lg">
-                {f.num(site.tco2e100Yr ?? 0)}
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs text-muted-foreground">
-                {t("annual20", { gwp: f.num(gwp.g20, 1) })}
-              </dt>
-              <dd className="font-mono text-lg">
-                {f.num(site.tco2e20Yr ?? 0)}
-              </dd>
-            </div>
-            <p className="col-span-2 text-xs text-muted-foreground">
+          <>
+            <dl className="grid grid-cols-2 gap-3 text-sm">
+              <div>
+                <dt className="text-xs text-muted-foreground">
+                  {t("annual100", { gwp: f.num(gwp.g100) })}
+                </dt>
+                <dd className="font-mono text-lg">
+                  {f.num(site.tco2e100Yr ?? 0)}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-xs text-muted-foreground">
+                  {t("annual20", { gwp: f.num(gwp.g20, 1) })}
+                </dt>
+                <dd className="font-mono text-lg">
+                  {f.num(site.tco2e20Yr ?? 0)}
+                </dd>
+              </div>
+            </dl>
+            <p className="mt-3 text-xs text-muted-foreground">
               {t("minimum", {
                 kgph: f.num(site.minMeanKgph ?? 0),
                 passes: f.num(site.passes),
               })}
             </p>
-          </dl>
+          </>
         ) : (
           <p className="text-sm text-muted-foreground">{t("noAnnual")}</p>
         )}
@@ -103,7 +105,7 @@ export function DetectionCard({ site }: { site: SiteRow }) {
   return (
     <section
       aria-labelledby="detection-title"
-      className="rounded-xl border border-white/10 bg-card p-5"
+      className="rounded-xl border border-border bg-card p-5"
     >
       <h2 id="detection-title" className="font-heading text-lg font-semibold">
         {t("title")}
@@ -118,7 +120,7 @@ export function DetectionCard({ site }: { site: SiteRow }) {
       {rates?.pod?.length && rates.rates_kgph?.length ? (
         <ul className="mt-3 grid grid-cols-5 gap-2 text-center text-xs">
           {rates.rates_kgph.map((q, i) => (
-            <li key={q} className="rounded-md bg-white/5 p-2">
+            <li key={q} className="rounded-md bg-muted p-2">
               <span className="block font-mono text-base">
                 {f.pct(rates.pod![i])}
               </span>

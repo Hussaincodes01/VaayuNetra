@@ -136,7 +136,7 @@ export function JobsPanel({
   return (
     <section
       aria-labelledby="jobs-title"
-      className="rounded-xl border border-white/10 bg-card p-5"
+      className="rounded-xl border border-border bg-card p-5"
     >
       <h2 id="jobs-title" className="font-heading text-lg font-semibold">
         {t("title")}
@@ -173,19 +173,19 @@ export function JobsPanel({
             type="button"
             disabled={!online || pending}
             onClick={() => request("rebuild_dossier")}
-            className="rounded-md border border-white/15 px-3 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-50"
+            className="rounded-md border border-input px-3 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-50"
           >
             {t("rebuild")}
           </button>
         </div>
       )}
       {canAct && !online && (
-        <p id="worker-offline-note" className="mt-2 text-xs text-[#FCD34D]">
+        <p id="worker-offline-note" className="mt-2 text-xs text-tier-3-ink">
           {t("offlineNote")}
         </p>
       )}
       {error && (
-        <p role="alert" className="mt-2 text-xs text-[#FCA5A5]">
+        <p role="alert" className="mt-2 text-xs text-tier-1-ink">
           {error}
         </p>
       )}
@@ -194,10 +194,7 @@ export function JobsPanel({
           <li className="text-muted-foreground">{t("none")}</li>
         )}
         {jobs.map((j) => (
-          <li
-            key={j.id}
-            className="rounded-md border border-white/10 px-3 py-2"
-          >
+          <li key={j.id} className="rounded-md border border-border px-3 py-2">
             <div className="flex items-center justify-between gap-2">
               <span>{t(`kind.${j.kind}`)}</span>
               <span className="font-mono text-xs">
@@ -208,7 +205,7 @@ export function JobsPanel({
               {f.dateTime(j.finishedAt ?? j.startedAt ?? j.createdAt)}
             </p>
             {j.log && j.status !== "queued" && (
-              <pre className="mt-1 max-h-24 overflow-auto rounded bg-black/40 p-2 text-[11px] whitespace-pre-wrap text-foreground/70">
+              <pre className="mt-1 max-h-24 overflow-auto rounded bg-muted p-2 text-[11px] whitespace-pre-wrap text-foreground/70">
                 {j.log.trim().split("\n").slice(-4).join("\n")}
               </pre>
             )}

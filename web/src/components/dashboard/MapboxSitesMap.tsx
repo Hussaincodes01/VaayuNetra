@@ -31,7 +31,7 @@ export default function MapboxSitesMap({
       container: ref.current,
       style: "mapbox://styles/mapbox/standard",
       config: {
-        basemap: { lightPreset: "night", showPointOfInterestLabels: false },
+        basemap: { lightPreset: "day", showPointOfInterestLabels: false },
       },
       worldview: "IN",
       bounds,

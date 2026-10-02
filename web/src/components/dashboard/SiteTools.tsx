@@ -30,7 +30,7 @@ export function ExportsBar({
     });
   };
   const btn =
-    "inline-flex items-center gap-2 rounded-md border border-white/15 px-3 py-2 text-sm transition-colors hover:bg-white/5";
+    "inline-flex items-center gap-2 rounded-md border border-input px-3 py-2 text-sm transition-colors hover:bg-muted";
   return (
     <nav aria-label={t("label")} className="flex flex-wrap gap-2">
       {dossierUrl ? (
@@ -58,7 +58,7 @@ export function ExportsBar({
       </a>
       <button type="button" onClick={share} className={btn}>
         {copied ? (
-          <Check className="size-4 text-tier-clear" aria-hidden />
+          <Check className="size-4 text-tier-clear-ink" aria-hidden />
         ) : (
           <Link2 className="size-4" aria-hidden />
         )}
@@ -126,7 +126,7 @@ export function ExplainSite({
   return (
     <section
       aria-labelledby="explain-title"
-      className="rounded-xl border border-white/10 bg-card p-5"
+      className="rounded-xl border border-border bg-card p-5"
     >
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h2
@@ -148,7 +148,7 @@ export function ExplainSite({
       </div>
       {briefing && (
         <div className="mt-3">
-          <p className="inline-block rounded-full border border-methane-mid/40 bg-methane-mid/10 px-2.5 py-0.5 text-xs text-methane-low">
+          <p className="inline-block rounded-full border border-tier-3/40 bg-[#FEF3C7] px-2.5 py-0.5 text-xs text-tier-3-ink">
             {t("label")}
           </p>
           <p
@@ -163,7 +163,7 @@ export function ExplainSite({
         </div>
       )}
       {state === "error" && (
-        <p role="alert" className="mt-3 text-sm text-[#FCA5A5]">
+        <p role="alert" className="mt-3 text-sm text-tier-1-ink">
           {t("error", { reason })}
         </p>
       )}

@@ -27,14 +27,14 @@ export function Initiative() {
         </p>
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
-          <div className="rounded-xl border border-white/10 bg-card p-6">
+          <div className="rounded-xl border border-border bg-card p-6">
             <Users className="size-5 text-signal" aria-hidden />
             <h3 className="mt-4 font-heading text-lg font-semibold">
               {t("team")}
             </h3>
             <p className="mt-2 text-sm text-foreground/80">{t("teamText")}</p>
           </div>
-          <div className="rounded-xl border border-white/10 bg-card p-6">
+          <div className="rounded-xl border border-border bg-card p-6">
             <CodeXml className="size-5 text-signal" aria-hidden />
             <h3 className="mt-4 font-heading text-lg font-semibold">
               {t("open")}
@@ -49,7 +49,7 @@ export function Initiative() {
               {t("github")}
             </a>
           </div>
-          <div className="rounded-xl border border-white/10 bg-card p-6">
+          <div className="rounded-xl border border-border bg-card p-6">
             <Landmark className="size-5 text-signal" aria-hidden />
             <h3 className="mt-4 font-heading text-lg font-semibold">
               {t("alignment")}
@@ -57,14 +57,14 @@ export function Initiative() {
             <ul className="mt-2 space-y-2 text-sm text-foreground/80">
               <li className="flex gap-2">
                 <Leaf
-                  className="mt-0.5 size-4 shrink-0 text-tier-clear"
+                  className="mt-0.5 size-4 shrink-0 text-tier-clear-ink"
                   aria-hidden
                 />{" "}
                 {t("sbm")}
               </li>
               <li className="flex gap-2">
                 <Target
-                  className="mt-0.5 size-4 shrink-0 text-tier-clear"
+                  className="mt-0.5 size-4 shrink-0 text-tier-clear-ink"
                   aria-hidden
                 />
                 {t("netZero", { year: String(CONTEXT.netZeroYear) })}
@@ -80,7 +80,7 @@ export function Initiative() {
           {road.map((k, i) => (
             <li
               key={k}
-              className="relative rounded-xl border border-white/10 p-6"
+              className="relative rounded-xl border border-border p-6"
             >
               <span className="font-mono text-xs text-muted-foreground">
                 0{i + 1}

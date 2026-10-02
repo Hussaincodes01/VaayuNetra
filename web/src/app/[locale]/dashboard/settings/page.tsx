@@ -27,7 +27,7 @@ export default async function SettingsPage() {
   const t = await getTranslations("Dash.settings");
   if (viewer?.role !== "admin") {
     return (
-      <p className="rounded-xl border border-white/10 bg-card p-6 text-sm">
+      <p className="rounded-xl border border-border bg-card p-6 text-sm">
         {t("adminOnly")}
       </p>
     );
@@ -56,7 +56,7 @@ export default async function SettingsPage() {
 
       <section
         aria-labelledby="users-title"
-        className="rounded-xl border border-white/10 bg-card p-5"
+        className="rounded-xl border border-border bg-card p-5"
       >
         <h2 id="users-title" className="font-heading text-lg font-semibold">
           {t("invite")}
@@ -66,7 +66,7 @@ export default async function SettingsPage() {
           <InviteForm />
         </div>
         <h3 className="mt-6 text-sm font-semibold">{t("users")}</h3>
-        <ul className="mt-2 divide-y divide-white/5 text-sm">
+        <ul className="mt-2 divide-y divide-border text-sm">
           {(profiles.data ?? []).map((p) => (
             <li key={p.user_id} className="flex flex-wrap gap-x-4 py-2">
               <span className="font-medium">{p.full_name || "—"}</span>
@@ -84,7 +84,7 @@ export default async function SettingsPage() {
 
       <section
         aria-labelledby="requests-title"
-        className="rounded-xl border border-white/10 bg-card p-5"
+        className="rounded-xl border border-border bg-card p-5"
       >
         <h2 id="requests-title" className="font-heading text-lg font-semibold">
           {t("requests")}
@@ -98,7 +98,7 @@ export default async function SettingsPage() {
             {(requests.data ?? []).map((r) => (
               <li
                 key={r.id}
-                className="rounded-lg border border-white/10 p-4 text-sm"
+                className="rounded-lg border border-border p-4 text-sm"
               >
                 <p>
                   <span className="font-medium">{r.name}</span> · {r.org}

@@ -63,7 +63,7 @@ export function LoginForm({ next }: { next: string }) {
           type="email"
           required
           autoComplete="email"
-          className="mt-1 w-full rounded-md border border-white/15 bg-background px-3 py-2 outline-none focus-visible:border-signal focus-visible:ring-2 focus-visible:ring-signal/40"
+          className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 outline-none focus-visible:border-signal focus-visible:ring-2 focus-visible:ring-signal/40"
         />
       </label>
       <button
@@ -73,7 +73,7 @@ export function LoginForm({ next }: { next: string }) {
       >
         {pending ? t("sending") : t("submit")}
       </button>
-      <p role="status" aria-live="polite" className="text-sm text-[#FCA5A5]">
+      <p role="status" aria-live="polite" className="text-sm text-tier-1-ink">
         {state.status === "not_invited"
           ? t("notInvited")
           : state.status === "error"

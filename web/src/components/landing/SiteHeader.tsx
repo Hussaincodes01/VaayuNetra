@@ -29,7 +29,7 @@ export function SiteHeader({ hasFilm }: { hasFilm: boolean }) {
       >
         {t("skip")}
       </a>
-      <header className="fixed inset-x-0 top-0 z-40 border-b border-white/5 bg-background/70 backdrop-blur-md">
+      <header className="fixed inset-x-0 top-0 z-40 border-b border-border/70 bg-background/70 backdrop-blur-md">
         <nav
           className="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 md:px-8"
           aria-label="VayuNetra"

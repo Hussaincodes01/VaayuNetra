@@ -114,7 +114,7 @@ export default async function SitePage({ params }: Params) {
 
       <section
         aria-labelledby="timeline-title"
-        className="rounded-xl border border-white/10 bg-card p-5"
+        className="rounded-xl border border-border bg-card p-5"
       >
         <h2 id="timeline-title" className="font-heading text-lg font-semibold">
           {t("timeline")}
@@ -166,7 +166,7 @@ export default async function SitePage({ params }: Params) {
             canAct={canAct}
           />
           {process.env.NEXT_PUBLIC_MAPILLARY_TOKEN && (
-            <section className="rounded-xl border border-white/10 bg-card p-5">
+            <section className="rounded-xl border border-border bg-card p-5">
               <h2 className="font-heading text-lg font-semibold">
                 {t("ground")}
               </h2>

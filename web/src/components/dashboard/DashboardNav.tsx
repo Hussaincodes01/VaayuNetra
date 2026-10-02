@@ -37,7 +37,7 @@ export function DashboardNav({ viewer }: { viewer: Viewer }) {
       >
         {t("skip")}
       </a>
-      <header className="fixed inset-x-0 top-0 z-40 border-b border-white/10 bg-background/85 backdrop-blur-md">
+      <header className="fixed inset-x-0 top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md">
         <nav
           aria-label={t("label")}
           className="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 md:px-8"
@@ -60,9 +60,9 @@ export function DashboardNav({ viewer }: { viewer: Viewer }) {
                     href={l.href}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "rounded-md px-3 py-1.5 transition-colors hover:bg-white/5",
+                      "rounded-md px-3 py-1.5 transition-colors hover:bg-muted",
                       active
-                        ? "bg-white/10 text-foreground"
+                        ? "bg-muted text-foreground"
                         : "text-muted-foreground",
                     )}
                   >

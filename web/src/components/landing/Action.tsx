@@ -104,7 +104,7 @@ export function Action({
           {steps.map(({ key, icon: Icon, text }, i) => (
             <li
               key={key}
-              className="relative rounded-xl border border-white/10 bg-card p-5"
+              className="relative rounded-xl border border-border bg-card p-5"
             >
               <div className="flex items-center gap-3">
                 <span className="flex size-9 items-center justify-center rounded-full bg-signal/10 text-signal">
@@ -124,15 +124,15 @@ export function Action({
           ))}
         </ol>
 
-        <div className="mt-8 rounded-xl border border-dashed border-white/15 p-5">
-          <p className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
+        <div className="mt-8 rounded-xl border border-dashed border-input p-5">
+          <p className="text-sm font-medium text-muted-foreground">
             {t("assumptions")}
           </p>
           <ul className="mt-3 flex flex-wrap gap-2">
             {chips.map((c) => (
               <li
                 key={c}
-                className="rounded-full border border-white/15 bg-white/[0.03] px-3 py-1 font-mono text-xs"
+                className="rounded-full border border-input bg-white/[0.03] px-3 py-1 font-mono text-xs"
               >
                 {c}
               </li>

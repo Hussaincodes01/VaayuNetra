@@ -123,9 +123,9 @@ export function EvidenceChip({ flag, siteName, controlKm, className }: Props) {
         cy={S / 2}
         r={9}
         fill="none"
-        stroke="#E8ECF4"
+        stroke="#FFFFFF"
         strokeWidth={3}
-        opacity={0.8}
+        opacity={0.9}
       />
 
       {hasWind && (
@@ -134,15 +134,15 @@ export function EvidenceChip({ flag, siteName, controlKm, className }: Props) {
             cx={wc[0]}
             cy={wc[1]}
             r={78}
-            fill="#05070DB3"
-            stroke="#2DD4BF55"
+            fill="#FFFFFFE6"
+            stroke="#1E7B4566"
           />
           {speed > 0 && (
             <g
-              stroke="#2DD4BF"
+              stroke="#1E7B45"
               strokeWidth={7}
               strokeLinecap="round"
-              fill="#2DD4BF"
+              fill="#1E7B45"
             >
               <line
                 x1={wc[0] - dir[0] * 48}
@@ -156,11 +156,19 @@ export function EvidenceChip({ flag, siteName, controlKm, className }: Props) {
               />
             </g>
           )}
+          <rect
+            x={wc[0] - 130}
+            y={wc[1] + 88}
+            width={260}
+            height={46}
+            rx={23}
+            fill="#FFFFFFE6"
+          />
           <text
             x={wc[0]}
             y={wc[1] + 120}
             textAnchor="middle"
-            fill="#E8ECF4"
+            fill="#0E3B2A"
             fontSize={30}
             className="font-mono"
           >
@@ -176,7 +184,7 @@ export function EvidenceChip({ flag, siteName, controlKm, className }: Props) {
           width={340}
           height={56}
           rx={28}
-          fill="#05070DCC"
+          fill="#FFFFFFEB"
           stroke={TIER_COLOUR[flag.tier]}
           strokeWidth={3}
         />
@@ -184,7 +192,7 @@ export function EvidenceChip({ flag, siteName, controlKm, className }: Props) {
         <text
           x={-286}
           y={38}
-          fill="#E8ECF4"
+          fill="#0E3B2A"
           fontSize={28}
           className="font-mono"
         >
@@ -199,9 +207,9 @@ export function EvidenceChip({ flag, siteName, controlKm, className }: Props) {
           width={384}
           height={46}
           rx={10}
-          fill="#05070DB3"
+          fill="#FFFFFFE0"
         />
-        <text textAnchor="end" y={2} fill="#C2C8D4" fontSize={24}>
+        <text textAnchor="end" y={2} fill="#2F4A3C" fontSize={24}>
           ↑ {t("controlArrow", { km: f.num(controlKm) })}
         </text>
       </g>
@@ -213,23 +221,23 @@ export function EvidenceChip({ flag, siteName, controlKm, className }: Props) {
           width={bar + 24}
           height={52}
           rx={8}
-          fill="#05070DB3"
+          fill="#FFFFFFE0"
         />
-        <line x1={0} x2={bar} y1={0} y2={0} stroke="#E8ECF4" strokeWidth={5} />
-        <line x1={0} x2={0} y1={-10} y2={6} stroke="#E8ECF4" strokeWidth={4} />
+        <line x1={0} x2={bar} y1={0} y2={0} stroke="#0E3B2A" strokeWidth={5} />
+        <line x1={0} x2={0} y1={-10} y2={6} stroke="#0E3B2A" strokeWidth={4} />
         <line
           x1={bar}
           x2={bar}
           y1={-10}
           y2={6}
-          stroke="#E8ECF4"
+          stroke="#0E3B2A"
           strokeWidth={4}
         />
         <text
           x={bar / 2}
           y={-12}
           textAnchor="middle"
-          fill="#E8ECF4"
+          fill="#0E3B2A"
           fontSize={24}
           className="font-mono"
         >

@@ -8,10 +8,10 @@ export const STATUS_COLOUR: Record<SiteStatus, string> = {
   no_large_events: "#22C55E",
 };
 
-/** Lighter tints for text on the dark background (WCAG AA). */
+/** Darker shades for text on white and the page ground (WCAG AA). */
 export const STATUS_TEXT: Record<SiteStatus, string> = {
-  priority: "#FCA5A5",
-  watch: "#D8B4FE",
-  surface_activity: "#FCD34D",
-  no_large_events: "#86EFAC",
+  priority: "#B91C1C",
+  watch: "#7E22CE",
+  surface_activity: "#B45309",
+  no_large_events: "#15803D",
 };

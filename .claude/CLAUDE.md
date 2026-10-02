@@ -62,9 +62,16 @@ models/    gitignored — vayunetra_best_model_*.zip (weights, model_card.json, 
 - Never claim "first", "only" or "real-time". Sentinel-2 revisits every ~5 days; say "every new pass".
 
 ## Design system
-- Mood: night-side satellite view — calm, scientific, government-credible. Dark by default, light mode supported.
-- Colours: background #05070D · surface #0D1220 · text #E8ECF4 / muted #8A93A6 · signal teal #2DD4BF (UI accent)
-  · methane ramp #FDE68A → #F59E0B → #DC2626 (plumes only) · T1 #DC2626, T2 #A855F7, T3 #F59E0B, clear #22C55E.
+- Mood: daylight above the clouds: a green Earth seen from the sky, calm, scientific, government-credible.
+  Light only. No dark theme, dark panels or dark overlays anywhere (site, dashboard, emails, PDFs, share image).
+- Colours: page #F6F8F3 · surfaces #FFFFFF · headings #0E3B2A (canopy) · body #15301F / muted #4A6355
+  · leaf green #1E7B45 (actions, links, focus) · sprout #CDEFC0 (highlight fills only) · sky #DCECF1 (hero sky)
+  · methane ramp #FDE68A → #F59E0B → #DC2626 (plumes only) · T1 #DC2626, T2 #A855F7, T3 #F59E0B, clear #22C55E
+  for fills and markers; as text on light grounds use T1 #B91C1C, T2 #7E22CE, T3 #B45309, clear #15803D.
+- Hero: a stylised daylight 3D Earth (NASA Blue Marble, baked green) turned to India with the five landfills
+  pinned in status colours, rising out of a cloud bank. Posters in web/public/hero/ match its first frame.
+- Charts: VayuNetra #1E7B45 vs classic MBMP #4A86CF (validated pair); faint #0E3B2A gridlines.
+- Labels in sentence case; no tracked all-caps eyebrows.
 - Type: Space Grotesk (headings), Inter (body), JetBrains Mono (numbers, coordinates).
 - Motion: slow, cinematic, purposeful (GSAP + Lenis). Respect prefers-reduced-motion. 60 fps target.
 - Bilingual: English default, Hindi toggle for all dashboard labels and alerts.
