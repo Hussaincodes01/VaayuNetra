@@ -10,6 +10,8 @@
 
 import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
 const args = process.argv.slice(2);
 const file = args.find((a) => !a.startsWith("--"));
@@ -34,9 +36,23 @@ const parse = (text) =>
       ]),
   );
 
-const names = Object.keys(parse(readFileSync(".env.example", "utf8")));
+// The list of names is web/.env.example, wherever the script is run from (web/ or the repo root).
+const example = join(
+  dirname(fileURLToPath(import.meta.url)),
+  "..",
+  ".env.example",
+);
+const names = Object.keys(parse(readFileSync(example, "utf8")));
 const values = parse(readFileSync(file, "utf8"));
 const vercel = process.platform === "win32" ? "vercel.cmd" : "vercel";
+// Settings that are not secrets; NEXT_PUBLIC_* values are public as well. Everything else is a secret.
+const PLAIN = new Set([
+  "ALERT_FROM_EMAIL",
+  "GROQ_MODEL",
+  "ALERT_LOOKBACK_DAYS",
+  "ALERTS_TWILIO_ENABLED",
+  "TWILIO_FROM",
+]);
 
 let set = 0;
 for (const name of names) {
@@ -51,16 +67,19 @@ for (const name of names) {
       console.log(`would set ${name} for ${target}`);
       continue;
     }
-    // Replace: remove any existing value first (fails harmlessly when there is none).
-    spawnSync(vercel, ["env", "rm", name, target, "--yes"], {
-      stdio: "ignore",
-      shell: process.platform === "win32",
-    });
-    const add = spawnSync(vercel, ["env", "add", name, target], {
-      input: value,
-      stdio: ["pipe", "inherit", "inherit"],
-      shell: process.platform === "win32",
-    });
+    // Non-interactive add: the type must be given; --force replaces an existing value. The value goes
+    // in on stdin, never on the command line.
+    const type =
+      PLAIN.has(name) || name.startsWith("NEXT_PUBLIC_") ? "config" : "secret";
+    const add = spawnSync(
+      vercel,
+      ["env", "add", name, target, "--type", type, "--force", "--yes"],
+      {
+        input: value,
+        stdio: ["pipe", "inherit", "inherit"],
+        shell: process.platform === "win32",
+      },
+    );
     if (add.status !== 0) {
       console.error(`failed to set ${name} for ${target}`);
       process.exit(1);
