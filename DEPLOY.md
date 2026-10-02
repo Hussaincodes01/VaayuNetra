@@ -76,6 +76,10 @@ mailer is meant for testing and has a low hourly limit, so send through Resend.
    - Redirect URLs: `https://vayunetra-india.vercel.app/**` and, for preview deployments,
      `https://*-<your-vercel-team-slug>.vercel.app/**`
 
+The site URL, redirect URLs and invite-only setting from steps 4 and 5 are also kept in
+`deploy/supabase-production/supabase/config.toml`; after editing it, apply them with
+`npx supabase config push --workdir deploy/supabase-production --project-ref <ref>`.
+
 Check: **Authentication → Emails** shows the SMTP sender as your Resend address.
 
 ## 3. Other keys
@@ -99,21 +103,21 @@ cd web
 cp .env.example .env.production
 ```
 
-| Variable                             | Value                                                 | Required                            |
-| ------------------------------------ | ----------------------------------------------------- | ----------------------------------- |
-| `NEXT_PUBLIC_SUPABASE_URL`           | Project URL from step 1                               | yes                                 |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY`      | `anon` key                                            | yes                                 |
-| `SUPABASE_SERVICE_ROLE_KEY`          | `service_role` key                                    | yes                                 |
-| `NEXT_PUBLIC_SITE_URL`               | `https://vayunetra-india.vercel.app` or your domain   | yes                                 |
-| `RESEND_API_KEY`, `ALERT_FROM_EMAIL` | from step 2                                           | yes, for alerts and reports         |
-| `CRON_SECRET`                        | the random value above                                | yes, for alerts and reports         |
-| `NEXT_PUBLIC_MAPBOX_TOKEN`           | Mapbox public token                                   | yes, for the maps                   |
-| `NEXT_PUBLIC_MAPILLARY_TOKEN`        | Mapillary client token                                | optional                            |
-| `GROQ_API_KEY` (and `GROQ_MODEL`)    | Groq key; model defaults to `llama-3.3-70b-versatile` | optional                            |
-| `NEXT_PUBLIC_VIDEO_URL`              | YouTube/Vimeo link or file URL of the film            | optional; the film section needs it |
-| `ALERT_LOOKBACK_DAYS`                | default 30                                            | optional                            |
-| `ALERTS_TWILIO_ENABLED`, `TWILIO_*`  | `true` plus Twilio SID, token and sender              | optional                            |
-| `ANTHROPIC_API_KEY`                  | not used by the current code                          | leave empty                         |
+| Variable                             | Value                                               | Required                            |
+| ------------------------------------ | --------------------------------------------------- | ----------------------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`           | Project URL from step 1                             | yes                                 |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY`      | `anon` key                                          | yes                                 |
+| `SUPABASE_SERVICE_ROLE_KEY`          | `service_role` key                                  | yes                                 |
+| `NEXT_PUBLIC_SITE_URL`               | `https://vayunetra-india.vercel.app` or your domain | yes                                 |
+| `RESEND_API_KEY`, `ALERT_FROM_EMAIL` | from step 2                                         | yes, for alerts and reports         |
+| `CRON_SECRET`                        | the random value above                              | yes, for alerts and reports         |
+| `NEXT_PUBLIC_MAPBOX_TOKEN`           | Mapbox public token                                 | yes, for the maps                   |
+| `NEXT_PUBLIC_MAPILLARY_TOKEN`        | Mapillary client token                              | optional                            |
+| `GROQ_API_KEY` (and `GROQ_MODEL`)    | Groq key; model defaults to `qwen/qwen3.8-27b`      | optional                            |
+| `NEXT_PUBLIC_VIDEO_URL`              | YouTube/Vimeo link or file URL of the film          | optional; the film section needs it |
+| `ALERT_LOOKBACK_DAYS`                | default 30                                          | optional                            |
+| `ALERTS_TWILIO_ENABLED`, `TWILIO_*`  | `true` plus Twilio SID, token and sender            | optional                            |
+| `ANTHROPIC_API_KEY`                  | not used by the current code                        | leave empty                         |
 
 Check: every "yes" row has a value.
 

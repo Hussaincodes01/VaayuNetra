@@ -1,0 +1,16 @@
+# Production auth settings for the hosted VayuNetra project. Only what is declared here is pushed:
+#   npx supabase config push --workdir deploy/supabase-production --project-ref <ref>
+project_id = "vayunetra"
+
+[auth]
+site_url = "https://vayunetra-india.vercel.app"
+additional_redirect_urls = [
+  "https://vayunetra-india.vercel.app/**",
+  "https://vayunetra-vert.vercel.app/**",
+  "https://vayunetra-*-jiyad2332.vercel.app/**",
+]
+# Invite-only: nobody can sign up; invited users sign in with email magic links.
+enable_signup = false
+
+[auth.email]
+enable_signup = true

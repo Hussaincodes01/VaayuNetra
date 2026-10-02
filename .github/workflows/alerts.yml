@@ -41,6 +41,11 @@ jobs:
             -H "Authorization: Bearer $CRON_SECRET" "${SITE_URL%/}/api/cron/alerts")
           # The log of a public repository is public: print counts only, never recipients or errors.
           jq -r '"ok: \(.ok) | events: \(.events // [] | length) | worker alerts: \(.worker // [] | length)"' response.json || true
+          if [ "$code" = "503" ]; then
+            # Not configured yet (no Resend sender or service-role key): nothing to send, not a failure.
+            echo "::notice::/api/cron/alerts is not configured yet (HTTP 503); set ALERT_FROM_EMAIL and RESEND_API_KEY in Vercel."
+            exit 0
+          fi
           if [ "$code" != "200" ]; then
             echo "::error::/api/cron/alerts answered HTTP $code (see the Vercel function logs for details)"
             exit 1

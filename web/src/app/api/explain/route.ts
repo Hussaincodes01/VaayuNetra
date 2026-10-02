@@ -12,7 +12,7 @@ import {
 import { WORDING_RULES } from "@/lib/wording-rules";
 
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
-const MODEL = process.env.GROQ_MODEL || "llama-3.3-70b-versatile";
+const MODEL = process.env.GROQ_MODEL || "qwen/qwen3.8-27b";
 
 async function groq(
   messages: { role: "system" | "user" | "assistant"; content: string }[],
