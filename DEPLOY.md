@@ -126,7 +126,8 @@ Check: every "yes" row has a value.
 ### 4.1 Create the project
 
 The plain `vayunetra.vercel.app` belongs to another Vercel team, so this project uses
-`vayunetra-india.vercel.app` (Vercel also assigned `vayunetra-vert.vercel.app`, which serves the same site).
+`vayunetra-india.vercel.app` (Vercel also assigned `vayunetra-vert.vercel.app` and `vayunetra-jiyad2332.vercel.app`, which serve
+the same site).
 
 1. Push the repository to GitHub if it is not there yet.
 2. In Vercel: **Add New → Project → Import** the `VaayuNetra` repository.
