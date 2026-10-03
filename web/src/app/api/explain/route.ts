@@ -10,6 +10,7 @@ import {
   serviceRoleConfigured,
 } from "@/lib/supabase/server";
 import { WORDING_RULES } from "@/lib/wording-rules";
+import hi from "../../../../messages/hi.json";
 
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 const MODEL = process.env.GROQ_MODEL || "qwen/qwen3.8-27b";
@@ -37,6 +38,26 @@ async function groq(
     choices: { message: { content: string } }[];
   };
   return json.choices[0]?.message?.content?.trim() ?? "";
+}
+
+/** The site's official Hindi spellings (messages/hi.json, Places), so the model does not transliterate. */
+function hindiNames(site: {
+  slug: string;
+  name: string;
+  city: string;
+  state: string;
+}) {
+  const places = hi.Places as {
+    sites: Record<string, string>;
+    regions: Record<string, string>;
+  };
+  const pairs = [
+    ["VayuNetra", "वायुनेत्र"],
+    [site.name, places.sites[site.slug]],
+    [site.city, places.regions[site.city]],
+    [site.state, places.regions[site.state]],
+  ].filter((pair): pair is [string, string] => Boolean(pair[1]));
+  return `Use these Hindi spellings exactly: ${pairs.map(([en, h]) => `${en} = ${h}`).join("; ")}.`;
 }
 
 /** POST {slug, lang} -> a ~150-word briefing that uses only numbers from the site's JSON. */
@@ -90,6 +111,7 @@ export async function POST(request: NextRequest) {
     "a Sentinel-2 methane screening system. Follow these wording rules exactly:",
     WORDING_RULES,
     `Write one plain paragraph of about 150 words in ${language === "hi" ? "Hindi (Devanagari script, Latin digits)" : "English"}.`,
+    ...(language === "hi" ? [hindiNames(site)] : []),
     "Use only numbers that appear in the JSON, written the same way; do not calculate new numbers or percentages.",
     "Say what the evidence shows, what is uncertain, and the next step (confirmation before any enforcement).",
     "No headings, lists or markdown.",
