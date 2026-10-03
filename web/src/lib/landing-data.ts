@@ -16,6 +16,8 @@ const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/\/$/, "");
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const REVALIDATE_S = 600;
 const WORKER_ONLINE_MS = 3 * 60 * 1000;
+/** India field test window (CLAUDE.md); the same window as the site_stats_field_test view. */
+const FIELD_TEST = { from: "2024-01-01", to: "2025-12-31" };
 
 type Row = Record<string, unknown>;
 
@@ -107,7 +109,9 @@ export async function getLandingData(): Promise<LandingData> {
   const fallback = fromSeed();
   const [statsRows, siteRows, flagRows, heartbeat, settings, newest] =
     await Promise.all([
-      select("site_stats", "select=*"),
+      // The landing page tells the field-test story: numbers from Jan 2024 to Dec 2025 only (they match
+      // CLAUDE.md). Passes the worker scans later show up on the dashboard, not here.
+      select("site_stats_field_test", "select=*"),
       select(
         "site_locations",
         "select=slug,name,city,state,kind,lat,lon,control_of,id&active=eq.true",
@@ -116,7 +120,8 @@ export async function getLandingData(): Promise<LandingData> {
         "scans",
         "select=pass_date,tier,surface_kind,scene_score,q_kgph,q_med,q_lo,q_hi,u10,wind_u,wind_v,d_b12,d_b11,d_visnir," +
           "sites!inner(slug,kind),evidence(rgb_url,mbmp_url,mask_url,plume_geojson,chip_bounds)" +
-          "&detected=eq.true&sites.kind=eq.landfill&order=pass_date.desc",
+          "&detected=eq.true&sites.kind=eq.landfill" +
+          `&pass_date=gte.${FIELD_TEST.from}&pass_date=lte.${FIELD_TEST.to}&order=pass_date.desc`,
       ),
       select(
         "worker_heartbeat",

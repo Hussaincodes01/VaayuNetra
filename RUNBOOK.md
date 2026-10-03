@@ -9,11 +9,11 @@ prefix them with `docker compose exec worker`.
 Signs that it stopped: the dashboard shows **Worker offline** and **Request scan** is disabled
 (no heartbeat for 3 minutes), and admins get one "worker offline" email after 2 hours.
 
-| Install | Restart | Logs |
-|---|---|---|
-| Docker | `docker compose restart worker` (CPU: `worker-cpu`) | `docker compose logs -f --tail 200 worker` |
-| systemd | `sudo systemctl restart vayunetra-worker` | `journalctl -u vayunetra-worker -f` |
-| Windows | `Stop-ScheduledTask "VayuNetra worker"; Start-ScheduledTask "VayuNetra worker"` | Task Scheduler keeps no output: stop the task and run `.venv\Scripts\vayu.exe worker` in a terminal to watch |
+| Install | Restart                                                                         | Logs                                                |
+| ------- | ------------------------------------------------------------------------------- | --------------------------------------------------- |
+| Docker  | `docker compose restart worker` (CPU: `worker-cpu`)                             | `docker compose logs -f --tail 200 worker`          |
+| systemd | `sudo systemctl restart vayunetra-worker`                                       | `journalctl -u vayunetra-worker -f`                 |
+| Windows | `Stop-ScheduledTask "VayuNetra worker"; Start-ScheduledTask "VayuNetra worker"` | `Get-Content worker\logs\worker.log -Tail 50 -Wait` |
 
 Then check, in this order:
 
@@ -39,17 +39,17 @@ Rotate a key at once if it was ever pasted into a notebook output, a chat, an is
 rotation follows the same order: create the new key, put it everywhere it is used, redeploy or
 restart, check, then revoke the old one.
 
-| Key | Where it is used | Create the new one | After updating |
-|---|---|---|---|
+| Key                                | Where it is used                                                                     | Create the new one                                                                                                                             | After updating                                                                                      |
+| ---------------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | Supabase `service_role` and `anon` | Vercel (`SUPABASE_SERVICE_ROLE_KEY`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`), `worker/.env` | Supabase **Project Settings → JWT Keys**: generate a new JWT secret. Both legacy keys change together, and every signed-in user is signed out. | Run `node scripts/vercel-env.mjs .env.production` with the new values, redeploy, restart the worker |
-| Resend API key | Vercel `RESEND_API_KEY`, Supabase SMTP password | Resend **API Keys → Create** | Update both places, redeploy, then delete the old key in Resend |
-| `CRON_SECRET` | Vercel only | `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"` | Redeploy. Vercel Cron sends the new value by itself |
-| Groq API key | Vercel `GROQ_API_KEY` | console.groq.com → API Keys | Redeploy, delete the old key |
-| Mapbox token | Vercel `NEXT_PUBLIC_MAPBOX_TOKEN` | Mapbox **Tokens → Create**, with URL restrictions | Redeploy (public values are built into the pages), delete the old token |
-| Mapillary token | Vercel `NEXT_PUBLIC_MAPILLARY_TOKEN` | Mapillary developer dashboard | Redeploy |
-| Twilio auth token | Vercel `TWILIO_AUTH_TOKEN` | Twilio console: create a secondary token, then promote it | Redeploy |
-| Earth Engine service-account key | `worker/secrets/ee-key.json` | Google Cloud **IAM → Service accounts → vayunetra-worker → Keys → Add key (JSON)** | Replace the file, restart the worker, delete the old key in Cloud |
-| Database password | `supabase link` / `db push` only | Supabase **Project Settings → Database → Reset password** | Nothing else uses it |
+| Resend API key                     | Vercel `RESEND_API_KEY`, Supabase SMTP password                                      | Resend **API Keys → Create**                                                                                                                   | Update both places, redeploy, then delete the old key in Resend                                     |
+| `CRON_SECRET`                      | Vercel only                                                                          | `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`                                                                     | Redeploy. Vercel Cron sends the new value by itself                                                 |
+| Groq API key                       | Vercel `GROQ_API_KEY`                                                                | console.groq.com → API Keys                                                                                                                    | Redeploy, delete the old key                                                                        |
+| Mapbox token                       | Vercel `NEXT_PUBLIC_MAPBOX_TOKEN`                                                    | Mapbox **Tokens → Create**, with URL restrictions                                                                                              | Redeploy (public values are built into the pages), delete the old token                             |
+| Mapillary token                    | Vercel `NEXT_PUBLIC_MAPILLARY_TOKEN`                                                 | Mapillary developer dashboard                                                                                                                  | Redeploy                                                                                            |
+| Twilio auth token                  | Vercel `TWILIO_AUTH_TOKEN`                                                           | Twilio console: create a secondary token, then promote it                                                                                      | Redeploy                                                                                            |
+| Earth Engine service-account key   | `worker/secrets/ee-key.json`                                                         | Google Cloud **IAM → Service accounts → vayunetra-worker → Keys → Add key (JSON)**                                                             | Replace the file, restart the worker, delete the old key in Cloud                                   |
+| Database password                  | `supabase link` / `db push` only                                                     | Supabase **Project Settings → Database → Reset password**                                                                                      | Nothing else uses it                                                                                |
 
 Check after a rotation: the site loads, an admin can sign in, the cron call in DEPLOY.md step 4.5
 returns `{"ok":true}`, and the worker shows online.

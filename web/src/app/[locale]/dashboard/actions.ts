@@ -192,7 +192,9 @@ export async function requestJob(
       .insert({
         kind,
         site_id: siteId,
-        params: kind === "scan_site" ? { start: "2024-01-01" } : {},
+        // No dates: the worker scans only passes newer than the last stored one, so the field-test
+        // record is never rescanned from the dashboard (full rescans are `vayu scan --from`).
+        params: {},
       })
       .select(
         "id, kind, site_id, status, log, created_at, started_at, finished_at",

@@ -177,20 +177,34 @@ def scan(rt: Runtime, slug: str, start: str = START, end: str = END, upload: boo
     return every
 
 
+def _scan_new_passes(rt: Runtime, site: Site, echo: Callable[[str], None]) -> list[ScanResult]:
+    """Passes newer than the last stored one at a site (earlier passes load only as references)."""
+    last = rt.supabase.last_pass_date(site.id, rt.model.model_version) if rt.supabase and site.id else None
+    start, end, after = monitor_window(last)
+    results = rt.scanner.scan_site(site, start=start, end=end, target_after=after)
+    echo(_summarise(site, results) + (f" (new since {last})" if last else ""))
+    if rt.supabase is not None:
+        publish(rt, site, results)
+    alerts = [r.row for r in results if site.kind == "landfill" and r.row["tier"] in ("T1", "T2")]
+    for a in alerts:
+        echo(f"ALERT {site.name} {a['date']} {a['tier']} q={a.get('q_kgph')} score={a['scene_score']}")
+    return results
+
+
 def monitor(rt: Runtime, echo: Callable[[str], None] = log.info) -> list[ScanResult]:
     """Scan only passes newer than the last stored pass at every active site."""
     every: list[ScanResult] = []
     for site in load_sites(rt):
-        last = rt.supabase.last_pass_date(site.id, rt.model.model_version) if rt.supabase and site.id else None
-        start, end, after = monitor_window(last)
-        results = rt.scanner.scan_site(site, start=start, end=end, target_after=after)
-        echo(_summarise(site, results))
-        if rt.supabase is not None:
-            publish(rt, site, results)
-        alerts = [r.row for r in results if site.kind == "landfill" and r.row["tier"] in ("T1", "T2")]
-        for a in alerts:
-            echo(f"ALERT {site.name} {a['date']} {a['tier']} q={a.get('q_kgph')} score={a['scene_score']}")
-        every += results
+        every += _scan_new_passes(rt, site, echo)
+    return every
+
+
+def scan_new(rt: Runtime, slug: str, echo: Callable[[str], None] = log.info) -> list[ScanResult]:
+    """One landfill and its control point, new passes only: the dashboard's "Request scan". Stored passes
+    (such as the field-test record) are never rescanned here; use `vayu scan --from` for that."""
+    every: list[ScanResult] = []
+    for site in site_with_control(load_sites(rt), slug):
+        every += _scan_new_passes(rt, site, echo)
     return every
 
 
@@ -268,8 +282,11 @@ def run_job(rt: Runtime, job: Mapping[str, Any]) -> None:
             site = next((s for s in load_sites(rt) if s.id == job.get("site_id")), None)
             if site is None:
                 raise RuntimeError(f"job {job['id']}: unknown site_id {job.get('site_id')}")
-            if kind == "scan_site":
-                scan(rt, site.slug, params.get("start", START), params.get("end", dt.date.today().isoformat()))
+            if kind == "scan_site" and params.get("start"):
+                # An explicit window (operators only) rescans every pass in it at the current threshold.
+                scan(rt, site.slug, params["start"], params.get("end", dt.date.today().isoformat()))
+            elif kind == "scan_site":
+                scan_new(rt, site.slug)
             else:
                 rebuild_dossier(rt, site.slug)
         else:

@@ -9,6 +9,7 @@ service-account*.json
 
 # Worker
 worker/cache/
+worker/logs/
 *.npy
 .venv/
 __pycache__/

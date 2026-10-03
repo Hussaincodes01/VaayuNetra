@@ -57,30 +57,35 @@ Check: `node --version` prints v24, `supabase --version` prints 2.119 or newer.
 
 Check: in the Supabase **Table Editor**, `sites` has 10 rows and `scans` has 674.
 
-## 2. Resend and sign-in email
+## 2. Email: sign-in links, invites and alerts
 
 The dashboard is invite-only and signs people in with emailed magic links. Supabase's built-in
-mailer is meant for testing and has a low hourly limit, so send through Resend.
+mailer only delivers to members of your Supabase organisation, a few emails an hour, so send through
+SMTP. Two options:
 
-1. In Resend, add your domain under **Domains** and create the DNS records it lists. Wait until the
-   domain shows **Verified**.
-2. Create an API key under **API Keys** with sending access. Pick the sender address, for example
-   `alerts@<your-domain>`. This is `ALERT_FROM_EMAIL`.
-3. In Supabase, **Authentication → Emails → SMTP Settings**, turn on custom SMTP:
-   - Host `smtp.resend.com`, port `465`, username `resend`, password: the Resend API key
-   - Sender email: the `ALERT_FROM_EMAIL` address; sender name: `VayuNetra`
-4. In **Authentication → Sign In / Providers**: keep **Email** enabled and turn **Allow new users to
-   sign up** off. People join only by invitation.
-5. In **Authentication → URL Configuration**:
-   - Site URL: `https://vayunetra-india.vercel.app`, or your custom domain (step 4.6)
-   - Redirect URLs: `https://vayunetra-india.vercel.app/**` and, for preview deployments,
-     `https://*-<your-vercel-team-slug>.vercel.app/**`
+**Gmail (free, no domain needed; this deployment uses it).** Gmail sends about 500 emails a day.
 
-The site URL, redirect URLs and invite-only setting from steps 4 and 5 are also kept in
-`deploy/supabase-production/supabase/config.toml`; after editing it, apply them with
-`npx supabase config push --workdir deploy/supabase-production --project-ref <ref>`.
+1. Turn on 2-Step Verification for the Google account: https://myaccount.google.com/signinoptions/twosv
+2. Create an app password named `VayuNetra`: https://myaccount.google.com/apppasswords
+3. In `web/.env.production`: `SMTP_HOST=smtp.gmail.com`, `SMTP_PORT=465`, `SMTP_USER` and
+   `ALERT_FROM_EMAIL` = the Gmail address, `SMTP_PASS` = the 16-letter app password (no spaces).
 
-Check: **Authentication → Emails** shows the SMTP sender as your Resend address.
+**Resend (needs a domain you own).** Verify the domain under https://resend.com/domains, create a
+sending-only key, set `RESEND_API_KEY` and `ALERT_FROM_EMAIL=alerts@<your-domain>`, and leave the
+`SMTP_*` values empty. The app uses SMTP when it is set, Resend otherwise.
+
+Then point Supabase's own emails (sign-in links, invites) at the same Gmail account, and set the
+site URL, redirect URLs and invite-only sign-up. All of it is kept in
+`deploy/supabase-production/supabase/config.toml`; the credentials come from the environment:
+
+```bash
+SMTP_USER=<gmail address> SMTP_PASS=<app password>   npx supabase config push --workdir deploy/supabase-production --project-ref <ref>
+```
+
+Edit the URLs in that file first if your address differs from `vayunetra-india.vercel.app`.
+
+Check: **Authentication → Emails → SMTP Settings** in Supabase shows the Gmail sender, and
+**Authentication → Sign In / Providers** shows sign-up turned off.
 
 ## 3. Other keys
 
@@ -241,21 +246,42 @@ It answers `{"ok":true,...}`. Without the header it answers 401.
 ## 6. The worker (your GPU or CPU machine)
 
 The worker reads Sentinel-2 through Earth Engine, runs the model and writes scans to Supabase. It
-makes outbound connections only.
+makes outbound connections only. A 4 GB laptop GPU is enough (the model uses about 140 MB).
 
 1. On that machine, clone the repository and follow **Setup** in [`worker/README.md`](worker/README.md):
-   `uv sync`, PyTorch, and `cp .env.example .env`.
+   `uv sync`, PyTorch, then `uv pip install earthengine-api` and `cp .env.example .env`.
 2. Fill `worker/.env`: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` and `WORKER_ID` (a name for this
-   machine). Keep the Earth Engine values unless you use another Cloud project.
-3. Put the Earth Engine service-account key at `worker/secrets/ee-key.json`.
+   machine).
+3. Earth Engine sign-in, either:
+   - your own Google account: leave `EE_SERVICE_ACCOUNT` and `EE_KEY_FILE` empty and sign in once
+     with `gcloud auth application-default login` or `.venv\Scripts\earthengine authenticate`; or
+   - a service account: put its JSON key at `worker/secrets/ee-key.json` and keep the `EE_*` values.
 4. Copy the model file `vayunetra_best_model_20261001_1401.zip` into `models/` at the repository
-   root. The weights are not in git; they come from the training notebook's output.
-5. Test without writing anything: `uv run vayu scan --site deonar --no-upload`.
-6. Run it permanently with Docker, systemd or Windows Task Scheduler, as in **Running it permanently**
-   in `worker/README.md`.
+   root (or set `VAYU_MODEL_ZIP`). The weights are not in git; they come from the training notebook.
+5. Test without writing anything. The window must include history for the reference passes, so
+   use a few months: `uv run vayu scan --site deonar --from 2024-09-01 --to 2025-01-31 --no-upload`
+   reproduces the field test's Deonar T1 of 6 January 2025.
+6. Run it permanently. On Windows, register the task once (no administrator rights needed; it starts
+   when you sign in, restarts within a minute if it stops, and logs to `worker\logs\worker.log`):
 
-Check: within a minute the dashboard's site page shows "Worker online", and **Request scan** is
-enabled.
+   ```powershell
+   $dir = "D:\VaayuNetra\worker"
+   $action = New-ScheduledTaskAction -Execute "$dir\deploy\run-worker.cmd" -WorkingDirectory $dir
+   $trigger = New-ScheduledTaskTrigger -AtLogOn -User "$env:USERDOMAIN\$env:USERNAME"
+   $settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -AllowStartIfOnBatteries `
+     -DontStopIfGoingOnBatteries -ExecutionTimeLimit ([TimeSpan]::Zero) -RestartCount 999 `
+     -RestartInterval (New-TimeSpan -Minutes 1) -MultipleInstances IgnoreNew
+   $principal = New-ScheduledTaskPrincipal -UserId "$env:USERDOMAIN\$env:USERNAME" -LogonType Interactive
+   Register-ScheduledTask -TaskName "VayuNetra worker" -Action $action -Trigger $trigger `
+     -Settings $settings -Principal $principal
+   Start-ScheduledTask "VayuNetra worker"
+   ```
+
+   On Linux use Docker or systemd, as in **Running it permanently** in `worker/README.md`. Keep the
+   machine awake: the worker runs only while it is on.
+
+Check: `curl http://127.0.0.1:8787/health` answers `{"status": "ok", ...}`, and within a minute the
+dashboard's site page shows "Worker online" and **Request scan** is enabled.
 
 ## 7. Continuous integration
 
@@ -271,3 +297,7 @@ the end-to-end job starts its own local Supabase inside the runner. A green run 
 
 Day-to-day operations (restarting the worker, rotating keys, backfills, adding a landfill) are in
 [RUNBOOK.md](RUNBOOK.md).
+
+```
+
+```
