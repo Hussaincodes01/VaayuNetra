@@ -9,8 +9,11 @@ _Science Advances_) found landfill emissions in Delhi, Mumbai, Lahore and Buenos
 than earlier estimates. VayuNetra is an entry for the Net Zero AI Architecture hackathon; team lead
 Jiyad Hussain (Amity University, Noida).
 
-Live site: https://vayunetra-india.vercel.app · Film (4:54):
-[VayuNetra: India's Carbon Eyes](https://www.youtube.com/watch?v=NFfkrmYtKDA)
+Live site: https://vayunetra-india.vercel.app
+
+[![Watch the VayuNetra film on YouTube (4:54)](https://img.youtube.com/vi/NFfkrmYtKDA/maxresdefault.jpg)](https://www.youtube.com/watch?v=NFfkrmYtKDA)
+
+The film, 4:54: [VayuNetra: India's Carbon Eyes](https://www.youtube.com/watch?v=NFfkrmYtKDA) (click the image to watch on YouTube).
 
 > **Every satellite estimate in this repository is screening-grade.** Confirm it with a hyperspectral
 > satellite, an OGI drone or a ground survey before enforcement or carbon crediting.

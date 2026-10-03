@@ -45,3 +45,7 @@ Thumbs.db
 
 # Supabase CLI state for the production config
 deploy/supabase-production/supabase/.temp/
+
+# Film renders and thumbnails stay local; the film is on YouTube
+/VayuNetra_Film_*.mp4
+/VayuNetra_Thumbnail_*.png
