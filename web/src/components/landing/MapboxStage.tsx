@@ -390,5 +390,9 @@ export default function MapboxStage({
     };
   }, [token, stops, reducedMotion, narrow, controlLabel]);
 
-  return <div ref={container} className="vayu-map absolute inset-0" />;
+  // size-full, not just absolute inset-0: mapbox-gl.css sets .mapboxgl-map { position: relative }, and as
+  // unlayered CSS it beats Tailwind's layered utilities, which left the container 0 px tall (a 300 px canvas).
+  return (
+    <div ref={container} className="vayu-map absolute inset-0 size-full" />
+  );
 }

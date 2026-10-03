@@ -61,10 +61,12 @@ export default function MapboxSitesMap({
     };
   }, [token, sites, hrefBase, router]);
 
+  // size-full, not just absolute inset-0: mapbox-gl.css sets .mapboxgl-map { position: relative }, and as
+  // unlayered CSS it beats Tailwind's layered utilities, which left the container 0 px tall (a 300 px canvas).
   return (
     <div
       ref={ref}
-      className="absolute inset-0"
+      className="absolute inset-0 size-full"
       role="region"
       aria-label={label}
     />
