@@ -42,3 +42,6 @@ Thumbs.db
 
 # Vercel CLI link (per machine)
 .vercel/
+
+# Supabase CLI state for the production config
+deploy/supabase-production/supabase/.temp/

@@ -108,21 +108,21 @@ cd web
 cp .env.example .env.production
 ```
 
-| Variable                             | Value                                               | Required                            |
-| ------------------------------------ | --------------------------------------------------- | ----------------------------------- |
-| `NEXT_PUBLIC_SUPABASE_URL`           | Project URL from step 1                             | yes                                 |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY`      | `anon` key                                          | yes                                 |
-| `SUPABASE_SERVICE_ROLE_KEY`          | `service_role` key                                  | yes                                 |
-| `NEXT_PUBLIC_SITE_URL`               | `https://vayunetra-india.vercel.app` or your domain | yes                                 |
-| `RESEND_API_KEY`, `ALERT_FROM_EMAIL` | from step 2                                         | yes, for alerts and reports         |
-| `CRON_SECRET`                        | the random value above                              | yes, for alerts and reports         |
-| `NEXT_PUBLIC_MAPBOX_TOKEN`           | Mapbox public token                                 | yes, for the maps                   |
-| `NEXT_PUBLIC_MAPILLARY_TOKEN`        | Mapillary client token                              | optional                            |
-| `GROQ_API_KEY` (and `GROQ_MODEL`)    | Groq key; model defaults to `qwen/qwen3.8-27b`      | optional                            |
-| `NEXT_PUBLIC_VIDEO_URL`              | YouTube/Vimeo link or file URL of the film          | optional; the film section needs it |
-| `ALERT_LOOKBACK_DAYS`                | default 30                                          | optional                            |
-| `ALERTS_TWILIO_ENABLED`, `TWILIO_*`  | `true` plus Twilio SID, token and sender            | optional                            |
-| `ANTHROPIC_API_KEY`                  | not used by the current code                        | leave empty                         |
+| Variable                             | Value                                                 | Required                            |
+| ------------------------------------ | ----------------------------------------------------- | ----------------------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`           | Project URL from step 1                               | yes                                 |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY`      | `anon` key                                            | yes                                 |
+| `SUPABASE_SERVICE_ROLE_KEY`          | `service_role` key                                    | yes                                 |
+| `NEXT_PUBLIC_SITE_URL`               | `https://vayunetra-india.vercel.app` or your domain   | yes                                 |
+| `RESEND_API_KEY`, `ALERT_FROM_EMAIL` | from step 2                                           | yes, for alerts and reports         |
+| `CRON_SECRET`                        | the random value above                                | yes, for alerts and reports         |
+| `NEXT_PUBLIC_MAPBOX_TOKEN`           | Mapbox public token                                   | yes, for the maps                   |
+| `NEXT_PUBLIC_MAPILLARY_TOKEN`        | Mapillary client token                                | optional                            |
+| `GROQ_API_KEY` (and `GROQ_MODEL`)    | Groq key; model defaults to `qwen/qwen3.8-27b`        | optional                            |
+| `NEXT_PUBLIC_VIDEO_URL`              | the film: https://www.youtube.com/watch?v=NFfkrmYtKDA | optional; the film section needs it |
+| `ALERT_LOOKBACK_DAYS`                | default 30                                            | optional                            |
+| `ALERTS_TWILIO_ENABLED`, `TWILIO_*`  | `true` plus Twilio SID, token and sender              | optional                            |
+| `ANTHROPIC_API_KEY`                  | not used by the current code                          | leave empty                         |
 
 Check: every "yes" row has a value.
 
