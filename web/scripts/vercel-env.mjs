@@ -52,6 +52,9 @@ const PLAIN = new Set([
   "ALERT_LOOKBACK_DAYS",
   "ALERTS_TWILIO_ENABLED",
   "TWILIO_FROM",
+  "SMTP_HOST",
+  "SMTP_PORT",
+  "SMTP_USER",
 ]);
 
 let set = 0;

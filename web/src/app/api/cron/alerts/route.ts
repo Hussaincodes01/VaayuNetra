@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 import { cronGuard, lazy } from "@/lib/alerts/cron";
 import { loadDirectory } from "@/lib/alerts/people";
 import { runEventAlerts, runWorkerOffline } from "@/lib/alerts/run";
-import { emailConfigured } from "@/lib/email";
+import { EMAIL_NOT_CONFIGURED, emailConfigured } from "@/lib/email";
 import { createAdminClient } from "@/lib/supabase/server";
 
 export const dynamic = "force-dynamic";
@@ -19,10 +19,7 @@ export async function GET(request: Request) {
   const denied = cronGuard(request);
   if (denied) return denied;
   if (!emailConfigured)
-    return NextResponse.json(
-      { error: "RESEND_API_KEY or ALERT_FROM_EMAIL is not set" },
-      { status: 503 },
-    );
+    return NextResponse.json({ error: EMAIL_NOT_CONFIGURED }, { status: 503 });
   const admin = createAdminClient();
   const now = new Date();
   const dir = lazy(() => loadDirectory(admin));

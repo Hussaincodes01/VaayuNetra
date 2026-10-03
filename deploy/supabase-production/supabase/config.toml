@@ -14,3 +14,18 @@ enable_signup = false
 
 [auth.email]
 enable_signup = true
+
+# Sign-in emails through Gmail (free, no domain). Values come from the environment at push time:
+#   SMTP_USER=<gmail address> SMTP_PASS=<app password> npx supabase config push --workdir deploy/supabase-production
+[auth.email.smtp]
+enabled = true
+host = "smtp.gmail.com"
+port = 465
+user = "env(SMTP_USER)"
+pass = "env(SMTP_PASS)"
+admin_email = "env(SMTP_USER)"
+sender_name = "VayuNetra"
+
+[auth.rate_limit]
+# Allowed once custom SMTP is on (the built-in mailer is capped at a few emails an hour).
+email_sent = 30

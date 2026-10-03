@@ -5,7 +5,7 @@ import { claim, settle } from "@/lib/alerts/claim";
 import { composeMonthlyReport } from "@/lib/alerts/compose";
 import { cronGuard, lazy } from "@/lib/alerts/cron";
 import { loadDirectory, loadStateLists, pace } from "@/lib/alerts/people";
-import { emailConfigured, sendMail } from "@/lib/email";
+import { EMAIL_NOT_CONFIGURED, emailConfigured, sendMail } from "@/lib/email";
 import { monthlySummaries, previousPeriod } from "@/lib/reports/monthly";
 import { monthlyReportPdf } from "@/lib/reports/MonthlyReportPdf";
 import { createAdminClient } from "@/lib/supabase/server";
@@ -28,10 +28,7 @@ export async function GET(request: Request) {
   const denied = cronGuard(request);
   if (denied) return denied;
   if (!emailConfigured)
-    return NextResponse.json(
-      { error: "RESEND_API_KEY or ALERT_FROM_EMAIL is not set" },
-      { status: 503 },
-    );
+    return NextResponse.json({ error: EMAIL_NOT_CONFIGURED }, { status: 503 });
   const now = new Date();
   const asked = new URL(request.url).searchParams.get("period");
   if (asked && !/^\d{4}-(0[1-9]|1[0-2])$/.test(asked))
