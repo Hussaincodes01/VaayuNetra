@@ -164,7 +164,7 @@ export function destination(
 /** Local (IST) hour of day, fractional. */
 export const istHour = (t: number) =>
   ((((t + IST_MS) / 3_600_000) % 24) + 24) % 24;
-const isNight = (t: number) => {
+export const isNight = (t: number) => {
   const h = istHour(t);
   return h < 6 || h >= 19;
 };
@@ -312,19 +312,23 @@ export type Reading = {
   true_ppm: number;
 };
 
-/** One simulated reading for a node at time t (deterministic for a given node, site and time). */
+/**
+ * One simulated reading for a node at time t (deterministic for a given node, site and time).
+ * `sourceKgph` is the emission at steady pressure; the /simulator page lets viewers change it.
+ */
 export function simulateReading(
   node: SimNode,
   site: { lat: number; lon: number },
   weather: Weather[],
   t: number,
   installedAt: number,
+  sourceKgph: number = SIM.sourceKgph,
 ): Reading {
   const w = weatherAt(weather, t);
   const w2h = weatherAt(weather, t - 2 * 3_600_000);
   const dpdt = (w.pressureHpa - w2h.pressureHpa) / 2;
   const { x, y } = offsetM(site.lat, site.lon, node.lat, node.lon);
-  const q = SIM.sourceKgph * pumping(dpdt);
+  const q = sourceKgph * pumping(dpdt);
   const excess = plumeExcessPpm(q, x, y, w.windMs, w.windFromDeg, isNight(t));
   const truePpm =
     SIM.backgroundPpm + excess + 0.05 * gaussian(`${node.code}|${t}|bg`);

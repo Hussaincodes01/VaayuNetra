@@ -150,6 +150,12 @@ export function Footer({
               {t("system")}
             </Link>
             <Link
+              href="/simulator"
+              className="text-signal underline-offset-4 hover:underline"
+            >
+              {t("simulator")}
+            </Link>
+            <Link
               href="/scorecard"
               className="text-signal underline-offset-4 hover:underline"
             >

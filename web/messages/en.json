@@ -316,7 +316,8 @@
     "disclaimer": "Every satellite estimate on this site is screening-grade. Confirm with a hyperspectral satellite, an OGI drone or a ground survey before enforcement or carbon crediting.",
     "scorecard": "Monthly scorecard",
     "ledger": "Integrity ledger",
-    "system": "How it works, and how well"
+    "system": "How it works, and how well",
+    "simulator": "Sensor simulator"
   },
   "Places": {
     "sites": {
@@ -1091,7 +1092,8 @@
     "nav": {
       "scorecard": "Scorecard",
       "verify": "Integrity ledger",
-      "map": "Public map"
+      "map": "Public map",
+      "simulator": "Simulator"
     },
     "system": {
       "title": "The system",
@@ -1230,7 +1232,8 @@
         "far": "False-alarm rate",
         "rocAuc": "ROC AUC",
         "precision": "Precision at the alert threshold",
-        "weights": "{n} weights; about {week} false warnings per node per week. Comparison: {other}."
+        "weights": "{n} weights; about {week} false warnings per node per week. Comparison: {other}.",
+        "try": "Try the sensor network in the simulator →"
       },
       "limits": {
         "title": "What these numbers do not show",
@@ -1249,6 +1252,164 @@
       "waiting": "waiting",
       "verify": "Check the chain yourself →",
       "scorecard": "Monthly scorecard →"
+    }
+  },
+  "Simulator": {
+    "title": "Sensor network simulator",
+    "intro": "Five simulated solar sensor nodes around a landfill and the early-warning model, running in your browser. Change the weather, drag a sensor, open a crack in the landfill cover, and watch the forecast and the alerts respond.",
+    "how": "Every 10 simulated minutes each node takes a reading and the {weights}-weight model gives the chance that methane rises at that node within 3 hours. A warning opens when the chance reaches the model's alert threshold; a rise is a 30-minute mean 25 ppm above the background node.",
+    "nav": {
+      "system": "How it works",
+      "scorecard": "Scorecard",
+      "map": "Public map"
+    },
+    "starting": "Starting the simulator…",
+    "simulated": "simulated",
+    "clock": "{time} IST",
+    "day": "Day: mixing air spreads the plume",
+    "night": "Night: stable air keeps the plume low",
+    "pressure": "Pressure {hpa} hPa, {trend}",
+    "emission": "Emission now about {kgph} kg/h",
+    "ppm": "{v} ppm",
+    "ppmPlus": "+{v} ppm",
+    "roles": {
+      "perimeter": "Perimeter",
+      "community": "Community",
+      "background": "Background"
+    },
+    "status": {
+      "clear": "Clear",
+      "warning": "Early warning",
+      "rise": "Rise"
+    },
+    "compass": {
+      "n": "N",
+      "ne": "NE",
+      "e": "E",
+      "se": "SE",
+      "s": "S",
+      "sw": "SW",
+      "w": "W",
+      "nw": "NW"
+    },
+    "sites": {
+      "ghazipur": "Ghazipur",
+      "bhalswa": "Bhalswa",
+      "okhla": "Okhla",
+      "deonar": "Deonar",
+      "pirana": "Pirana"
+    },
+    "map": {
+      "label": "Map of the landfill from above, with the simulated plume and the sensor nodes",
+      "landfill": "Landfill",
+      "scale": "500 m",
+      "windFrom": "Wind from {dir}, {ms} m/s",
+      "background": "{code}: background node, 3 km upwind",
+      "legend": "Methane above background at ground level",
+      "legendRange": "0.5 to 200 ppm",
+      "dragHint": "Drag a sensor to move it, or select it and use the arrow keys.",
+      "node": "{code}, {role}: {ppm} ppm above background, {status}"
+    },
+    "tile": {
+      "excess": "Above background, 30-minute mean",
+      "level": "Methane level",
+      "chance": "Chance of a rise in 3 h:"
+    },
+    "controls": {
+      "play": "Play",
+      "pause": "Pause",
+      "step": "+10 min",
+      "speed": "Speed",
+      "reset": "Restart",
+      "title": "Weather and landfill",
+      "windFrom": "Wind from",
+      "windFromValue": "{deg}° ({dir})",
+      "windSpeed": "Wind speed",
+      "ms": "{v} m/s",
+      "trend": "Pressure change over the next 3 hours",
+      "trendValue": "{v} hPa, {word}",
+      "falling": "falling",
+      "steady": "steady",
+      "rising": "rising",
+      "source": "Landfill emission at steady pressure",
+      "kgph": "{v} kg/h",
+      "sourceNote": "A simulation input, not a measurement."
+    },
+    "scenarios": {
+      "title": "Scenarios",
+      "front": {
+        "name": "Pressure falling",
+        "text": "A front arrives: pressure drops 2 hPa over the next 3 hours and pushes landfill gas out."
+      },
+      "evening": {
+        "name": "Calm evening",
+        "text": "Light wind as the air turns stable after dark, so the plume stays near the ground."
+      },
+      "windy": {
+        "name": "Windy, pressure rising",
+        "text": "Strong wind dilutes the plume and rising pressure holds the gas in."
+      }
+    },
+    "leak": {
+      "button": "Open a crack in the cover",
+      "open": "Crack open: {min} min left",
+      "note": "No weather forecast sees a crack coming: the network catches it only as methane starts to climb."
+    },
+    "forecast": {
+      "title": "Start from today's weather",
+      "site": "Landfill",
+      "load": "Load the forecast",
+      "loading": "Loading…",
+      "hint": "Wind, humidity and the pressure change over the next 3 hours from the Open-Meteo forecast, starting the clock now.",
+      "loaded": "Today's weather at {site}, from the Open-Meteo forecast.",
+      "failed": "The forecast could not be loaded; the controls are unchanged."
+    },
+    "detail": {
+      "title": "{code}: {role}, {m} m from the centre",
+      "excessChart": "Methane above background, last 6 hours (ppm, 30-minute mean)",
+      "chanceChart": "Chance of a rise within 3 hours",
+      "riseLine": "rise at {v} ppm",
+      "alertLine": "warning at {v}",
+      "why": "What moves this forecast now",
+      "whyNote": "Change in the chance, in percentage points, if this input were at its typical value. A simple test, not an exact breakdown.",
+      "up": "+{v} points",
+      "down": "−{v} points",
+      "noForecast": "Not enough readings yet.",
+      "background": "The background node measures the air arriving at the site, 3 km upwind. Every other node's reading is compared with it, as each satellite flag is compared with a control point."
+    },
+    "groups": {
+      "methane": "Methane over the last 3 hours",
+      "pressurePast": "Pressure change, last 3 hours",
+      "pressureNext": "Pressure change, next 3 hours",
+      "windToward": "Wind blowing toward this node",
+      "windSpeed": "Wind speed",
+      "night": "Night in the next 3 hours",
+      "hour": "Time of day",
+      "humidity": "Humidity"
+    },
+    "tally": {
+      "title": "This run",
+      "warnings": "Early warnings",
+      "rises": "Rises",
+      "warned": "Rises warned ahead",
+      "lead": "Median warning ahead",
+      "minutes": "{n} min",
+      "noRise": "Warnings with no rise"
+    },
+    "log": {
+      "title": "Alerts in this run",
+      "empty": "No alerts yet. Press play or pick a scenario.",
+      "warning": "Early warning at {code}: {p} chance of a rise within 3 hours.",
+      "riseWarned": "Methane {ppm} ppm above background at {code}, warned {min} minutes ahead.",
+      "riseUnwarned": "Methane {ppm} ppm above background at {code}, with no warning before it.",
+      "noRise": "Warning at {code} closed: no rise within 3 hours, a false alarm.",
+      "clear": "{code} is back below the rise level.",
+      "leak": "A crack opened in the landfill cover for 60 minutes."
+    },
+    "note": "Simulated. No sensors are installed yet, so these readings come from a physics simulator, not real air. The forecast assumes the weather you set carries on for 3 hours. The model is the same {weights}-weight network the sensor dashboard runs, trained and tested on simulated readings (held-out ROC AUC {auc}); it is retrained once real nodes report.",
+    "method": "Physics: falling barometric pressure pushes landfill gas out and rising pressure holds it in (Kissas 2022; Xu et al. 2014); a Gaussian plume with daytime mixing and stable night air; a metal-oxide methane sensor with humidity and temperature effects, corrected by calibration (Furuta et al. 2024).",
+    "links": {
+      "system": "How the whole system works, and every accuracy figure →"
     }
   }
 }

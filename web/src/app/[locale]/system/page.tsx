@@ -240,6 +240,9 @@ export default async function SystemPage({ params }: Props) {
             Vayu<span className="text-signal">Netra</span>
           </Link>
           <nav className="flex items-center gap-4 text-sm text-muted-foreground">
+            <Link href="/simulator" className="hover:text-foreground">
+              {t("nav.simulator")}
+            </Link>
             <Link href="/scorecard" className="hover:text-foreground">
               {t("nav.scorecard")}
             </Link>
@@ -644,6 +647,12 @@ export default async function SystemPage({ params }: Props) {
                 </p>
               </div>
             </div>
+            <Link
+              href="/simulator"
+              className="inline-block text-sm font-medium text-leaf hover:underline"
+            >
+              {t("acc.sensor.try")}
+            </Link>
           </div>
 
           <div className={`${card} space-y-2`}>
