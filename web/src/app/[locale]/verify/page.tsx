@@ -131,7 +131,7 @@ export default async function VerifyPage({ params }: Props) {
             [
               t("stats.bitcoin"),
               confirmed[0]?.bitcoin_block
-                ? `#${f.num(confirmed[0].bitcoin_block)}`
+                ? `#${confirmed[0].bitcoin_block}`
                 : t("stats.waiting"),
             ],
           ].map(([label, value]) => (
@@ -211,7 +211,7 @@ export default async function VerifyPage({ params }: Props) {
                             className="text-tier-clear-ink underline"
                           >
                             {t("anchors.confirmed", {
-                              block: f.num(a.bitcoin_block),
+                              block: String(a.bitcoin_block),
                             })}
                           </a>
                         ) : (

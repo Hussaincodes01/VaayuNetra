@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { useRef, type ReactNode } from "react";
 import { BENCHMARK } from "@/content/facts";
+import { Link } from "@/i18n/navigation";
 import { useFormat } from "./format";
 import { Kicker, SectionTitle } from "./ui";
 import { useInView } from "./useScrollProgress";
@@ -174,6 +175,12 @@ export function Proof({ reducedMotion }: { reducedMotion: boolean }) {
             fM: f.pct(op.falseAlarm.mbmp, 1),
           })}
         </p>
+        <Link
+          href="/system"
+          className="mt-4 inline-block text-sm font-medium text-leaf underline-offset-4 hover:underline"
+        >
+          {t("allFigures")}
+        </Link>
       </div>
     </section>
   );

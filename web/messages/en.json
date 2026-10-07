@@ -154,7 +154,8 @@
       "outside": "outside"
     },
     "operating": "At the operating threshold: precision {pV} vs {pM}, recall {rV} vs {rM}, false-alarm rate {fV} vs {fM}.",
-    "chartLabel": "{title}: VayuNetra {vayunetra}, classic MBMP {mbmp}"
+    "chartLabel": "{title}: VayuNetra {vayunetra}, classic MBMP {mbmp}",
+    "allFigures": "Every accuracy figure and matrix, in one place →"
   },
   "Field": {
     "kicker": "India field test",
@@ -314,7 +315,8 @@
     "model": "Model {version}",
     "disclaimer": "Every satellite estimate on this site is screening-grade. Confirm with a hyperspectral satellite, an OGI drone or a ground survey before enforcement or carbon crediting.",
     "scorecard": "Monthly scorecard",
-    "ledger": "Integrity ledger"
+    "ledger": "Integrity ledger",
+    "system": "How it works, and how well"
   },
   "Places": {
     "sites": {
@@ -1082,5 +1084,171 @@
     "siteLink": "Site page →",
     "chartNote": "Each chart shows methane above the site's background node over the last 24 hours; the dashed line is the rise level ({rise} ppm).",
     "ingestNote": "Real nodes post readings to /api/sensors/ingest with their device key."
+  },
+  "System": {
+    "title": "How VayuNetra works, and how well",
+    "intro": "The whole system on one page, with every accuracy figure behind it: the satellite model on held-out test sites, the India field test, and the sensor early-warning model.",
+    "nav": {
+      "scorecard": "Scorecard",
+      "verify": "Integrity ledger",
+      "map": "Public map"
+    },
+    "system": {
+      "title": "The system",
+      "sense": "Sense",
+      "decide": "Decide",
+      "act": "Act and prove",
+      "planned": "planned",
+      "simulated": "simulated",
+      "satellite": {
+        "name": "Sentinel-2 satellite",
+        "text": "Free, every ~5 days. A U-Net AI with {params} million parameters reads {channels} input channels and the MBMP methane signal."
+      },
+      "drone": {
+        "name": "Drone survey",
+        "text": "Flies over a flagged cell on demand to confirm the plume and map it at metre scale."
+      },
+      "sensors": {
+        "name": "Ground sensor network",
+        "text": "Five solar nodes per landfill, a reading every 10 minutes, each compared with an upwind background node."
+      },
+      "gate": {
+        "name": "Physics gate",
+        "text": "Spectral and wind tests sort every flag into T1 methane-confident, T2 probable or T3 surface change."
+      },
+      "confirm": {
+        "name": "Confirmation tracker",
+        "text": "Every T1 or T2 flag opens a task: EMIT match, hyperspectral tasking, OGI drone or ground survey."
+      },
+      "warning": {
+        "name": "Early-warning model",
+        "text": "A {weights}-weight network forecasts a methane rise {h} hours ahead from the pressure trend, the wind forecast and recent readings."
+      },
+      "dashboard": {
+        "name": "Dashboard and alerts",
+        "text": "English and Hindi; emails to state officials; an action dossier per site."
+      },
+      "ledger": {
+        "name": "Mitigation ledger",
+        "text": "Who acts and by when, a capture calculator, metered tonnes."
+      },
+      "scorecard": {
+        "name": "Public scorecard",
+        "text": "Monthly, per landfill, with CSV, JSON and GeoJSON downloads."
+      },
+      "integrity": {
+        "name": "Integrity ledger",
+        "text": "A hash chain of flags, results and readings, time-stamped on Bitcoin."
+      },
+      "audience": "Built for MoHUA, CPCB and state pollution control boards, and municipal corporations."
+    },
+    "loop": {
+      "title": "From flag to verified reduction",
+      "detect": {
+        "name": "Detect",
+        "text": "Satellite AI flags T1, T2 or T3 on every new Sentinel-2 pass; ground sensors warn 3 hours ahead (simulated)."
+      },
+      "confirm": {
+        "name": "Confirm",
+        "text": "Each T1 or T2 flag opens a task: EMIT match, hyperspectral tasking, OGI drone or ground survey."
+      },
+      "act": {
+        "name": "Act",
+        "text": "The only step that removes tonnes: each measure has a named agency, a start date and expected tonnes (modelled)."
+      },
+      "verify": {
+        "name": "Verify",
+        "text": "Only metered gas counts as reduced; the satellite tracks the site's upper bound."
+      },
+      "report": {
+        "name": "Report",
+        "text": "A public scorecard every month, and every record in the Bitcoin-anchored ledger."
+      },
+      "back": "If nothing changes after a measure, the loop goes back to Act with the next one."
+    },
+    "acc": {
+      "title": "Accuracy",
+      "intro": "Every figure below is measured. The sensor model's figures are measured on simulated data and say so.",
+      "vayunetra": "VayuNetra",
+      "mbmp": "Classic MBMP",
+      "measure": "Measure",
+      "lowerBetter": "lower is better",
+      "global": {
+        "title": "Satellite model on held-out test sites",
+        "intro": "MethaneSET test split: sites the model never saw in training, compared with the classic MBMP method. Higher is better, except for false alarms.",
+        "rocAuc": "ROC AUC (0.5 is chance)",
+        "recallAt": "Recall at {far} false alarms",
+        "precision": "Precision at the operating threshold",
+        "recall": "Recall at the operating threshold",
+        "far": "False-alarm rate at the operating threshold",
+        "iou": "Plume outline match (pixel IoU)",
+        "byRate": "Recall for plumes of {bin} t/h",
+        "rateWithin": "Emission rate: {share} of {plumes} real plumes within ±50% of the published MARS rate.",
+        "rateRatio": "Median ratio to the published rate: {ratio} (1.00 means no bias)."
+      },
+      "matrix": {
+        "title": "Accuracy matrices at the operating threshold",
+        "intro": "Rows are what was really there; columns are what the system said. Each share comes from the recall and false-alarm rate above, so these are rates, not counts.",
+        "present": "Plume present",
+        "absent": "No plume",
+        "flagged": "Flagged",
+        "notFlagged": "Not flagged",
+        "caught": "caught",
+        "missed": "missed",
+        "falseAlarm": "false alarm",
+        "quiet": "correctly quiet",
+        "risePresent": "Rise within 3 h",
+        "riseAbsent": "No rise",
+        "warned": "Warned",
+        "notWarned": "Not warned",
+        "sensors": "Sensor early warning (simulated)"
+      },
+      "india": {
+        "title": "India field test, January 2024 to December 2025",
+        "intro": "Ghazipur, Bhalswa, Okhla, Deonar and Pirana, each with a control point {km} km away where no landfill is. A flag at a control point is a false alarm.",
+        "scenes": "Clear scenes",
+        "atCard": "Flags at model threshold {thr}",
+        "atIndia": "Flags at India threshold {thr}",
+        "landfills": "Landfills",
+        "controls": "Control points",
+        "pValue": "Landfill vs control (p)",
+        "flagsNote": "A flag is a scene scored above the threshold, before the physics gate sorts it.",
+        "tiers": "Physics gate on the {flags} landfill flags: T1 {t1}, T2 {t2}, T3 {t3} ({burn} burn-like at Ghazipur).",
+        "perPass": "Per-pass detection over dense Indian landfills: about {share} for plumes of {tph} t/h or more.",
+        "knownTruth": "Known-truth test: the estimated rate was {ratio}× the injected rate at {tph} t/h.",
+        "bounds": "Steady emission ruled out above (95%): Ghazipur {g}, Bhalswa {b}, Deonar {d}, Pirana {p}, Okhla {o} t/h.",
+        "fineTune": "Fine-tuning on Indian backgrounds did not improve held-out detection (AUC about {auc}): the limit is the Sentinel-2 signal over dense cities, which is why VayuNetra is a two-tier system."
+      },
+      "sensor": {
+        "title": "Sensor early-warning model (simulated)",
+        "intro": "Trained and tested on simulated readings driven by real weather at the five landfills, tested on held-out Jul–Sep 2025. These numbers describe the simulator, not real air; the model is retrained once real nodes report.",
+        "model": "Model",
+        "baseline": "Rate-of-change alarm",
+        "warned": "Rises warned in advance",
+        "lead": "Median warning ahead",
+        "minutes": "{n} min",
+        "far": "False-alarm rate",
+        "rocAuc": "ROC AUC",
+        "precision": "Precision at the alert threshold",
+        "weights": "{n} weights; about {week} false warnings per node per week. Comparison: {other}."
+      },
+      "limits": {
+        "title": "What these numbers do not show",
+        "one": "Every satellite estimate is screening-grade: confirm with a hyperspectral satellite, an OGI drone or a ground survey before enforcement or carbon crediting.",
+        "two": "On one pass at the operating threshold the satellite model catches about 3 in 10 plumes; repeated passes and the ground tier make up the rest.",
+        "three": "T2 and T3 flags are not methane detections: T2 is probable and needs confirmation, T3 is surface change rejected as methane.",
+        "four": "The sensor network is simulated until real nodes report; its figures will be re-measured on real readings."
+      }
+    },
+    "proof": {
+      "title": "Proof",
+      "intro": "Flags, confirmation results, mitigation commitments, metered readings and monthly scorecards go into an append-only hash chain, time-stamped on Bitcoin through OpenTimestamps.",
+      "entries": "Ledger entries",
+      "anchors": "Chain heads stamped",
+      "bitcoin": "Latest Bitcoin block",
+      "waiting": "waiting",
+      "verify": "Check the chain yourself →",
+      "scorecard": "Monthly scorecard →"
+    }
   }
 }

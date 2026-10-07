@@ -144,6 +144,12 @@ export function Footer({
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link
+              href="/system"
+              className="text-signal underline-offset-4 hover:underline"
+            >
+              {t("system")}
+            </Link>
+            <Link
               href="/scorecard"
               className="text-signal underline-offset-4 hover:underline"
             >
