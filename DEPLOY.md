@@ -218,6 +218,37 @@ The same workflow calls two more routes on every run, with the same secret:
 Neither needs a paid service. Check the ledger at `/verify`: the first anchors show "waiting for a
 block" and turn into a Bitcoin block number within a few hours.
 
+A fourth route runs the ground sensor network:
+
+| Path                | What it does                                                                                   |
+| ------------------- | ---------------------------------------------------------------------------------------------- |
+| `/api/cron/sensors` | simulated nodes catch up to now; every node gets a 3-hour rise forecast; alerts open and close |
+
+Place the simulated network once (five nodes per landfill, labelled Simulated everywhere):
+
+```bash
+cd web
+SUPABASE_URL=<url> SUPABASE_SERVICE_ROLE_KEY=<service_role> node scripts/sensor-provision.mjs
+curl -H "Authorization: Bearer <CRON_SECRET>" "https://vayunetra-india.vercel.app/api/cron/sensors?replay=48"
+```
+
+The `replay=48` call walks the alert logic through the two backfilled days, so the dashboard starts
+with a track record. Real nodes are registered under **Dashboard → Sensors** and post to
+`/api/sensors/ingest` (see `hardware/sensor-node`).
+
+**Schedule inside Supabase (recommended).** GitHub's free schedule runs every few hours in practice.
+The migration `20261008000200_scheduler.sql` adds pg_cron jobs that call all four routes (alerts and
+sensors every 15 minutes, fires and the ledger hourly) through pg_net. They need two Vault secrets,
+set once in the Supabase SQL editor:
+
+```sql
+select vault.create_secret('https://vayunetra-india.vercel.app', 'vayu_site_url');
+select vault.create_secret('<CRON_SECRET>', 'vayu_cron_secret');
+```
+
+Check: `select jobname, schedule from cron.job;` lists four jobs, and after 15 minutes
+`select status_code from net._http_response order by created desc limit 4;` shows 200s.
+
 On the Pro plan you can instead set the alerts schedule in `web/vercel.json` to `*/15 * * * *` and
 delete the workflow. GitHub pauses scheduled workflows in a public repository after 60 days without
 commits; re-enable it on the workflow page if that happens.
