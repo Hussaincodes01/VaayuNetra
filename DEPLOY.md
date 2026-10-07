@@ -95,6 +95,12 @@ Check: **Authentication → Emails → SMTP Settings** in Supabase shows the Gma
   token. Restrict it to your domain too.
 - **Groq** (optional): create an API key at console.groq.com. Without it the dashboard says AI
   briefings are not configured, and everything else works.
+- **NASA FIRMS** (optional, free): request a MAP_KEY at
+  https://firms.modaps.eosdis.nasa.gov/api/map_key/ with your email. It turns on the landfill fire
+  log; without it the fire panels say the log is not configured.
+- **Partner keys** (optional): for each partner app that sends citizen reports (EcoSathi), generate a
+  random key with the command below and store them as `PARTNER_API_KEYS={"ecosathi":"<key>"}`.
+  Give the partner its key and the endpoint `POST /api/partners/reports`.
 - **Cron secret:** generate a random value:
 
   ```bash
@@ -122,6 +128,8 @@ cp .env.example .env.production
 | `NEXT_PUBLIC_VIDEO_URL`              | the film: https://www.youtube.com/watch?v=NFfkrmYtKDA | optional; the film section needs it |
 | `ALERT_LOOKBACK_DAYS`                | default 30                                            | optional                            |
 | `ALERTS_TWILIO_ENABLED`, `TWILIO_*`  | `true` plus Twilio SID, token and sender              | optional                            |
+| `FIRMS_MAP_KEY`                      | NASA FIRMS MAP_KEY                                    | optional; the fire log needs it     |
+| `PARTNER_API_KEYS`                   | `{"ecosathi":"<key>"}`                                | optional; citizen reports need it   |
 | `ANTHROPIC_API_KEY`                  | not used by the current code                          | leave empty                         |
 
 Check: every "yes" row has a value.
@@ -199,6 +207,16 @@ database before it is sent, so the daily Vercel run and the 15-minute run never 
    variable named `VAYU_SITE_URL` with the production URL, `https://vayunetra-india.vercel.app`.
 3. Open https://github.com/Hussaincodes01/VaayuNetra/actions/workflows/alerts.yml and click
    **Run workflow** once. The log shows `ok: true | events: 0 | worker alerts: 0`.
+
+The same workflow calls two more routes on every run, with the same secret:
+
+| Path               | What it does                                                                                                                                                              |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/api/cron/fires`  | polls NASA FIRMS at most hourly; stores detections within 1 km of each landfill, emails new ones                                                                          |
+| `/api/cron/anchor` | freezes last month's scorecard into the integrity ledger, stamps the chain head on OpenTimestamps at most hourly, upgrades pending proofs and checks them against Bitcoin |
+
+Neither needs a paid service. Check the ledger at `/verify`: the first anchors show "waiting for a
+block" and turn into a Bitcoin block number within a few hours.
 
 On the Pro plan you can instead set the alerts schedule in `web/vercel.json` to `*/15 * * * *` and
 delete the workflow. GitHub pauses scheduled workflows in a public repository after 60 days without
