@@ -78,10 +78,10 @@ create table public.sensor_alerts (
 create unique index sensor_alerts_one_open on public.sensor_alerts (node_id, kind) where closed_at is null;
 create index sensor_alerts_node_idx on public.sensor_alerts (node_id, opened_at desc);
 
--- Alert levels (public, admin-editable).
+-- Alert levels (public, admin-editable). The early-warning probability comes from the model's
+-- alert threshold (src/lib/sensor-model.json) unless an admin sets sensor_alert_p.
 insert into public.settings (key, value, is_public) values
   ('sensor_rise_ppm', '25'::jsonb, true),       -- 30-minute mean above the background node that counts as a rise
-  ('sensor_alert_p', '0.6'::jsonb, true),       -- forecast probability that opens an early warning
   ('sensor_lel_ppm', '5000'::jsonb, true),      -- 10% of methane's lower explosive limit (5% by volume)
   ('sensor_offline_min', '60'::jsonb, true)
 on conflict (key) do nothing;
