@@ -24,7 +24,7 @@ concurrency:
 
 jobs:
   alerts:
-    name: call /api/cron/alerts and /api/cron/fires
+    name: call the alert, fire-log and ledger cron routes
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -67,5 +67,20 @@ jobs:
           fi
           if [ "$code" != "200" ]; then
             echo "::error::/api/cron/fires answered HTTP $code (see the Vercel function logs for details)"
+            exit 1
+          fi
+
+      - name: Call the integrity-ledger anchor route
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          SITE_URL: ${{ vars.VAYU_SITE_URL }}
+        run: |
+          if [ -z "$CRON_SECRET" ] || [ -z "$SITE_URL" ]; then exit 0; fi
+          # Stamps a new ledger head on OpenTimestamps at most hourly and upgrades pending proofs.
+          code=$(curl -sS -o anchor.json -w '%{http_code}' -m 90 \
+            -H "Authorization: Bearer $CRON_SECRET" "${SITE_URL%/}/api/cron/anchor")
+          jq -r '"ok: \(.ok) | stamped on: \(.submitted // [] | join(", ")) | confirmed in Bitcoin: \(.confirmed // [] | length)"' anchor.json || true
+          if [ "$code" != "200" ]; then
+            echo "::error::/api/cron/anchor answered HTTP $code (see the Vercel function logs for details)"
             exit 1
           fi

@@ -149,6 +149,12 @@ export function Footer({
             >
               {t("scorecard")}
             </Link>
+            <Link
+              href="/verify"
+              className="text-signal underline-offset-4 hover:underline"
+            >
+              {t("ledger")}
+            </Link>
             <a
               href={SOURCES.github}
               target="_blank"

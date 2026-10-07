@@ -313,7 +313,8 @@
     "licence": "Code: MIT licence.",
     "model": "Model {version}",
     "disclaimer": "Every satellite estimate on this site is screening-grade. Confirm with a hyperspectral satellite, an OGI drone or a ground survey before enforcement or carbon crediting.",
-    "scorecard": "Monthly scorecard"
+    "scorecard": "Monthly scorecard",
+    "ledger": "Integrity ledger"
   },
   "Places": {
     "sites": {
@@ -931,6 +932,70 @@
       "medianHours": "median {hours} h to close",
       "commitments": "Commitments",
       "overPasses": "minimum estimate over {n} passes"
-    }
+    },
+    "ledgerLink": "Every figure on this page is also written into the integrity ledger, time-stamped on Bitcoin."
+  },
+  "Verify": {
+    "title": "Integrity ledger",
+    "intro": "Every flag, confirmation result, mitigation commitment, metered reading and monthly scorecard is written into an append-only hash chain, and the chain is time-stamped on Bitcoin through OpenTimestamps. Anyone can check that no record was changed after it was written.",
+    "scorecard": "Scorecard",
+    "map": "Public map",
+    "stats": {
+      "entries": "Entries in the ledger",
+      "anchors": "Chain heads stamped",
+      "bitcoin": "Latest Bitcoin block",
+      "waiting": "waiting"
+    },
+    "check": {
+      "title": "Check the chain yourself",
+      "intro": "Your browser downloads every entry, recomputes each SHA-256 hash and follows every link. Nothing on this page is taken on trust.",
+      "run": "Check the whole chain",
+      "running": "Checking… {n} entries",
+      "ok": "All {n} entries check out, and {anchors, plural, =0 {no heads are stamped yet} one {# stamped head matches} other {# stamped heads match}}. Chain head:",
+      "broken": {
+        "payload": "Entry #{id}: its text does not match its hash.",
+        "entry": "Entry #{id}: its entry hash does not check out.",
+        "link": "Entry #{id}: it does not link to the entry before it.",
+        "order": "Entry #{id}: an entry is missing before it.",
+        "anchor": "The stamped head at entry #{id} does not match the chain."
+      },
+      "error": "The check could not run: {reason}"
+    },
+    "anchors": {
+      "title": "Bitcoin anchors",
+      "intro": "Each time the chain grows, its head is sent to two free OpenTimestamps calendars, which commit it to a Bitcoin block within hours. We then check each proof against that block's Merkle root.",
+      "none": "No heads stamped yet; the first goes out on the next scheduled run.",
+      "when": "Stamped",
+      "covers": "Covers",
+      "calendar": "Calendar",
+      "status": "Bitcoin",
+      "files": "Proof files",
+      "upTo": "entries 1–{n}",
+      "confirmed": "block #{block}",
+      "pending": "waiting for a block (usually a few hours)"
+    },
+    "recent": "Latest entries",
+    "allEntries": "All entries as JSON",
+    "kinds": {
+      "flag": "Flag",
+      "confirmation": "Confirmation",
+      "measure": "Measure",
+      "meter": "Metered reading",
+      "scorecard": "Scorecard"
+    },
+    "entry": {
+      "flag": "{site}: {tier} flag on the pass of {date}",
+      "confirmation": "{site}: verification result, {result}",
+      "measure": "{site}: {title} ({status})",
+      "meter": "{site}: {t} t methane destroyed (metered)",
+      "scorecard": "Scorecard for {month}"
+    },
+    "how": {
+      "title": "Verify a proof without us",
+      "one": "Download a head's .txt file and its .ots proof from the table above.",
+      "two": "The .txt file holds the entry number and hash it stamps; the checker above shows the same hash for that entry.",
+      "three": "Drop both files on <link>opentimestamps.org</link> (or run ots verify) to see the Bitcoin block that proves they existed at that time."
+    },
+    "scope": "The ledger holds no personal data: no names, emails, notes or report text. A timestamp proves a record existed and has not changed since; it does not turn a screening-grade figure into a verified one."
   }
 }

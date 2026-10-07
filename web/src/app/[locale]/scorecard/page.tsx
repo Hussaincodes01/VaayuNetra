@@ -82,6 +82,11 @@ export default async function ScorecardPage({ params, searchParams }: Props) {
           </h1>
           <p className="max-w-3xl text-foreground/80">{t("intro")}</p>
           <MonthNav path="/scorecard" month={month} />
+          <p className="text-sm">
+            <Link href="/verify" className="text-leaf hover:underline">
+              {t("ledgerLink")}
+            </Link>
+          </p>
         </div>
 
         {data && totals ? (
