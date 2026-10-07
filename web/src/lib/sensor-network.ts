@@ -293,14 +293,12 @@ async function forecastSite(
       out.closed.push(a.kind);
     };
     const openAlert = async (kind: string, at: number, extra: Row) => {
-      const { error } = await s
-        .from("sensor_alerts")
-        .insert({
-          node_id: node.id,
-          kind,
-          opened_at: new Date(at).toISOString(),
-          ...extra,
-        });
+      const { error } = await s.from("sensor_alerts").insert({
+        node_id: node.id,
+        kind,
+        opened_at: new Date(at).toISOString(),
+        ...extra,
+      });
       if (!error) out.opened.push(kind);
     };
 
@@ -390,8 +388,16 @@ async function forecastSite(
   return outcomes;
 }
 
-/** One run of the network: simulate, forecast, alert, trim. */
-export async function runNetwork(s: SupabaseClient, now = Date.now()) {
+/**
+ * One run of the network: simulate, forecast, alert, trim. `replayHours` (first run only) walks the
+ * alert logic through the backfilled window every 30 minutes, as if the cron had been running, so a
+ * new network starts with a track record; sites that already have alerts are not replayed.
+ */
+export async function runNetwork(
+  s: SupabaseClient,
+  now = Date.now(),
+  replayHours = 0,
+) {
   const [nodes, levels] = await Promise.all([loadNodes(s), loadLevels(s)]);
   const bySite = new Map<string, NetworkNode[]>();
   nodes.forEach((n) =>
@@ -404,8 +410,29 @@ export async function runNetwork(s: SupabaseClient, now = Date.now()) {
     try {
       const weather = await fetchWeather(site.lat, site.lon, 3);
       simulated += await simulate(s, group, weather, now);
+      let replayed = 0;
+      if (replayHours > 0) {
+        const { count } = await s
+          .from("sensor_alerts")
+          .select("id", { count: "exact", head: true })
+          .in(
+            "node_id",
+            group.map((n) => n.id),
+          );
+        if (!count) {
+          const step = 30 * 60_000;
+          for (
+            let t = Math.ceil((now - replayHours * H) / step) * step;
+            t < now;
+            t += step
+          ) {
+            await forecastSite(s, group, weather, levels, t);
+            replayed++;
+          }
+        }
+      }
       const outcomes = await forecastSite(s, group, weather, levels, now);
-      sites.push({ site: site.slug, nodes: outcomes });
+      sites.push({ site: site.slug, replayed, nodes: outcomes });
     } catch (e) {
       sites.push({ site: site.slug, error: (e as Error).message });
     }

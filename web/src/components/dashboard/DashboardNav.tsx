@@ -19,8 +19,6 @@ export function DashboardNav({ viewer }: { viewer: Viewer }) {
     { href: "/dashboard", label: t("overview") },
     { href: "/dashboard/sustainability", label: t("sustainability") },
     { href: "/dashboard/sensors", label: t("sensors") },
-    { href: "/dashboard/sensors", label: t("sensors") },
-    { href: "/dashboard/sensors", label: t("sensors") },
     { href: "/map", label: t("map") },
     ...(viewer.role === "admin"
       ? [{ href: "/dashboard/settings", label: t("settings") }]

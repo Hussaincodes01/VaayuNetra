@@ -28,7 +28,8 @@ async function rest(path, init = {}) {
   });
   if (!res.ok)
     throw new Error(`${path}: HTTP ${res.status} ${await res.text()}`);
-  return res.status === 204 ? null : res.json();
+  const text = await res.text();
+  return text ? JSON.parse(text) : null;
 }
 
 async function yearOfWeather(lat, lon) {

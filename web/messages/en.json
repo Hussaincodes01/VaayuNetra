@@ -1073,7 +1073,7 @@
     "minutes": "{n} min",
     "model": {
       "title": "The model",
-      "summary": "A {weights}-weight neural network that forecasts a rise {h} hours ahead. On held-out simulated data (Jul–Sep 2025): ROC AUC {auc}; at the alert setting it warned before {warned} of rises, a median {lead} minutes ahead, against {baseWarned} and {lead} minutes for a rate-of-change alarm; about {fw} false warnings per node per week.",
+      "summary": "A {weights}-weight neural network that forecasts a rise {h} hours ahead. On held-out simulated data (Jul–Sep 2025): ROC AUC {auc}; at the alert setting it warned before {warned} of rises, a median {lead} minutes ahead, against {baseWarned} and {baseLead} minutes for a rate-of-change alarm; about {fw} false warnings per node per week.",
       "honest": "Trained and tested on simulated readings, so these numbers describe the simulator, not real air. Retrain on real readings before relying on it; a warning is screening-grade and calls for a check on the ground.",
       "levels": "rise level {rise} ppm above background · warning at {p}"
     },
