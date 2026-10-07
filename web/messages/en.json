@@ -371,7 +371,8 @@
         "officer": "officer",
         "admin": "admin"
       },
-      "sustainability": "Sustainability"
+      "sustainability": "Sustainability",
+      "sensors": "Sensors"
     },
     "status": {
       "priority": "T1 methane evidence",
@@ -432,7 +433,8 @@
       "ground": "Ground view",
       "cutTitle": "Cut the emissions",
       "cutIntro": "Confirm, plan, act and meter: the steps that turn a flag into a verified reduction.",
-      "conditionsTitle": "Site conditions"
+      "conditionsTitle": "Site conditions",
+      "sensorsLink": "Ground sensors at this site →"
     },
     "evidence": {
       "score": "score {score}",
@@ -997,5 +999,88 @@
       "three": "Drop both files on <link>opentimestamps.org</link> (or run ots verify) to see the Bitcoin block that proves they existed at that time."
     },
     "scope": "The ledger holds no personal data: no names, emails, notes or report text. A timestamp proves a record existed and has not changed since; it does not turn a screening-grade figure into a verified one."
+  },
+  "Sensors": {
+    "title": "Ground sensor network",
+    "intro": "Low-cost methane sensor nodes around each flagged landfill report every 10 minutes. A small model reads the pressure trend, the wind forecast and recent readings, and warns when a rise is likely in the next {h} hours. Falling air pressure pushes landfill gas out, so the warning can come before the level rises.",
+    "simulatedNote": "No sensors are installed yet. The nodes marked Simulated report from a physics-based simulator driven by real weather at each site, so the network, the warnings and the dashboard can be tested before hardware arrives. Simulated data never enters the integrity ledger and never emails anyone.",
+    "simulated": "Simulated",
+    "roles": {
+      "perimeter": "Perimeter",
+      "community": "Community",
+      "background": "Background"
+    },
+    "status": {
+      "rise": "Rise",
+      "warning": "Warning",
+      "normal": "Normal",
+      "quiet": "No recent data"
+    },
+    "level": "Methane now",
+    "excess": "Above background",
+    "role": "Role",
+    "max24": "24-hour peak",
+    "baseline": "baseline",
+    "pRise": "Rise in 3 h",
+    "chartLabel": "{code}: methane above background over the last 24 hours",
+    "seen": "last reading {when}",
+    "neverSeen": "no readings yet",
+    "kinds": {
+      "forecast_rise": "Early warning",
+      "threshold": "Rise",
+      "lel": "Explosion risk",
+      "offline": "Offline"
+    },
+    "warnText": "A rise is likely within 3 hours ({p}).",
+    "outcome": {
+      "rise": "It came true.",
+      "noRise": "No rise followed."
+    },
+    "riseText": "Methane {ppm} ppm above background.",
+    "warnedAhead": "Warned {min} minutes ahead.",
+    "notWarned": "No early warning preceded it.",
+    "lelText": "A reading reached {ppm} ppm, 10% of methane's lower explosive limit. Keep people and flames away and check on the ground.",
+    "offlineText": "The node has stopped reporting.",
+    "closed": "Closed {when}.",
+    "acknowledge": "Acknowledge",
+    "acknowledged": "Acknowledged {when}",
+    "noAlerts": "No alerts in the last 30 days.",
+    "showAll": "Show all {n}",
+    "add": {
+      "title": "Register a real sensor node",
+      "intro": "Creates a live node and shows its device key once; flash the key into the node's firmware (hardware/sensor-node). Readings then go to POST /api/sensors/ingest.",
+      "site": "Site",
+      "code": "Node code",
+      "role": "Role",
+      "roles": {
+        "perimeter": "Perimeter",
+        "community": "Community",
+        "background": "Background"
+      },
+      "lat": "Latitude",
+      "lon": "Longitude",
+      "sensor": "Sensor",
+      "create": "Create node",
+      "keyOnce": "Device key (shown once; store it now):"
+    },
+    "record": {
+      "title": "Early-warning record, last 30 days",
+      "warnings": "Warnings closed",
+      "cameTrue": "Came true",
+      "lead": "Median warning ahead",
+      "rises": "{rises} rises recorded, {warned} of them warned in advance."
+    },
+    "minutes": "{n} min",
+    "model": {
+      "title": "The model",
+      "summary": "A {weights}-weight neural network that forecasts a rise {h} hours ahead. On held-out simulated data (Jul–Sep 2025): ROC AUC {auc}; at the alert setting it warned before {warned} of rises, a median {lead} minutes ahead, against {baseWarned} and {lead} minutes for a rate-of-change alarm; about {fw} false warnings per node per week.",
+      "honest": "Trained and tested on simulated readings, so these numbers describe the simulator, not real air. Retrain on real readings before relying on it; a warning is screening-grade and calls for a check on the ground.",
+      "levels": "rise level {rise} ppm above background · warning at {p}"
+    },
+    "alertsTitle": "Alerts",
+    "none": "No sensor nodes yet. Run scripts/sensor-provision.mjs to add a simulated network, or register a real node below.",
+    "siteLink": "Site page →",
+    "chartNote": "Each chart shows methane above the site's background node over the last 24 hours; the dashed line is the rise level ({rise} ppm).",
+    "ingestNote": "Real nodes post readings to /api/sensors/ingest with their device key."
   }
 }

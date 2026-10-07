@@ -223,12 +223,20 @@ export default async function SitePage({ params }: Params) {
       </section>
 
       <section aria-labelledby="conditions-title" className="space-y-4">
-        <h2
-          id="conditions-title"
-          className="font-heading text-xl font-semibold"
-        >
-          {t("conditionsTitle")}
-        </h2>
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <h2
+            id="conditions-title"
+            className="font-heading text-xl font-semibold"
+          >
+            {t("conditionsTitle")}
+          </h2>
+          <Link
+            href={`/dashboard/sensors#${site.slug}`}
+            className="text-sm text-leaf hover:underline"
+          >
+            {t("sensorsLink")}
+          </Link>
+        </div>
         <div className="grid gap-6 lg:grid-cols-2">
           <FireLog
             fires={green.fires}
