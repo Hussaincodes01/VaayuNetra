@@ -17,6 +17,7 @@ export function DashboardNav({ viewer }: { viewer: Viewer }) {
   const other = locale === "hi" ? "en" : "hi";
   const links = [
     { href: "/dashboard", label: t("overview") },
+    { href: "/dashboard/sustainability", label: t("sustainability") },
     { href: "/map", label: t("map") },
     ...(viewer.role === "admin"
       ? [{ href: "/dashboard/settings", label: t("settings") }]

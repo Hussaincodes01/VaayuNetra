@@ -40,6 +40,7 @@ jobs:
       - run: pnpm lint
       - run: pnpm format:check
       - run: pnpm typecheck
+      - run: pnpm test:unit
       - run: pnpm check:server-only
       - run: pnpm build
 

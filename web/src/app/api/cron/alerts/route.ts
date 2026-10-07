@@ -2,6 +2,7 @@ import "server-only";
 
 import { NextResponse } from "next/server";
 import { cronGuard, lazy } from "@/lib/alerts/cron";
+import { runReportEscalation } from "@/lib/alerts/escalate";
 import { loadDirectory } from "@/lib/alerts/people";
 import { runEventAlerts, runWorkerOffline } from "@/lib/alerts/run";
 import { EMAIL_NOT_CONFIGURED, emailConfigured } from "@/lib/email";
@@ -13,7 +14,7 @@ export const maxDuration = 60;
 /**
  * Vercel Cron, every 15 minutes (vercel.json): email new T1/T2 events to the state's recipients
  * (plus WhatsApp/SMS when ALERTS_TWILIO_ENABLED=true), and tell admins once when the worker has
- * been silent for more than two hours.
+ * been silent for more than two hours, and about citizen reports still open past their deadline.
  */
 export async function GET(request: Request) {
   const denied = cronGuard(request);
@@ -26,9 +27,12 @@ export async function GET(request: Request) {
   try {
     const events = await runEventAlerts(admin, now, dir);
     const worker = await runWorkerOffline(admin, now, dir);
-    const failed = [...events, ...worker].some((o) => o.result === "failed");
+    const reports = await runReportEscalation(admin, now, dir);
+    const failed =
+      [...events, ...worker].some((o) => o.result === "failed") ||
+      reports.result === "failed";
     return NextResponse.json(
-      { ok: !failed, at: now.toISOString(), events, worker },
+      { ok: !failed, at: now.toISOString(), events, worker, reports },
       { status: failed ? 502 : 200 },
     );
   } catch (e) {

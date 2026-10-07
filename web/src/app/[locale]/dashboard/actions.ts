@@ -5,34 +5,24 @@ import "server-only";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import {
-  ACTION_FLOW,
-  getViewer,
-  type ActionStatus,
-} from "@/lib/dashboard-data";
+  formText as text,
+  requireRole,
+  uploadAttachment,
+  type Result,
+} from "@/lib/dashboard-auth";
+import { ACTION_FLOW, type ActionStatus } from "@/lib/dashboard-data";
 import { sendEmail } from "@/lib/email";
 import {
   createAdminClient,
   createClient,
   serviceRoleConfigured,
 } from "@/lib/supabase/server";
+import { CONFIRM_METHODS, type ConfirmMethod } from "@/lib/sustainability";
 import { SITE_URL } from "@/lib/site-url";
 
-export type Result =
-  { ok: true; message?: string } | { ok: false; error: string };
+export type { Result };
 
 const STATUSES = Object.keys(ACTION_FLOW) as ActionStatus[];
-const text = (form: FormData, key: string, max = 2000) =>
-  String(form.get(key) ?? "")
-    .trim()
-    .slice(0, max);
-
-async function requireRole(min: "viewer" | "officer" | "admin") {
-  const supabase = await createClient();
-  const viewer = await getViewer(supabase);
-  const rank = { viewer: 0, officer: 1, admin: 2 } as const;
-  if (!viewer || rank[viewer.role] < rank[min]) throw new Error("not allowed");
-  return { supabase, viewer };
-}
 
 /** Email the assignee (service role reads their address). False if email is not configured. */
 async function notifyAssignee(
@@ -59,23 +49,6 @@ async function notifyAssignee(
   );
 }
 
-async function uploadAttachment(
-  supabase: Awaited<ReturnType<typeof createClient>>,
-  actionId: string,
-  file: File | null,
-): Promise<string | null> {
-  if (!file || file.size === 0) return null;
-  if (file.size > 20 * 1024 * 1024)
-    throw new Error("attachment larger than 20 MB");
-  const safe = file.name.replace(/[^\w.-]+/g, "_").slice(-120);
-  const path = `${actionId}/${Date.now()}_${safe}`;
-  const { error } = await supabase.storage
-    .from("attachments")
-    .upload(path, file, { contentType: file.type || undefined });
-  if (error) throw new Error(error.message);
-  return path;
-}
-
 export async function createAction(form: FormData): Promise<Result> {
   try {
     const { supabase } = await requireRole("officer");
@@ -85,6 +58,12 @@ export async function createAction(form: FormData): Promise<Result> {
     const assignee = text(form, "assignee", 64) || null;
     const dueDate = text(form, "dueDate", 10) || null;
     const note = text(form, "note") || null;
+    const confirmMethod = text(form, "confirmMethod", 40) || null;
+    if (
+      confirmMethod &&
+      !CONFIRM_METHODS.includes(confirmMethod as ConfirmMethod)
+    )
+      return { ok: false, error: "invalid" };
     const slug = text(form, "slug", 80);
     const siteName = text(form, "siteName", 120);
     const locale = text(form, "locale", 4);
@@ -99,6 +78,7 @@ export async function createAction(form: FormData): Promise<Result> {
         assignee,
         due_date: dueDate,
         note,
+        confirm_method: confirmMethod,
       })
       .select("id")
       .single();
@@ -141,6 +121,12 @@ export async function updateAction(form: FormData): Promise<Result> {
       patch.assignee = text(form, "assignee", 64) || null;
     if (form.has("dueDate")) patch.due_date = text(form, "dueDate", 10) || null;
     if (form.has("note")) patch.note = text(form, "note") || null;
+    if (form.has("confirmMethod")) {
+      const m = text(form, "confirmMethod", 40);
+      if (m && !CONFIRM_METHODS.includes(m as ConfirmMethod))
+        return { ok: false, error: "invalid" };
+      patch.confirm_method = m || null;
+    }
     const path = await uploadAttachment(
       supabase,
       id,

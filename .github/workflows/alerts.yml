@@ -24,7 +24,7 @@ concurrency:
 
 jobs:
   alerts:
-    name: call /api/cron/alerts
+    name: call /api/cron/alerts and /api/cron/fires
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -48,5 +48,24 @@ jobs:
           fi
           if [ "$code" != "200" ]; then
             echo "::error::/api/cron/alerts answered HTTP $code (see the Vercel function logs for details)"
+            exit 1
+          fi
+
+      - name: Call the fire-log cron route
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          SITE_URL: ${{ vars.VAYU_SITE_URL }}
+        run: |
+          if [ -z "$CRON_SECRET" ] || [ -z "$SITE_URL" ]; then exit 0; fi
+          # The route polls NASA FIRMS at most once an hour; other runs answer "polled recently".
+          code=$(curl -sS -o fires.json -w '%{http_code}' -m 90 \
+            -H "Authorization: Bearer $CRON_SECRET" "${SITE_URL%/}/api/cron/fires")
+          jq -r '"ok: \(.ok) | new detections: \(.inserted // [] | length) | emails: \(.mailed // 0) | \(.skipped // "")"' fires.json || true
+          if [ "$code" = "503" ]; then
+            echo "::notice::/api/cron/fires is not configured yet (HTTP 503); set FIRMS_MAP_KEY in Vercel."
+            exit 0
+          fi
+          if [ "$code" != "200" ]; then
+            echo "::error::/api/cron/fires answered HTTP $code (see the Vercel function logs for details)"
             exit 1
           fi

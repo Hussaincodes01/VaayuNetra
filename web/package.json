@@ -11,6 +11,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check:server-only": "node scripts/check-server-only.mjs",
+    "test:unit": "node --test \"tests/unit/*.test.mjs\"",
     "test:e2e": "playwright test"
   },
   "dependencies": {

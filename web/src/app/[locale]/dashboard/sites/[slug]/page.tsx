@@ -11,6 +11,12 @@ import { DetectionCard, EmissionsCard } from "@/components/dashboard/SiteCards";
 import { ExplainSite, ExportsBar } from "@/components/dashboard/SiteTools";
 import { StatusBadge } from "@/components/dashboard/StatusBadge";
 import { GroundView } from "@/components/landing/GroundView";
+import { CaptureCalculator } from "@/components/sustainability/CaptureCalculator";
+import { CarbonFinanceFile } from "@/components/sustainability/CarbonFinanceFile";
+import { CitizenReports } from "@/components/sustainability/CitizenReports";
+import { FireLog } from "@/components/sustainability/FireLog";
+import { MeasuresLedger } from "@/components/sustainability/MeasuresLedger";
+import { RemediationCard } from "@/components/sustainability/RemediationCard";
 import { Link } from "@/i18n/navigation";
 import {
   getHeartbeat,
@@ -20,6 +26,7 @@ import {
 } from "@/lib/dashboard-data";
 import { placeName } from "@/lib/format";
 import { createClient } from "@/lib/supabase/server";
+import { getSiteSustainability } from "@/lib/sustainability-data";
 
 type Params = { params: Promise<{ locale: string; slug: string }> };
 
@@ -46,6 +53,7 @@ export default async function SitePage({ params }: Params) {
   ]);
   if (!detail || !viewer) notFound();
   const { site, scans, actions, jobs, assignees, control, briefings } = detail;
+  const green = await getSiteSustainability(supabase, site.id);
   const { data: gwpRows } = await supabase
     .from("settings")
     .select("key,value")
@@ -180,6 +188,65 @@ export default async function SitePage({ params }: Params) {
           )}
         </div>
       </div>
+
+      <section aria-labelledby="cut-title" className="space-y-4">
+        <div>
+          <h2 id="cut-title" className="font-heading text-xl font-semibold">
+            {t("cutTitle")}
+          </h2>
+          <p className="mt-1 text-sm text-muted-foreground">{t("cutIntro")}</p>
+        </div>
+        <div className="grid gap-6 lg:grid-cols-2">
+          <CaptureCalculator
+            minMeanKgph={site.minMeanKgph}
+            upperTph={site.persistentUpperTph}
+            capture={green.assumptions.capture}
+            defaultShare={green.assumptions.captureShare}
+          />
+          <CarbonFinanceFile
+            siteId={site.id}
+            confirmed={green.confirmed}
+            minMeanKgph={site.minMeanKgph}
+            measures={green.measures}
+            meters={green.meters}
+            gwp100={green.assumptions.capture.gwp100}
+            canAct={canAct}
+          />
+        </div>
+        <MeasuresLedger
+          site={siteInfo}
+          measures={green.measures}
+          canAct={canAct}
+          defaultShare={green.assumptions.captureShare}
+        />
+      </section>
+
+      <section aria-labelledby="conditions-title" className="space-y-4">
+        <h2
+          id="conditions-title"
+          className="font-heading text-xl font-semibold"
+        >
+          {t("conditionsTitle")}
+        </h2>
+        <div className="grid gap-6 lg:grid-cols-2">
+          <FireLog
+            fires={green.fires}
+            canAct={canAct}
+            configured={green.firmsConfigured}
+          />
+          <RemediationCard
+            siteId={site.id}
+            rows={green.remediation}
+            canAct={canAct}
+          />
+        </div>
+        <CitizenReports
+          reports={green.reports}
+          assignees={assignees}
+          canAct={canAct}
+          slaHours={green.assumptions.reportSlaHours}
+        />
+      </section>
 
       <ExplainSite
         slug={site.slug}

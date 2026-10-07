@@ -106,6 +106,9 @@ function mapAction(r: Row): ActionRow {
     dueDate: (r.due_date as string) ?? null,
     note: (r.note as string) ?? null,
     attachmentUrl: (r.attachment_url as string) ?? null,
+    confirmMethod: (r.confirm_method as ActionRow["confirmMethod"]) ?? null,
+    origin: r.origin === "auto" ? "auto" : "manual",
+    resultAt: (r.result_at as string) ?? null,
     createdBy: (r.created_by as string) ?? null,
     createdAt: String(r.created_at),
   };

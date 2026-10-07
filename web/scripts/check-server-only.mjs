@@ -18,6 +18,8 @@ const SECRETS = [
   "SMTP_PASS",
   "CRON_SECRET",
   "TWILIO_AUTH_TOKEN",
+  "FIRMS_MAP_KEY",
+  "PARTNER_API_KEYS",
 ];
 const root = join(fileURLToPath(import.meta.url), "..", "..");
 const src = join(root, "src");

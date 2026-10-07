@@ -110,6 +110,16 @@ export type ActionRow = {
   attachmentUrl: string | null;
   createdBy: string | null;
   createdAt: string;
+  /** How the verification was or will be done (confirmation tracker). */
+  confirmMethod:
+    | "emit_match"
+    | "hyperspectral_tasking"
+    | "ogi_drone"
+    | "ground_survey"
+    | null;
+  /** "auto" when the database opened it for a new T1/T2 flag. */
+  origin: "manual" | "auto";
+  resultAt: string | null;
 };
 
 export type JobRow = {

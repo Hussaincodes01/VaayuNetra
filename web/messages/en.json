@@ -312,7 +312,8 @@
     "github": "GitHub",
     "licence": "Code: MIT licence.",
     "model": "Model {version}",
-    "disclaimer": "Every satellite estimate on this site is screening-grade. Confirm with a hyperspectral satellite, an OGI drone or a ground survey before enforcement or carbon crediting."
+    "disclaimer": "Every satellite estimate on this site is screening-grade. Confirm with a hyperspectral satellite, an OGI drone or a ground survey before enforcement or carbon crediting.",
+    "scorecard": "Monthly scorecard"
   },
   "Places": {
     "sites": {
@@ -368,7 +369,8 @@
         "viewer": "viewer",
         "officer": "officer",
         "admin": "admin"
-      }
+      },
+      "sustainability": "Sustainability"
     },
     "status": {
       "priority": "T1 methane evidence",
@@ -426,7 +428,10 @@
       "noScans": "No scans for this site yet.",
       "evidence": "Flagged passes ({count})",
       "noFlags": "No pass at this site has been flagged.",
-      "ground": "Ground view"
+      "ground": "Ground view",
+      "cutTitle": "Cut the emissions",
+      "cutIntro": "Confirm, plan, act and meter: the steps that turn a flag into a verified reduction.",
+      "conditionsTitle": "Site conditions"
     },
     "evidence": {
       "score": "score {score}",
@@ -522,7 +527,16 @@
       "saved": "Saved.",
       "mailed": "Saved. The assignee has been emailed.",
       "transitionError": "That status change is not allowed.",
-      "error": "Not saved: {reason}"
+      "error": "Not saved: {reason}",
+      "auto": "Opened automatically",
+      "method": "Confirmation method",
+      "methodUnset": "Not chosen",
+      "methods": {
+        "emit_match": "EMIT plume match",
+        "hyperspectral_tasking": "Hyperspectral satellite tasking",
+        "ogi_drone": "OGI drone survey",
+        "ground_survey": "Ground survey"
+      }
     },
     "jobs": {
       "title": "Scans",
@@ -669,6 +683,252 @@
       "noEvents": "No T1 or T2 events this month.",
       "cta": "Open the dashboard",
       "why": "You receive this because you are listed as an alert recipient for {state}."
+    }
+  },
+  "Sustain": {
+    "page": {
+      "title": "Sustainability",
+      "intro": "From flag to verified reduction: what each landfill flagged, which flags were confirmed, what each agency is doing about it, and the tonnes a gas meter has verified.",
+      "publicLink": "Open the public scorecard"
+    },
+    "form": {
+      "saved": "Saved.",
+      "imported": "Imported {rows, plural, one {# month} other {# months}}.",
+      "error": "Not saved: {reason}",
+      "openFile": "Open file"
+    },
+    "calculator": {
+      "title": "Capture calculator",
+      "intro": "What collecting this site's gas is worth, by the dossier's action-plan method. Move the slider to change the capture share.",
+      "rate": "Minimum time-averaged rate: {kgph} kg/h",
+      "share": "Capture share: {pct}%",
+      "annual": "Methane now, t CO₂e a year",
+      "avoided": "Avoided at {pct}% capture, t CO₂e a year",
+      "power": "Electric output, MW",
+      "assumptions": "Assumptions: GWP100 {gwp} · flare destruction {flare} · methane heating value {lhv} MJ/kg · engine efficiency {eff}. Annual figures are minimum estimates.",
+      "boundOnly": "No minimum rate at this site yet, only a 95% upper bound of {tph} t/h for a steady emitter, so no avoided-tonnes figure is shown.",
+      "noRate": "No minimum rate at this site yet, so no avoided-tonnes figure is shown."
+    },
+    "ledger": {
+      "title": "Mitigation ledger",
+      "intro": "Each measure at this site, the agency that owns it and what it is expected to avoid. Expected tonnes are modelled; only metered gas counts as verified.",
+      "none": "No measures recorded yet.",
+      "new": "Add a measure",
+      "kind": "Type",
+      "kinds": {
+        "gas_collection": "Gas wells and header",
+        "flare_or_engine": "Flare or gas engine",
+        "interim_cover": "Interim cover",
+        "biocover": "Biocover or compost layer",
+        "seep_repair": "Crack and seep repair",
+        "fire_breaks": "Fire breaks",
+        "organics_diversion": "Organics diversion",
+        "biomining": "Biomining",
+        "other": "Other"
+      },
+      "status": "Status",
+      "statuses": {
+        "planned": "Planned",
+        "in_progress": "In progress",
+        "done": "Done",
+        "stopped": "Stopped"
+      },
+      "titleField": "What is being done",
+      "titlePlaceholder": "e.g. vertical gas wells on the flagged cell",
+      "agency": "Owning agency",
+      "agencyPlaceholder": "e.g. Brihanmumbai Municipal Corporation",
+      "start": "Start date",
+      "captureShare": "Capture share (%)",
+      "otherProgrammes": "Also claimed by",
+      "otherProgrammesPlaceholder": "Other programmes counting the same tonnes, if any",
+      "note": "Note",
+      "evidence": "Evidence (work order, photo, report)",
+      "save": "Save measure",
+      "add": "Add measure",
+      "edit": "Edit",
+      "since": "since {date}",
+      "by": "Owner: {agency}",
+      "expected": "≈ {t} t CO₂e a year expected",
+      "expectedNote": "(modelled, minimum estimate, at {pct}% capture)",
+      "noExpected": "No expected-tonnes figure: this site has no minimum rate yet.",
+      "alsoClaimed": "Also claimed by: {programmes}",
+      "effectTitle": "Before-and-after check",
+      "effect": "Year before: {bf} flags in {bp} passes · since the start: {af} flags in {ap} passes",
+      "p": "one-sided Fisher test p = {p}",
+      "effectCaveat": "Flags of any tier. Per-pass detection over dense Indian landfills is about 25–35% for plumes of 10 t/h or more, so a change shows only after months of passes; surveys and gas meters carry the proof."
+    },
+    "finance": {
+      "title": "Carbon finance file",
+      "intro": "What a carbon-credit file needs at this site. Credits need a confirmed emission and metered gas; satellite figures are supporting evidence only.",
+      "confirmed": "Emission confirmed by a verification task.",
+      "notConfirmed": "No confirmed emission yet: finish a verification task first.",
+      "baseline": "Baseline: minimum time-averaged rate {kgph} kg/h (screening-grade).",
+      "noBaseline": "No satellite baseline: this site has only an upper bound.",
+      "captureMeasure": "{n, plural, one {# capture measure} other {# capture measures}} in the ledger.",
+      "noCapture": "No gas capture measure in the ledger yet.",
+      "metered": "{n, plural, one {# metered reading} other {# metered readings}}: {ch4} t methane destroyed = {co2e} t CO₂e verified.",
+      "noMeter": "No metered readings yet.",
+      "methodology": "Register under an established landfill-gas methodology, such as UNFCCC's <link>ACM0001, Flaring or use of landfill gas</link>.",
+      "readings": "Metered readings",
+      "period": "Period",
+      "ch4": "CH₄ destroyed (t)",
+      "co2e": "t CO₂e",
+      "meter": "Meter",
+      "document": "Document",
+      "add": "Add a metered reading",
+      "from": "From",
+      "to": "To",
+      "ch4Field": "Methane destroyed (t)",
+      "meterField": "Meter ID",
+      "measure": "Capture measure",
+      "verifiedBy": "Verified by",
+      "save": "Save reading"
+    },
+    "fires": {
+      "title": "Fire log",
+      "intro": "NASA FIRMS satellite fire detections within 1 km of the site point, checked every hour. A detection is a heat signal; record what the ground team found.",
+      "none": "No fire detections in the last 12 months.",
+      "notConfigured": "The fire log starts once a NASA FIRMS key is set (FIRMS_MAP_KEY).",
+      "days": "{days, plural, one {# day} other {# days}} with a fire detection in the last 12 months.",
+      "status": {
+        "open": "Open",
+        "out": "Fire out",
+        "not_fire": "Not a fire"
+      },
+      "set": {
+        "open": "Reopen",
+        "out": "Mark fire out",
+        "not_fire": "Not a fire"
+      },
+      "meta": "{source} · {m} m from the site point",
+      "frp": "{mw} MW radiative power"
+    },
+    "remediation": {
+      "title": "Legacy-waste remediation",
+      "intro": "Swachh Bharat Mission-Urban 2.0 biomining progress, as the city reports it. Removing old waste removes the methane source.",
+      "processed": "{done} t processed of {total} t",
+      "progress": "Share of legacy waste processed",
+      "area": "{ha} ha reclaimed",
+      "asOf": "as of {date}, {source}",
+      "none": "No remediation figures recorded yet.",
+      "add": "Record progress",
+      "asOfField": "As of",
+      "totalField": "Legacy waste at the site (t)",
+      "processedField": "Processed so far (t)",
+      "areaField": "Land reclaimed (ha)",
+      "sourceField": "Source",
+      "sourcePlaceholder": "e.g. Swachhatam portal, municipal progress report",
+      "save": "Save"
+    },
+    "reports": {
+      "title": "Citizen reports",
+      "intro": "Reports of smoke, fire, odour, dumping or burning from partner apps (EcoSathi), routed to the nearest landfill within 5 km. Each should be closed within {hours} hours.",
+      "none": "No citizen reports.",
+      "open": "Open",
+      "closed": "Closed",
+      "overdue": "Overdue",
+      "kinds": {
+        "smoke": "Smoke",
+        "fire": "Fire",
+        "odour": "Odour",
+        "dumping": "Illegal dumping",
+        "burning": "Waste burning"
+      },
+      "closedAt": "closed {date}",
+      "due": "due {date}",
+      "near": "{m} m from {site}",
+      "unrouted": "Not within 5 km of a monitored landfill",
+      "distance": "{m} m from the site point",
+      "source": "via {source}",
+      "assignee": "assigned to {name}",
+      "unassigned": "Unassigned",
+      "photo": "photo",
+      "done": "What was done: {note}",
+      "assignTo": "Assign to",
+      "assign": "Assign",
+      "close": "Close…",
+      "closingNote": "What was done",
+      "closingPhoto": "Photo after action (optional)",
+      "confirmClose": "Close report"
+    },
+    "diversion": {
+      "title": "Wet-waste diversion",
+      "intro": "Tonnes of wet waste each city sent to composting or biogas instead of a landfill, from municipal monthly figures.",
+      "factors": "Each tonne composted avoids about {compost} t CO₂e and each tonne sent to biogas about {biogas} t CO₂e of future landfill methane, net of the treatment's own emissions. IPCC 2006 defaults: DOC {doc}, DOCf {docf}, MCF {mcf}, F {fch4}, OX {ox}; composting {cch4} kg CH₄ and {cn2o} kg N₂O per tonne; biogas {adch4} kg CH₄ per tonne.",
+      "none": "No diversion figures recorded yet.",
+      "city": "City",
+      "month": "Month",
+      "composted": "Composted (t)",
+      "biogas": "To biogas (t)",
+      "avoided": "Avoided, t CO₂e (modelled)",
+      "source": "Source",
+      "modelled": "Modelled, not measured: the avoided methane would have been released over years, so these are lifetime totals.",
+      "addMonth": "Add one month",
+      "sourcePlaceholder": "e.g. municipal monthly SWM report",
+      "save": "Save",
+      "importCsv": "Import a CSV",
+      "csvFormat": "One row per month: month,composted_t,biogas_t (e.g. 2026-09,120,30). A header row is fine.",
+      "file": "CSV file",
+      "import": "Import"
+    }
+  },
+  "Scorecard": {
+    "title": "Landfill scorecard",
+    "intro": "Each month, for every monitored landfill: what the satellite flagged, which flags were confirmed, what each agency committed to, fires, remediation, citizen reports and the tonnes a gas meter has verified.",
+    "map": "Public map",
+    "signIn": "Sign in",
+    "monthNav": "Month",
+    "previous": "Previous month",
+    "next": "Next month",
+    "totals": {
+      "open": "Flags awaiting confirmation",
+      "measures": "Measures in the ledger",
+      "fireDays": "Fire days this month",
+      "verified": "Verified t CO₂e (metered)"
+    },
+    "sitesTitle": "Sites",
+    "assumptionsTitle": "How to read these numbers",
+    "assume": {
+      "grades": "Satellite figures are screening-grade; expected tonnes are modelled; only metered gas counts as a verified reduction.",
+      "capture": "Capture plans use GWP100 {gwp}, flare destruction {flare}, a methane heating value of {lhv} MJ/kg and engine efficiency {eff}.",
+      "diversion": "Diverted wet waste uses IPCC 2006 defaults for an unmanaged deep dumpsite, net of composting or digester emissions.",
+      "fires": "Fire days count days with a NASA FIRMS detection within 1 km of the site point that the agency has not marked as not a fire.",
+      "reports": "Citizen reports come from partner apps with the reporter's consent and should be closed within {hours} hours."
+    },
+    "openData": "Open data",
+    "openDataText": "The same figures, free to reuse with credit:",
+    "downloadCsv": "Scorecard (CSV)",
+    "downloadJson": "Scorecard (JSON)",
+    "downloadGeojson": "Sites (GeoJSON)",
+    "unavailable": "The scorecard could not be loaded right now.",
+    "card": {
+      "screening": "Satellite passes this month",
+      "passes": "{n, plural, =0 {no clear passes} one {# pass} other {# passes}}",
+      "methane": "Methane",
+      "annual": "t CO₂e a year",
+      "bound": "≤ {tph} t/h (95% upper bound)",
+      "confirmation": "Confirmation",
+      "confirmCounts": "{open} awaiting · {confirmed} confirmed · {rejected} not methane",
+      "medianDays": "median {days} days from flag to answer",
+      "fires": "Fires",
+      "fireDays": "{days, plural, =0 {no fire days} one {# fire day} other {# fire days}} this month",
+      "firesOpen": "{n} not yet marked out",
+      "measures": "Measures",
+      "measureCounts": "{planned} planned · {progress} in progress · {done} done",
+      "expected": "≈ {t} t CO₂e a year expected (modelled)",
+      "verified": "Verified reductions",
+      "verifiedUnit": "t CO₂e metered",
+      "verifiedMonth": "{t} t CO₂e this month",
+      "noneMetered": "None metered yet",
+      "remediation": "Legacy waste",
+      "remediated": "{done} of {total} t processed",
+      "hectares": "{ha} ha reclaimed",
+      "asOf": "as of {date}",
+      "noRemediation": "No figures yet",
+      "reports": "Citizen reports",
+      "reportCounts": "{n} this month · {closed} closed",
+      "medianHours": "median {hours} h to close",
+      "commitments": "Commitments"
     }
   }
 }

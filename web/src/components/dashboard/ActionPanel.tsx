@@ -16,6 +16,7 @@ import {
   type ScanRow,
 } from "@/lib/dashboard-shared";
 import { makeFormat } from "@/lib/format";
+import { CONFIRM_METHODS } from "@/lib/sustainability";
 
 type SiteInfo = { id: string; slug: string; name: string };
 
@@ -60,6 +61,23 @@ function Hidden({ site, locale }: { site: SiteInfo; locale: string }) {
   );
 }
 
+function MethodSelect({ value }: { value: string | null }) {
+  const t = useTranslations("Dash.action");
+  return (
+    <label className="text-xs">
+      {t("method")}
+      <select name="confirmMethod" defaultValue={value ?? ""} className={field}>
+        <option value="">{t("methodUnset")}</option>
+        {CONFIRM_METHODS.map((m) => (
+          <option key={m} value={m}>
+            {t(`methods.${m}`)}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
 function ActionItem({
   action,
   site,
@@ -100,11 +118,16 @@ function ActionItem({
             ? t("forPass", { date: f.date(scan.passDate), tier: scan.tier })
             : t("siteWide")}
         </span>
+        {action.origin === "auto" && (
+          <span className="rounded-full bg-muted px-2.5 py-0.5 text-xs text-foreground/80">
+            {t("auto")}
+          </span>
+        )}
         <span className="ml-auto text-xs text-muted-foreground">
           {t("opened", { date: f.dateTime(action.createdAt) })}
         </span>
       </div>
-      <dl className="mt-3 grid gap-x-6 gap-y-1 text-sm sm:grid-cols-3">
+      <dl className="mt-3 grid gap-x-6 gap-y-1 text-sm sm:grid-cols-4">
         <div>
           <dt className="text-xs text-muted-foreground">{t("assignee")}</dt>
           <dd>{who ?? t("unassigned")}</dd>
@@ -113,6 +136,14 @@ function ActionItem({
           <dt className="text-xs text-muted-foreground">{t("due")}</dt>
           <dd className="font-mono">
             {action.dueDate ? f.date(action.dueDate, "short") : "—"}
+          </dd>
+        </div>
+        <div>
+          <dt className="text-xs text-muted-foreground">{t("method")}</dt>
+          <dd>
+            {action.confirmMethod
+              ? t(`methods.${action.confirmMethod}`)
+              : t("methodUnset")}
           </dd>
         </div>
         <div>
@@ -200,6 +231,7 @@ function ActionItem({
               className={field}
             />
           </label>
+          <MethodSelect value={action.confirmMethod} />
           <label className="text-xs sm:col-span-2">
             {t("note")}
             <textarea
@@ -341,6 +373,7 @@ export function ActionPanel({
               {t("due")}
               <input type="date" name="dueDate" className={field} />
             </label>
+            <MethodSelect value={null} />
             <label className="text-xs sm:col-span-2">
               {t("note")}
               <textarea

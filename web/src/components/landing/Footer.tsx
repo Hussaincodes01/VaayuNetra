@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { LastUpdated } from "@/components/LastUpdated";
+import { Link } from "@/i18n/navigation";
 import { useActionState } from "react";
 import { requestAccess, type RequestState } from "@/app/[locale]/actions";
 import { SOURCES } from "@/content/facts";
@@ -142,6 +143,12 @@ export function Footer({
             </ul>
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
+            <Link
+              href="/scorecard"
+              className="text-signal underline-offset-4 hover:underline"
+            >
+              {t("scorecard")}
+            </Link>
             <a
               href={SOURCES.github}
               target="_blank"
