@@ -34,7 +34,6 @@ export function ScorecardGrid({
   const t = useTranslations("Scorecard.card");
   const tl = useTranslations("Sustain.ledger");
   const tp = useTranslations("Places");
-  const tc = useTranslations("Common");
   const f = makeFormat(useLocale());
   const dash = "—";
 
@@ -66,11 +65,14 @@ export function ScorecardGrid({
             </div>
             <dl className="mt-4 grid gap-x-6 gap-y-3 sm:grid-cols-2">
               <Item label={t("screening")}>
-                <span className="font-mono">
-                  {t("passes", { n: r.passesMonth })}
-                  {r.passesMonth > 0 &&
-                    ` · T1 ${r.t1Month} · T2 ${r.t2Month} · T3 ${r.t3Month}`}
-                </span>
+                {r.passesMonth > 0 ? (
+                  <span className="font-mono">
+                    {t("passes", { n: r.passesMonth })} · T1 {r.t1Month} · T2{" "}
+                    {r.t2Month} · T3 {r.t3Month}
+                  </span>
+                ) : (
+                  t("passes", { n: 0 })
+                )}
               </Item>
               <Item label={t("methane")}>
                 {(r.minMeanKgph ?? 0) > 0 ? (
@@ -80,7 +82,7 @@ export function ScorecardGrid({
                     </span>{" "}
                     {t("annual")}{" "}
                     <span className="text-xs text-muted-foreground">
-                      ({tc("minimumEstimate")})
+                      ({t("overPasses", { n: r.passesTotal })})
                     </span>
                   </span>
                 ) : r.persistentUpperTph !== null ? (

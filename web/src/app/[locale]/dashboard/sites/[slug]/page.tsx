@@ -199,6 +199,7 @@ export default async function SitePage({ params }: Params) {
         <div className="grid gap-6 lg:grid-cols-2">
           <CaptureCalculator
             minMeanKgph={site.minMeanKgph}
+            passes={site.passes}
             upperTph={site.persistentUpperTph}
             capture={green.assumptions.capture}
             defaultShare={green.assumptions.captureShare}

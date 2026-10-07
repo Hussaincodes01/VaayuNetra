@@ -12,11 +12,13 @@ import { Panel } from "./shared";
  */
 export function CaptureCalculator({
   minMeanKgph,
+  passes,
   upperTph,
   capture,
   defaultShare,
 }: {
   minMeanKgph: number | null;
+  passes: number;
   upperTph: number | null;
   capture: CaptureAssumptions;
   defaultShare: number;
@@ -34,7 +36,7 @@ export function CaptureCalculator({
       {q > 0 ? (
         <>
           <p className="mt-3 text-sm">
-            {t("rate", { kgph: f.num(q) })}{" "}
+            {t("rate", { kgph: f.num(q), passes: f.num(passes) })}{" "}
             <span className="text-muted-foreground">
               ({tc("minimumEstimate")})
             </span>

@@ -700,7 +700,7 @@
     "calculator": {
       "title": "Capture calculator",
       "intro": "What collecting this site's gas is worth, by the dossier's action-plan method. Move the slider to change the capture share.",
-      "rate": "Minimum time-averaged rate: {kgph} kg/h",
+      "rate": "Minimum time-averaged rate: {kgph} kg/h over {passes} clear passes",
       "share": "Capture share: {pct}%",
       "annual": "Methane now, t CO₂e a year",
       "avoided": "Avoided at {pct}% capture, t CO₂e a year",
@@ -753,7 +753,7 @@
       "noExpected": "No expected-tonnes figure: this site has no minimum rate yet.",
       "alsoClaimed": "Also claimed by: {programmes}",
       "effectTitle": "Before-and-after check",
-      "effect": "Year before: {bf} flags in {bp} passes · since the start: {af} flags in {ap} passes",
+      "effect": "Year before: {bf, plural, one {# flag} other {# flags}} in {bp, plural, one {# pass} other {# passes}} · since the start: {af, plural, one {# flag} other {# flags}} in {ap, plural, one {# pass} other {# passes}}",
       "p": "one-sided Fisher test p = {p}",
       "effectCaveat": "Flags of any tier. Per-pass detection over dense Indian landfills is about 25–35% for plumes of 10 t/h or more, so a change shows only after months of passes; surveys and gas meters carry the proof."
     },
@@ -849,7 +849,8 @@
       "close": "Close…",
       "closingNote": "What was done",
       "closingPhoto": "Photo after action (optional)",
-      "confirmClose": "Close report"
+      "confirmClose": "Close report",
+      "notAssigned": "not assigned yet"
     },
     "diversion": {
       "title": "Wet-waste diversion",
@@ -928,7 +929,8 @@
       "reports": "Citizen reports",
       "reportCounts": "{n} this month · {closed} closed",
       "medianHours": "median {hours} h to close",
-      "commitments": "Commitments"
+      "commitments": "Commitments",
+      "overPasses": "minimum estimate over {n} passes"
     }
   }
 }

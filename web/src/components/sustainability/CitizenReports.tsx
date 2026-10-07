@@ -88,7 +88,7 @@ function ReportItem({
       )}
       <p className="mt-1 text-xs text-muted-foreground">
         {t("source", { source: r.source })} ·{" "}
-        {t("assignee", { name: who ?? t("unassigned") })}
+        {who ? t("assignee", { name: who }) : t("notAssigned")}
         {r.photoUrl && (
           <>
             {" · "}
