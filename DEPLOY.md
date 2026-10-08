@@ -269,6 +269,13 @@ It answers `{"ok":true,...}`. Without the header it answers 401.
    `https://<domain>/**` to the Redirect URLs.
 4. Add the domain to the Mapbox and Mapillary token URL restrictions.
 
+### 4.7 The ground-network Python function
+
+`web/api/ground.py` deploys as a Python Vercel Function next to the Next.js app, with its
+dependency in `web/requirements.txt`; `web/vercel.json` keeps the site's static files out of its
+bundle. Nothing to configure. To refresh its data and files, run
+`Vayu-server/tools/export_web.py` (see `web/README.md`) and commit the result.
+
 ## 5. Check the deployment
 
 1. Open the site. The landing page tells the story top to bottom, and the footer shows

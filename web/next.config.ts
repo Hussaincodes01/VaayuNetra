@@ -89,7 +89,8 @@ const csp = [
   [
     "connect-src",
     join(
-      ["'self'", supabase, supabaseWs],
+      // blob: lets three.js read the textures embedded in the node models (/dashboard/ground).
+      ["'self'", "blob:", supabase, supabaseWs],
       mapbox,
       mapillary,
       sentry,
@@ -140,7 +141,12 @@ const nextConfig: NextConfig = {
   // (python scripts/ground-api-dev.py), so the dashboard's ground-network pages work locally too.
   async rewrites() {
     return dev
-      ? [{ source: "/api/ground", destination: "http://127.0.0.1:8787/api/ground" }]
+      ? [
+          {
+            source: "/api/ground",
+            destination: "http://127.0.0.1:8787/api/ground",
+          },
+        ]
       : [];
   },
 };
