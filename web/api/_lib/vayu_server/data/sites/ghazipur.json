@@ -1,0 +1,698 @@
+{
+ "slug": "ghazipur",
+ "name": "Ghazipur",
+ "city": "Delhi",
+ "point": [
+  28.6247,
+  77.3272
+ ],
+ "outline": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     77.325974,
+     28.626758
+    ],
+    [
+     77.328938,
+     28.627631
+    ],
+    [
+     77.329069,
+     28.62746
+    ],
+    [
+     77.330433,
+     28.626425
+    ],
+    [
+     77.330948,
+     28.625964
+    ],
+    [
+     77.330855,
+     28.62576
+    ],
+    [
+     77.33075,
+     28.625556
+    ],
+    [
+     77.330655,
+     28.625156
+    ],
+    [
+     77.326589,
+     28.620463
+    ],
+    [
+     77.326356,
+     28.620626
+    ],
+    [
+     77.326188,
+     28.620536
+    ],
+    [
+     77.325963,
+     28.620527
+    ],
+    [
+     77.325704,
+     28.620622
+    ],
+    [
+     77.325514,
+     28.620758
+    ],
+    [
+     77.325304,
+     28.621284
+    ],
+    [
+     77.325053,
+     28.62184
+    ],
+    [
+     77.324929,
+     28.621797
+    ],
+    [
+     77.32418,
+     28.621586
+    ],
+    [
+     77.324112,
+     28.621801
+    ],
+    [
+     77.323904,
+     28.622225
+    ],
+    [
+     77.324621,
+     28.622446
+    ],
+    [
+     77.323938,
+     28.624152
+    ],
+    [
+     77.326053,
+     28.625015
+    ],
+    [
+     77.32633,
+     28.625378
+    ],
+    [
+     77.326454,
+     28.62554
+    ],
+    [
+     77.325974,
+     28.626758
+    ]
+   ]
+  ]
+ },
+ "outline_source": {
+  "osm": "way/76727509",
+  "name": "Ghazipur Landfill",
+  "area_m2": 290915
+ },
+ "sensitive_sites": [
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.624632,
+   "lon": 77.317119,
+   "distance_m": 985,
+   "osm": "way/76977577"
+  },
+  {
+   "name": "SPUHC, Ghazipur",
+   "kind": "clinic",
+   "lat": 28.630857,
+   "lon": 77.319763,
+   "distance_m": 996,
+   "osm": "node/7138534290"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.621788,
+   "lon": 77.317546,
+   "distance_m": 997,
+   "osm": "way/76977620"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.619117,
+   "lon": 77.318583,
+   "distance_m": 1044,
+   "osm": "way/76977318"
+  },
+  {
+   "name": "Sankhwar Hospital",
+   "kind": "hospital",
+   "lat": 28.615129,
+   "lon": 77.323799,
+   "distance_m": 1109,
+   "osm": "node/7138534434"
+  },
+  {
+   "name": "DGD, Kalyanpuri",
+   "kind": "clinic",
+   "lat": 28.616698,
+   "lon": 77.318866,
+   "distance_m": 1203,
+   "osm": "node/7138534421"
+  },
+  {
+   "name": "Max Superspeciality Hospital",
+   "kind": "hospital",
+   "lat": 28.634614,
+   "lon": 77.333023,
+   "distance_m": 1235,
+   "osm": "node/8266909244"
+  },
+  {
+   "name": "Hospital",
+   "kind": "hospital",
+   "lat": 28.634663,
+   "lon": 77.332957,
+   "distance_m": 1237,
+   "osm": "way/1153428592"
+  },
+  {
+   "name": "Raj Rani Hospital",
+   "kind": "hospital",
+   "lat": 28.613836,
+   "lon": 77.323398,
+   "distance_m": 1257,
+   "osm": "node/7138534363"
+  },
+  {
+   "name": "sai nursing home",
+   "kind": "hospital",
+   "lat": 28.613225,
+   "lon": 77.323286,
+   "distance_m": 1325,
+   "osm": "way/352936603"
+  },
+  {
+   "name": "Rajkiya Sarvodaya Kanya Vidyalaya (Jeeja Bai)",
+   "kind": "school",
+   "lat": 28.614704,
+   "lon": 77.319462,
+   "distance_m": 1339,
+   "osm": "node/9107468200"
+  },
+  {
+   "name": "East Delhi Municipal Corporation Primary School",
+   "kind": "school",
+   "lat": 28.619887,
+   "lon": 77.313949,
+   "distance_m": 1400,
+   "osm": "way/999345675"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.618093,
+   "lon": 77.314925,
+   "distance_m": 1404,
+   "osm": "way/76965008"
+  },
+  {
+   "name": "Rajkiya Pratibha Vikas Vidyalaya ,I.P. Extension",
+   "kind": "school",
+   "lat": 28.631558,
+   "lon": 77.314496,
+   "distance_m": 1455,
+   "osm": "node/13072249775"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.620578,
+   "lon": 77.31299,
+   "distance_m": 1461,
+   "osm": "way/1000909099"
+  },
+  {
+   "name": "Rajkiya Sarvodaya Bal Vidyalaya",
+   "kind": "school",
+   "lat": 28.613825,
+   "lon": 77.318599,
+   "distance_m": 1467,
+   "osm": "node/6395753670"
+  },
+  {
+   "name": "Dr B.R. Ambedkar School of Specialised Excellence (ASOSE), IP Extension",
+   "kind": "school",
+   "lat": 28.631551,
+   "lon": 77.314177,
+   "distance_m": 1481,
+   "osm": "node/13072249774"
+  },
+  {
+   "name": "Ryan International School",
+   "kind": "school",
+   "lat": 28.613997,
+   "lon": 77.336316,
+   "distance_m": 1481,
+   "osm": "way/283761746"
+  },
+  {
+   "name": "Lal Bahadur Shastri Hospital",
+   "kind": "hospital",
+   "lat": 28.618632,
+   "lon": 77.313654,
+   "distance_m": 1484,
+   "osm": "way/286838807"
+  },
+  {
+   "name": "Vivekanand International School",
+   "kind": "school",
+   "lat": 28.6319,
+   "lon": 77.314077,
+   "distance_m": 1509,
+   "osm": "node/8929322161"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.615327,
+   "lon": 77.315789,
+   "distance_m": 1522,
+   "osm": "way/76965083"
+  },
+  {
+   "name": "Vaidic Public School",
+   "kind": "school",
+   "lat": 28.622454,
+   "lon": 77.311265,
+   "distance_m": 1577,
+   "osm": "node/9221656000"
+  },
+  {
+   "name": "Dr. Ranjan's Gynae and Eye Clinic",
+   "kind": "clinic",
+   "lat": 28.637161,
+   "lon": 77.335627,
+   "distance_m": 1605,
+   "osm": "node/7018562712"
+  },
+  {
+   "name": "DBSE",
+   "kind": "school",
+   "lat": 28.630789,
+   "lon": 77.312138,
+   "distance_m": 1618,
+   "osm": "node/8929322160"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.635172,
+   "lon": 77.315518,
+   "distance_m": 1626,
+   "osm": "node/9104141335"
+  },
+  {
+   "name": "Kerela Education Society Senior Secondary School",
+   "kind": "school",
+   "lat": 28.615348,
+   "lon": 77.340643,
+   "distance_m": 1672,
+   "osm": "way/283762593"
+  },
+  {
+   "name": "National Victor Public School",
+   "kind": "school",
+   "lat": 28.631544,
+   "lon": 77.311824,
+   "distance_m": 1682,
+   "osm": "node/8929322159"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.614729,
+   "lon": 77.340362,
+   "distance_m": 1694,
+   "osm": "way/283762598"
+  },
+  {
+   "name": "Lal Bahadur Shastri Hospital",
+   "kind": "hospital",
+   "lat": 28.617848,
+   "lon": 77.311476,
+   "distance_m": 1713,
+   "osm": "way/286838808"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.614639,
+   "lon": 77.313486,
+   "distance_m": 1742,
+   "osm": "way/76965030"
+  },
+  {
+   "name": "Govt School",
+   "kind": "school",
+   "lat": 28.608982,
+   "lon": 77.329711,
+   "distance_m": 1755,
+   "osm": "way/277905474"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.611836,
+   "lon": 77.338414,
+   "distance_m": 1796,
+   "osm": "way/283762596"
+  },
+  {
+   "name": "Vaishali Health Clinic",
+   "kind": "hospital",
+   "lat": 28.637618,
+   "lon": 77.338555,
+   "distance_m": 1809,
+   "osm": "node/7037813514"
+  },
+  {
+   "name": "Vidya Bal Bhavan Sr Secondary School",
+   "kind": "school",
+   "lat": 28.608554,
+   "lon": 77.330156,
+   "distance_m": 1809,
+   "osm": "way/277905479"
+  },
+  {
+   "name": "Malik Nursing Home",
+   "kind": "hospital",
+   "lat": 28.609447,
+   "lon": 77.33437,
+   "distance_m": 1826,
+   "osm": "node/7138534388"
+  },
+  {
+   "name": "Saint Mary's Senior Secondary School",
+   "kind": "school",
+   "lat": 28.610663,
+   "lon": 77.337947,
+   "distance_m": 1874,
+   "osm": "way/283761748"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.608638,
+   "lon": 77.321062,
+   "distance_m": 1875,
+   "osm": "way/283923848"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.622823,
+   "lon": 77.307582,
+   "distance_m": 1928,
+   "osm": "way/76977269"
+  },
+  {
+   "name": "Meenakshi Hospital, Ghaziabad",
+   "kind": "hospital",
+   "lat": 28.642142,
+   "lon": 77.325715,
+   "distance_m": 1934,
+   "osm": "node/7025849063"
+  },
+  {
+   "name": "Government Dispensary",
+   "kind": "hospital",
+   "lat": 28.609828,
+   "lon": 77.337745,
+   "distance_m": 1941,
+   "osm": "way/345715171"
+  },
+  {
+   "name": "Government primary school",
+   "kind": "school",
+   "lat": 28.617946,
+   "lon": 77.308656,
+   "distance_m": 1960,
+   "osm": "way/76965009"
+  },
+  {
+   "name": "Max Superspeciality Hospital",
+   "kind": "hospital",
+   "lat": 28.633302,
+   "lon": 77.309241,
+   "distance_m": 1996,
+   "osm": "way/767656280"
+  },
+  {
+   "name": "Salwan Public School",
+   "kind": "school",
+   "lat": 28.610287,
+   "lon": 77.33985,
+   "distance_m": 2017,
+   "osm": "way/283761049"
+  },
+  {
+   "name": "Aam Aadmi Polyclinic",
+   "kind": "clinic",
+   "lat": 28.632648,
+   "lon": 77.308463,
+   "distance_m": 2031,
+   "osm": "node/7138534377"
+  },
+  {
+   "name": "Govt School",
+   "kind": "school",
+   "lat": 28.606714,
+   "lon": 77.332142,
+   "distance_m": 2047,
+   "osm": "way/283761048"
+  },
+  {
+   "name": "DGD Trilokpuri",
+   "kind": "clinic",
+   "lat": 28.61214,
+   "lon": 77.311403,
+   "distance_m": 2076,
+   "osm": "node/7138534415"
+  },
+  {
+   "name": "R K Medicare",
+   "kind": "hospital",
+   "lat": 28.626779,
+   "lon": 77.348394,
+   "distance_m": 2084,
+   "osm": "node/7025481517"
+  },
+  {
+   "name": "Rajkiya Sarvodaya Kanya/Bal Vidyalaya",
+   "kind": "school",
+   "lat": 28.620969,
+   "lon": 77.306003,
+   "distance_m": 2112,
+   "osm": "way/1287923418"
+  },
+  {
+   "name": "Bharti Public School",
+   "kind": "school",
+   "lat": 28.606086,
+   "lon": 77.332475,
+   "distance_m": 2122,
+   "osm": "way/283749167"
+  },
+  {
+   "name": "AVB Public School",
+   "kind": "school",
+   "lat": 28.626958,
+   "lon": 77.305267,
+   "distance_m": 2158,
+   "osm": "way/1287282319"
+  },
+  {
+   "name": "Fun Valley",
+   "kind": "kindergarten",
+   "lat": 28.633342,
+   "lon": 77.306996,
+   "distance_m": 2193,
+   "osm": "node/9093894587"
+  },
+  {
+   "name": "Kamal Hospital, Ghaziabad",
+   "kind": "hospital",
+   "lat": 28.644685,
+   "lon": 77.325394,
+   "distance_m": 2217,
+   "osm": "node/7038608967"
+  },
+  {
+   "name": "Pulse Medicare",
+   "kind": "hospital",
+   "lat": 28.640568,
+   "lon": 77.341282,
+   "distance_m": 2230,
+   "osm": "node/7034914349"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.608116,
+   "lon": 77.313815,
+   "distance_m": 2252,
+   "osm": "way/76995143"
+  },
+  {
+   "name": "Aam Aadmi Mohallah Clinic",
+   "kind": "clinic",
+   "lat": 28.604809,
+   "lon": 77.332387,
+   "distance_m": 2257,
+   "osm": "node/13202970130"
+  },
+  {
+   "name": "Yashoda Super Speciality Hospital, Anand Vihar",
+   "kind": "hospital",
+   "lat": 28.645093,
+   "lon": 77.328754,
+   "distance_m": 2260,
+   "osm": "node/1355998753"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.609341,
+   "lon": 77.311604,
+   "distance_m": 2282,
+   "osm": "way/76849406"
+  },
+  {
+   "name": "The Baptist Convent Senior Secondary School",
+   "kind": "school",
+   "lat": 28.63025,
+   "lon": 77.304158,
+   "distance_m": 2334,
+   "osm": "way/1083840655"
+  },
+  {
+   "name": "Malhotra Nursing Home",
+   "kind": "hospital",
+   "lat": 28.619799,
+   "lon": 77.30391,
+   "distance_m": 2339,
+   "osm": "node/7138534366"
+  },
+  {
+   "name": "Om Prem Charitable Hospital",
+   "kind": "hospital",
+   "lat": 28.631745,
+   "lon": 77.349875,
+   "distance_m": 2349,
+   "osm": "node/9104120006"
+  }
+ ],
+ "wind": {
+  "prevailing_from_deg": 315.0,
+  "calm_share": 0.0815,
+  "mean_ms": 2.45,
+  "rose": [
+   {
+    "from_deg": 0.0,
+    "share": 0.0504,
+    "mean_ms": 2.29
+   },
+   {
+    "from_deg": 22.5,
+    "share": 0.032,
+    "mean_ms": 2.28
+   },
+   {
+    "from_deg": 45.0,
+    "share": 0.0307,
+    "mean_ms": 2.29
+   },
+   {
+    "from_deg": 67.5,
+    "share": 0.0384,
+    "mean_ms": 2.3
+   },
+   {
+    "from_deg": 90.0,
+    "share": 0.0636,
+    "mean_ms": 2.53
+   },
+   {
+    "from_deg": 112.5,
+    "share": 0.0867,
+    "mean_ms": 2.87
+   },
+   {
+    "from_deg": 135.0,
+    "share": 0.0642,
+    "mean_ms": 2.59
+   },
+   {
+    "from_deg": 157.5,
+    "share": 0.028,
+    "mean_ms": 2.27
+   },
+   {
+    "from_deg": 180.0,
+    "share": 0.0167,
+    "mean_ms": 1.9
+   },
+   {
+    "from_deg": 202.5,
+    "share": 0.01,
+    "mean_ms": 1.98
+   },
+   {
+    "from_deg": 225.0,
+    "share": 0.0123,
+    "mean_ms": 2.06
+   },
+   {
+    "from_deg": 247.5,
+    "share": 0.0172,
+    "mean_ms": 2.33
+   },
+   {
+    "from_deg": 270.0,
+    "share": 0.0505,
+    "mean_ms": 2.64
+   },
+   {
+    "from_deg": 292.5,
+    "share": 0.1276,
+    "mean_ms": 2.98
+   },
+   {
+    "from_deg": 315.0,
+    "share": 0.1882,
+    "mean_ms": 2.86
+   },
+   {
+    "from_deg": 337.5,
+    "share": 0.1018,
+    "mean_ms": 2.34
+   }
+  ],
+  "hours": 8784,
+  "source": "ERA5 via Open-Meteo archive, 2024, hourly 10 m wind"
+ },
+ "satellite_flags": [],
+ "attribution": "Outline and places (c) OpenStreetMap contributors (ODbL). Wind: ERA5 (Copernicus C3S) via Open-Meteo (CC BY 4.0)."
+}

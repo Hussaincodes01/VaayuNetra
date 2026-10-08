@@ -1,0 +1,935 @@
+{
+ "slug": "deonar",
+ "name": "Deonar",
+ "city": "Mumbai",
+ "point": [
+  19.0717,
+  72.9278
+ ],
+ "outline": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     72.931103,
+     19.059601
+    ],
+    [
+     72.930969,
+     19.059917
+    ],
+    [
+     72.930948,
+     19.060068
+    ],
+    [
+     72.931022,
+     19.060267
+    ],
+    [
+     72.931624,
+     19.061187
+    ],
+    [
+     72.931741,
+     19.061502
+    ],
+    [
+     72.931741,
+     19.061715
+    ],
+    [
+     72.931702,
+     19.064089
+    ],
+    [
+     72.931581,
+     19.064689
+    ],
+    [
+     72.931211,
+     19.06528
+    ],
+    [
+     72.931201,
+     19.065436
+    ],
+    [
+     72.931837,
+     19.066693
+    ],
+    [
+     72.930692,
+     19.067187
+    ],
+    [
+     72.929591,
+     19.067714
+    ],
+    [
+     72.928617,
+     19.068221
+    ],
+    [
+     72.928396,
+     19.068312
+    ],
+    [
+     72.928229,
+     19.068362
+    ],
+    [
+     72.928008,
+     19.06838
+    ],
+    [
+     72.927689,
+     19.068468
+    ],
+    [
+     72.927406,
+     19.068391
+    ],
+    [
+     72.927088,
+     19.068213
+    ],
+    [
+     72.926878,
+     19.06814
+    ],
+    [
+     72.926704,
+     19.067995
+    ],
+    [
+     72.926068,
+     19.067873
+    ],
+    [
+     72.925738,
+     19.06786
+    ],
+    [
+     72.925519,
+     19.067851
+    ],
+    [
+     72.925313,
+     19.067635
+    ],
+    [
+     72.922394,
+     19.0687
+    ],
+    [
+     72.922551,
+     19.069459
+    ],
+    [
+     72.922589,
+     19.069458
+    ],
+    [
+     72.922633,
+     19.069684
+    ],
+    [
+     72.922697,
+     19.070215
+    ],
+    [
+     72.92271,
+     19.070689
+    ],
+    [
+     72.92263,
+     19.070793
+    ],
+    [
+     72.923244,
+     19.07183
+    ],
+    [
+     72.922175,
+     19.072382
+    ],
+    [
+     72.922201,
+     19.072428
+    ],
+    [
+     72.921632,
+     19.072963
+    ],
+    [
+     72.921713,
+     19.073166
+    ],
+    [
+     72.92149,
+     19.073176
+    ],
+    [
+     72.921455,
+     19.073164
+    ],
+    [
+     72.921919,
+     19.073725
+    ],
+    [
+     72.922428,
+     19.074466
+    ],
+    [
+     72.922822,
+     19.074783
+    ],
+    [
+     72.92328,
+     19.074884
+    ],
+    [
+     72.92378,
+     19.074637
+    ],
+    [
+     72.924419,
+     19.074275
+    ],
+    [
+     72.925866,
+     19.075075
+    ],
+    [
+     72.926569,
+     19.075181
+    ],
+    [
+     72.927391,
+     19.075244
+    ],
+    [
+     72.927922,
+     19.075214
+    ],
+    [
+     72.929682,
+     19.074732
+    ],
+    [
+     72.93025,
+     19.074403
+    ],
+    [
+     72.931865,
+     19.072826
+    ],
+    [
+     72.931994,
+     19.071847
+    ],
+    [
+     72.932192,
+     19.071345
+    ],
+    [
+     72.932407,
+     19.070798
+    ],
+    [
+     72.933126,
+     19.070417
+    ],
+    [
+     72.933834,
+     19.070009
+    ],
+    [
+     72.934234,
+     19.069411
+    ],
+    [
+     72.934308,
+     19.068983
+    ],
+    [
+     72.93426,
+     19.06847
+    ],
+    [
+     72.934441,
+     19.067328
+    ],
+    [
+     72.934883,
+     19.066724
+    ],
+    [
+     72.935651,
+     19.06483
+    ],
+    [
+     72.935644,
+     19.064265
+    ],
+    [
+     72.93591,
+     19.063364
+    ],
+    [
+     72.936139,
+     19.063213
+    ],
+    [
+     72.937134,
+     19.061498
+    ],
+    [
+     72.937214,
+     19.061005
+    ],
+    [
+     72.937432,
+     19.060607
+    ],
+    [
+     72.937214,
+     19.059355
+    ],
+    [
+     72.937068,
+     19.059206
+    ],
+    [
+     72.936479,
+     19.059174
+    ],
+    [
+     72.934286,
+     19.05932
+    ],
+    [
+     72.933496,
+     19.059596
+    ],
+    [
+     72.932759,
+     19.059394
+    ],
+    [
+     72.932006,
+     19.058644
+    ],
+    [
+     72.931563,
+     19.059042
+    ],
+    [
+     72.931226,
+     19.059427
+    ],
+    [
+     72.931176,
+     19.059492
+    ],
+    [
+     72.931103,
+     19.059601
+    ]
+   ]
+  ]
+ },
+ "outline_source": {
+  "osm": "way/289511744",
+  "name": "Deonar Municipal Dumping Ground",
+  "area_m2": 1269168
+ },
+ "sensitive_sites": [
+  {
+   "name": "mahaveer hospital",
+   "kind": "hospital",
+   "lat": 19.067753,
+   "lon": 72.927593,
+   "distance_m": 437,
+   "osm": "node/3205935610"
+  },
+  {
+   "name": "Rajeev Gandhi Medical Centre",
+   "kind": "hospital",
+   "lat": 19.0691,
+   "lon": 72.922211,
+   "distance_m": 655,
+   "osm": "way/315448033"
+  },
+  {
+   "name": "khawaja garaib nawaz hopital",
+   "kind": "clinic",
+   "lat": 19.067339,
+   "lon": 72.922735,
+   "distance_m": 719,
+   "osm": "node/3206010302"
+  },
+  {
+   "name": "Madersa Ayesha Lil-Banat Education Trest",
+   "kind": "school",
+   "lat": 19.071451,
+   "lon": 72.920728,
+   "distance_m": 745,
+   "osm": "node/3226171882"
+  },
+  {
+   "name": "MILLAT OSPITAL",
+   "kind": "clinic",
+   "lat": 19.067811,
+   "lon": 72.921216,
+   "distance_m": 815,
+   "osm": "node/3213940894"
+  },
+  {
+   "name": "SABA HOSPITAL",
+   "kind": "clinic",
+   "lat": 19.068044,
+   "lon": 72.921051,
+   "distance_m": 817,
+   "osm": "node/3227715730"
+  },
+  {
+   "name": "Sanjay Nagar Municipal School",
+   "kind": "school",
+   "lat": 19.064351,
+   "lon": 72.925977,
+   "distance_m": 835,
+   "osm": "way/136333110"
+  },
+  {
+   "name": "IMTIYAZ Dr.",
+   "kind": "clinic",
+   "lat": 19.065581,
+   "lon": 72.923111,
+   "distance_m": 837,
+   "osm": "node/3204489580"
+  },
+  {
+   "name": "LOTUS HOSPITAL",
+   "kind": "clinic",
+   "lat": 19.067466,
+   "lon": 72.920752,
+   "distance_m": 877,
+   "osm": "node/3213961963"
+  },
+  {
+   "name": "MILLENIUM HOSPITAL",
+   "kind": "clinic",
+   "lat": 19.066888,
+   "lon": 72.920459,
+   "distance_m": 938,
+   "osm": "node/3226241269"
+  },
+  {
+   "name": "Royal Nursing Home, Govandi",
+   "kind": "clinic",
+   "lat": 19.066033,
+   "lon": 72.920268,
+   "distance_m": 1010,
+   "osm": "node/7042760330"
+  },
+  {
+   "name": "Daffodil School",
+   "kind": "school",
+   "lat": 19.062321,
+   "lon": 72.924533,
+   "distance_m": 1093,
+   "osm": "node/2930729183"
+  },
+  {
+   "name": "Chikalwadi BMC School - 3",
+   "kind": "school",
+   "lat": 19.06162,
+   "lon": 72.928788,
+   "distance_m": 1119,
+   "osm": "way/136172048"
+  },
+  {
+   "name": "Dr.zamil",
+   "kind": "hospital",
+   "lat": 19.061578,
+   "lon": 72.928213,
+   "distance_m": 1120,
+   "osm": "node/2930722306"
+  },
+  {
+   "name": "Geeta Vikas High School",
+   "kind": "school",
+   "lat": 19.062516,
+   "lon": 72.922005,
+   "distance_m": 1184,
+   "osm": "way/347016272"
+  },
+  {
+   "name": "Jeevan Jyot Hospital and Nursing Home",
+   "kind": "hospital",
+   "lat": 19.063681,
+   "lon": 72.919959,
+   "distance_m": 1211,
+   "osm": "node/7663961495"
+  },
+  {
+   "name": "Vikas Nursing Home, Mumbai",
+   "kind": "hospital",
+   "lat": 19.062818,
+   "lon": 72.92074,
+   "distance_m": 1231,
+   "osm": "node/7044376947"
+  },
+  {
+   "name": "sanjeevan hospital",
+   "kind": "hospital",
+   "lat": 19.060871,
+   "lon": 72.924769,
+   "distance_m": 1239,
+   "osm": "node/3213764477"
+  },
+  {
+   "name": "S.N. Hospital",
+   "kind": "hospital",
+   "lat": 19.062128,
+   "lon": 72.921592,
+   "distance_m": 1244,
+   "osm": "node/8817571670"
+  },
+  {
+   "name": "Bhairav Vidyalay",
+   "kind": "school",
+   "lat": 19.071467,
+   "lon": 72.915841,
+   "distance_m": 1259,
+   "osm": "way/528846345"
+  },
+  {
+   "name": "Mahavir Hospital",
+   "kind": "hospital",
+   "lat": 19.063212,
+   "lon": 72.919795,
+   "distance_m": 1261,
+   "osm": "node/7663961457"
+  },
+  {
+   "name": "Municipal School",
+   "kind": "school",
+   "lat": 19.061191,
+   "lon": 72.923106,
+   "distance_m": 1263,
+   "osm": "way/315441156"
+  },
+  {
+   "name": "Municipal High School",
+   "kind": "school",
+   "lat": 19.062754,
+   "lon": 72.919624,
+   "distance_m": 1311,
+   "osm": "way/395230146"
+  },
+  {
+   "name": "Shivaji Nagar Muncipal Hospital",
+   "kind": "hospital",
+   "lat": 19.062998,
+   "lon": 72.919015,
+   "distance_m": 1334,
+   "osm": "way/1127318871"
+  },
+  {
+   "name": "Sona Maternity and Surgical Nursing Home",
+   "kind": "hospital",
+   "lat": 19.07815,
+   "lon": 72.916753,
+   "distance_m": 1364,
+   "osm": "node/7663961413"
+  },
+  {
+   "name": "Gyan Sampada High School",
+   "kind": "school",
+   "lat": 19.061148,
+   "lon": 72.920751,
+   "distance_m": 1382,
+   "osm": "way/315440477"
+  },
+  {
+   "name": "BMC School no 1",
+   "kind": "school",
+   "lat": 19.062342,
+   "lon": 72.918858,
+   "distance_m": 1398,
+   "osm": "way/314529387"
+  },
+  {
+   "name": "MPS CBSE Natwar Parekh Compound",
+   "kind": "school",
+   "lat": 19.06591,
+   "lon": 72.915926,
+   "distance_m": 1404,
+   "osm": "node/13533576101"
+  },
+  {
+   "name": "Dadasaheb Gaikwad BMC Hospital",
+   "kind": "hospital",
+   "lat": 19.076394,
+   "lon": 72.91527,
+   "distance_m": 1417,
+   "osm": "node/7663961401"
+  },
+  {
+   "name": "Clinic",
+   "kind": "clinic",
+   "lat": 19.063664,
+   "lon": 72.916705,
+   "distance_m": 1467,
+   "osm": "way/1457969601"
+  },
+  {
+   "name": "Metalife",
+   "kind": "hospital",
+   "lat": 19.066891,
+   "lon": 72.913418,
+   "distance_m": 1604,
+   "osm": "node/3213767187"
+  },
+  {
+   "name": "Dr. Ashfaque Shah's City Hospital",
+   "kind": "hospital",
+   "lat": 19.060585,
+   "lon": 72.916991,
+   "distance_m": 1674,
+   "osm": "node/7663961398"
+  },
+  {
+   "name": "RBK International School",
+   "kind": "school",
+   "lat": 19.062439,
+   "lon": 72.913536,
+   "distance_m": 1817,
+   "osm": "way/626348956"
+  },
+  {
+   "name": "Shivaji Shikshan Sanstha High School",
+   "kind": "school",
+   "lat": 19.084099,
+   "lon": 72.913456,
+   "distance_m": 2039,
+   "osm": "way/131957113"
+  },
+  {
+   "name": "Deonar Maternity Home",
+   "kind": "hospital",
+   "lat": 19.053627,
+   "lon": 72.92321,
+   "distance_m": 2056,
+   "osm": "node/7607631740"
+  },
+  {
+   "name": "Eye Essential Hospital",
+   "kind": "hospital",
+   "lat": 19.075485,
+   "lon": 72.908548,
+   "distance_m": 2068,
+   "osm": "node/7067231946"
+  },
+  {
+   "name": "New Model English High Schood",
+   "kind": "school",
+   "lat": 19.053105,
+   "lon": 72.92202,
+   "distance_m": 2144,
+   "osm": "way/626243855"
+  },
+  {
+   "name": "bba",
+   "kind": "hospital",
+   "lat": 19.06026,
+   "lon": 72.911334,
+   "distance_m": 2145,
+   "osm": "node/3205813953"
+  },
+  {
+   "name": "New Life Clinic & Hijama Center",
+   "kind": "clinic",
+   "lat": 19.051972,
+   "lon": 72.926842,
+   "distance_m": 2184,
+   "osm": "node/7086409773"
+  },
+  {
+   "name": "Vidya Bhavan",
+   "kind": "school",
+   "lat": 19.072277,
+   "lon": 72.906733,
+   "distance_m": 2217,
+   "osm": "way/675094134"
+  },
+  {
+   "name": "Municipalty School",
+   "kind": "school",
+   "lat": 19.052059,
+   "lon": 72.922628,
+   "distance_m": 2239,
+   "osm": "way/626243856"
+  },
+  {
+   "name": "Dr Mehta Nursing Home",
+   "kind": "clinic",
+   "lat": 19.074831,
+   "lon": 72.906741,
+   "distance_m": 2243,
+   "osm": "node/7064364261"
+  },
+  {
+   "name": "Rushikul Vidyalaya",
+   "kind": "school",
+   "lat": 19.088953,
+   "lon": 72.916591,
+   "distance_m": 2243,
+   "osm": "way/254297002"
+  },
+  {
+   "name": "BMC school",
+   "kind": "school",
+   "lat": 19.058201,
+   "lon": 72.911817,
+   "distance_m": 2248,
+   "osm": "way/626348904"
+  },
+  {
+   "name": "Holy Family High School",
+   "kind": "school",
+   "lat": 19.071273,
+   "lon": 72.906425,
+   "distance_m": 2249,
+   "osm": "way/204635784"
+  },
+  {
+   "name": "Asha Polyclinic and Sheetal Nursing Home",
+   "kind": "clinic",
+   "lat": 19.079672,
+   "lon": 72.907875,
+   "distance_m": 2274,
+   "osm": "node/7043005970"
+  },
+  {
+   "name": "Vatsal Nicu and Childrens Hospital",
+   "kind": "hospital",
+   "lat": 19.082446,
+   "lon": 72.909251,
+   "distance_m": 2285,
+   "osm": "node/7042999151"
+  },
+  {
+   "name": "Excel Ent Hospital",
+   "kind": "hospital",
+   "lat": 19.082457,
+   "lon": 72.909229,
+   "distance_m": 2287,
+   "osm": "node/7043769618"
+  },
+  {
+   "name": "Sree Narayan Guru College",
+   "kind": "college",
+   "lat": 19.061412,
+   "lon": 72.908908,
+   "distance_m": 2290,
+   "osm": "way/626185303"
+  },
+  {
+   "name": "Mandakini Nuclear Imaging Centre",
+   "kind": "hospital",
+   "lat": 19.074112,
+   "lon": 72.90572,
+   "distance_m": 2338,
+   "osm": "node/7059192085"
+  },
+  {
+   "name": "AMAN",
+   "kind": "hospital",
+   "lat": 19.052455,
+   "lon": 72.918542,
+   "distance_m": 2340,
+   "osm": "node/3215517363"
+  },
+  {
+   "name": "Modern English School",
+   "kind": "school",
+   "lat": 19.065657,
+   "lon": 72.906336,
+   "distance_m": 2355,
+   "osm": "node/651265089"
+  },
+  {
+   "name": "Marathi Municipal school",
+   "kind": "school",
+   "lat": 19.075735,
+   "lon": 72.905767,
+   "distance_m": 2361,
+   "osm": "way/675093586"
+  },
+  {
+   "name": "svdd",
+   "kind": "school",
+   "lat": 19.082727,
+   "lon": 72.908363,
+   "distance_m": 2381,
+   "osm": "node/13096586484"
+  },
+  {
+   "name": "Ashirwad Heart Hospital",
+   "kind": "hospital",
+   "lat": 19.076179,
+   "lon": 72.905641,
+   "distance_m": 2383,
+   "osm": "node/7049041346"
+  },
+  {
+   "name": "Khushal Hospital and Maternity Home",
+   "kind": "hospital",
+   "lat": 19.085204,
+   "lon": 72.91006,
+   "distance_m": 2390,
+   "osm": "node/7050614446"
+  },
+  {
+   "name": "Ashirvaad Heart Hospital",
+   "kind": "hospital",
+   "lat": 19.076379,
+   "lon": 72.90547,
+   "distance_m": 2406,
+   "osm": "node/6322310753"
+  },
+  {
+   "name": "Kumud Vidyamandir",
+   "kind": "school",
+   "lat": 19.05075,
+   "lon": 72.921488,
+   "distance_m": 2410,
+   "osm": "way/626243775"
+  },
+  {
+   "name": "Dr. Trivedi's Maternity Nursing Home & Aakar IVF Test Tube Baby Centre",
+   "kind": "hospital",
+   "lat": 19.078271,
+   "lon": 72.905856,
+   "distance_m": 2420,
+   "osm": "node/7066505685"
+  },
+  {
+   "name": "Dr Chauhans Sanjeevani Hospital",
+   "kind": "hospital",
+   "lat": 19.069963,
+   "lon": 72.904769,
+   "distance_m": 2431,
+   "osm": "node/7065561525"
+  }
+ ],
+ "wind": {
+  "prevailing_from_deg": 225.0,
+  "calm_share": 0.0701,
+  "mean_ms": 3.16,
+  "rose": [
+   {
+    "from_deg": 0.0,
+    "share": 0.0879,
+    "mean_ms": 2.69
+   },
+   {
+    "from_deg": 22.5,
+    "share": 0.0561,
+    "mean_ms": 2.36
+   },
+   {
+    "from_deg": 45.0,
+    "share": 0.0401,
+    "mean_ms": 2.05
+   },
+   {
+    "from_deg": 67.5,
+    "share": 0.0453,
+    "mean_ms": 2.21
+   },
+   {
+    "from_deg": 90.0,
+    "share": 0.0306,
+    "mean_ms": 2.15
+   },
+   {
+    "from_deg": 112.5,
+    "share": 0.0102,
+    "mean_ms": 1.69
+   },
+   {
+    "from_deg": 135.0,
+    "share": 0.0071,
+    "mean_ms": 1.9
+   },
+   {
+    "from_deg": 157.5,
+    "share": 0.0069,
+    "mean_ms": 2.34
+   },
+   {
+    "from_deg": 180.0,
+    "share": 0.0223,
+    "mean_ms": 2.82
+   },
+   {
+    "from_deg": 202.5,
+    "share": 0.0551,
+    "mean_ms": 4.04
+   },
+   {
+    "from_deg": 225.0,
+    "share": 0.1176,
+    "mean_ms": 4.68
+   },
+   {
+    "from_deg": 247.5,
+    "share": 0.1104,
+    "mean_ms": 4.4
+   },
+   {
+    "from_deg": 270.0,
+    "share": 0.0768,
+    "mean_ms": 3.39
+   },
+   {
+    "from_deg": 292.5,
+    "share": 0.0832,
+    "mean_ms": 3.3
+   },
+   {
+    "from_deg": 315.0,
+    "share": 0.0982,
+    "mean_ms": 3.52
+   },
+   {
+    "from_deg": 337.5,
+    "share": 0.0819,
+    "mean_ms": 2.97
+   }
+  ],
+  "hours": 8784,
+  "source": "ERA5 via Open-Meteo archive, 2024, hourly 10 m wind"
+ },
+ "satellite_flags": [
+  {
+   "date": "2025-01-06",
+   "tier": "T1",
+   "lat": 19.0717,
+   "lon": 72.9278,
+   "rate_kgph": 20183.0,
+   "rate_low_kgph": 15053.9,
+   "rate_high_kgph": 24973.8,
+   "wind_u": 0.1,
+   "wind_v": -5.1,
+   "surface_kind": ""
+  }
+ ],
+ "attribution": "Outline and places (c) OpenStreetMap contributors (ODbL). Wind: ERA5 (Copernicus C3S) via Open-Meteo (CC BY 4.0)."
+}

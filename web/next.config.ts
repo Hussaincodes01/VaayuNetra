@@ -136,6 +136,13 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
+  // On Vercel, api/ground.py runs as a Python function. In development it runs beside `next dev`
+  // (python scripts/ground-api-dev.py), so the dashboard's ground-network pages work locally too.
+  async rewrites() {
+    return dev
+      ? [{ source: "/api/ground", destination: "http://127.0.0.1:8787/api/ground" }]
+      : [];
+  },
 };
 
 export default withNextIntl(nextConfig);

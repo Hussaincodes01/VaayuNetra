@@ -1,0 +1,315 @@
+{
+ "slug": "okhla",
+ "name": "Okhla",
+ "city": "Delhi",
+ "point": [
+  28.5125,
+  77.2835
+ ],
+ "outline": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     77.285897,
+     28.511411
+    ],
+    [
+     77.285696,
+     28.51611
+    ],
+    [
+     77.285237,
+     28.51638
+    ],
+    [
+     77.284054,
+     28.514638
+    ],
+    [
+     77.283272,
+     28.515041
+    ],
+    [
+     77.283394,
+     28.513776
+    ],
+    [
+     77.283281,
+     28.513773
+    ],
+    [
+     77.283204,
+     28.513135
+    ],
+    [
+     77.281659,
+     28.513097
+    ],
+    [
+     77.281412,
+     28.51123
+    ],
+    [
+     77.282968,
+     28.51042
+    ],
+    [
+     77.282582,
+     28.509712
+    ],
+    [
+     77.282678,
+     28.509505
+    ],
+    [
+     77.28255,
+     28.509222
+    ],
+    [
+     77.284011,
+     28.508563
+    ],
+    [
+     77.2842,
+     28.508376
+    ],
+    [
+     77.286054,
+     28.507353
+    ],
+    [
+     77.285991,
+     28.507582
+    ],
+    [
+     77.285897,
+     28.511411
+    ]
+   ]
+  ]
+ },
+ "outline_source": {
+  "osm": "way/608169272",
+  "name": "Okhla Landfill",
+  "area_m2": 257262
+ },
+ "sensitive_sites": [
+  {
+   "name": "ESIC Hospital",
+   "kind": "hospital",
+   "lat": 28.514378,
+   "lon": 77.281572,
+   "distance_m": 281,
+   "osm": "node/5663496120"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.503153,
+   "lon": 77.283585,
+   "distance_m": 1034,
+   "osm": "way/287870803"
+  },
+  {
+   "name": "Blind School",
+   "kind": "school",
+   "lat": 28.503049,
+   "lon": 77.282461,
+   "distance_m": 1050,
+   "osm": "way/287870801"
+  },
+  {
+   "name": "Jeevan Jyoti Hospital",
+   "kind": "hospital",
+   "lat": 28.522374,
+   "lon": 77.285563,
+   "distance_m": 1110,
+   "osm": "node/7138632164"
+  },
+  {
+   "name": "govt secondary school",
+   "kind": "school",
+   "lat": 28.512748,
+   "lon": 77.266056,
+   "distance_m": 1707,
+   "osm": "way/461569370"
+  },
+  {
+   "name": "skv Tughlakabad village",
+   "kind": "school",
+   "lat": 28.51018,
+   "lon": 77.265686,
+   "distance_m": 1761,
+   "osm": "way/461566508"
+  },
+  {
+   "name": "Primary Urban Health Centre Cum Maternity Home & Poly Clinic",
+   "kind": "hospital",
+   "lat": 28.513195,
+   "lon": 77.265275,
+   "distance_m": 1784,
+   "osm": "node/7138632226"
+  },
+  {
+   "name": "Kendriya Vidyalaya",
+   "kind": "school",
+   "lat": 28.509029,
+   "lon": 77.301348,
+   "distance_m": 1788,
+   "osm": "way/698863790"
+  },
+  {
+   "name": "Manav Mangal Public School",
+   "kind": "school",
+   "lat": 28.4987,
+   "lon": 77.295438,
+   "distance_m": 1922,
+   "osm": "node/7099861698"
+  },
+  {
+   "name": "Manav Rachna International School",
+   "kind": "school",
+   "lat": 28.494964,
+   "lon": 77.287956,
+   "distance_m": 1987,
+   "osm": "way/1359301112"
+  },
+  {
+   "name": "Surajkund International",
+   "kind": "school",
+   "lat": 28.493711,
+   "lon": 77.295898,
+   "distance_m": 2406,
+   "osm": "way/1359649703"
+  },
+  {
+   "name": "Delhi Institute of Tool Engineering",
+   "kind": "college",
+   "lat": 28.53124,
+   "lon": 77.270661,
+   "distance_m": 2423,
+   "osm": "node/7090309698"
+  },
+  {
+   "name": "S.T. Giri School",
+   "kind": "school",
+   "lat": 28.533739,
+   "lon": 77.290968,
+   "distance_m": 2460,
+   "osm": "way/1421151480"
+  },
+  {
+   "name": "Deepalaya",
+   "kind": "school",
+   "lat": 28.530132,
+   "lon": 77.267666,
+   "distance_m": 2490,
+   "osm": "way/262248698"
+  }
+ ],
+ "wind": {
+  "prevailing_from_deg": 315.0,
+  "calm_share": 0.0815,
+  "mean_ms": 2.45,
+  "rose": [
+   {
+    "from_deg": 0.0,
+    "share": 0.0504,
+    "mean_ms": 2.29
+   },
+   {
+    "from_deg": 22.5,
+    "share": 0.032,
+    "mean_ms": 2.28
+   },
+   {
+    "from_deg": 45.0,
+    "share": 0.0307,
+    "mean_ms": 2.29
+   },
+   {
+    "from_deg": 67.5,
+    "share": 0.0384,
+    "mean_ms": 2.3
+   },
+   {
+    "from_deg": 90.0,
+    "share": 0.0636,
+    "mean_ms": 2.53
+   },
+   {
+    "from_deg": 112.5,
+    "share": 0.0867,
+    "mean_ms": 2.87
+   },
+   {
+    "from_deg": 135.0,
+    "share": 0.0642,
+    "mean_ms": 2.59
+   },
+   {
+    "from_deg": 157.5,
+    "share": 0.028,
+    "mean_ms": 2.27
+   },
+   {
+    "from_deg": 180.0,
+    "share": 0.0167,
+    "mean_ms": 1.9
+   },
+   {
+    "from_deg": 202.5,
+    "share": 0.01,
+    "mean_ms": 1.98
+   },
+   {
+    "from_deg": 225.0,
+    "share": 0.0123,
+    "mean_ms": 2.06
+   },
+   {
+    "from_deg": 247.5,
+    "share": 0.0172,
+    "mean_ms": 2.33
+   },
+   {
+    "from_deg": 270.0,
+    "share": 0.0505,
+    "mean_ms": 2.64
+   },
+   {
+    "from_deg": 292.5,
+    "share": 0.1276,
+    "mean_ms": 2.98
+   },
+   {
+    "from_deg": 315.0,
+    "share": 0.1882,
+    "mean_ms": 2.86
+   },
+   {
+    "from_deg": 337.5,
+    "share": 0.1018,
+    "mean_ms": 2.34
+   }
+  ],
+  "hours": 8784,
+  "source": "ERA5 via Open-Meteo archive, 2024, hourly 10 m wind"
+ },
+ "satellite_flags": [
+  {
+   "date": "2024-11-29",
+   "tier": "T2",
+   "lat": 28.5125,
+   "lon": 77.2835,
+   "rate_kgph": null,
+   "rate_low_kgph": null,
+   "rate_high_kgph": null,
+   "wind_u": -0.2,
+   "wind_v": -0.7,
+   "surface_kind": ""
+  }
+ ],
+ "attribution": "Outline and places (c) OpenStreetMap contributors (ODbL). Wind: ERA5 (Copernicus C3S) via Open-Meteo (CC BY 4.0)."
+}

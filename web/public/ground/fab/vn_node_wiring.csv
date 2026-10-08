@@ -1,0 +1,13 @@
+Cable,Function,From,To,Wires,Notes
+W1,Battery pack to carrier,BMS P+ / P−,J1 BATTERY IN,"red, black",
+W2,Charger output to pack,CN3791 BAT + / −,BMS P+ / P−,"red, black",
+W3,Cells to BMS,Holder + / − tabs,BMS B+ / B−,"red, black",
+W4,Carrier to Heltec battery port,J2 TO HELTEC BAT,Heltec V3 SH1.25 battery,"red, black",
+W5,Battery rail to boost input,J3 MT3608 IN,MT3608 IN+ / IN−,"red, black",
+W6,Boost 5 V output to carrier,MT3608 OUT+ / OUT−,J4 MT3608 OUT 5V,"orange, black",
+W7,Solar voltage sense tap,CN3791 SOLAR + / −,J5 SOLAR SENSE,"white, black",
+W8,Solar panel feed (inside box),Gland G1 (solar),CN3791 SOLAR + / −,"red, black in 2-core jacket",
+W9,Gas sensor harness,J6 TGS2600,TGS2600 breakout,"red, brown, orange, yellow",pin 1 heater+ · 2 heater− · 3 VC · 4 sensor out
+W10,Particulate sensor ribbon,J7 PMS5003 (1×8),PMS5003 8-pin socket,"8-way: 5 used (5V, GND, SET, RX, TX)","5V, GND, SET, RX, TX; 3 unused"
+W11,Wind sensor feed (inside box),J9 WIND,Gland G2 → anemometer + vane,"red, black, green, white in 4-core jacket","3V3, GND, wind pulse, vane"
+W12,Radio pigtail,Heltec V3 IPEX (U.FL),SMA bulkhead → 868 MHz antenna,1.13 mm coax,"1.13 mm coax, U.FL to SMA"

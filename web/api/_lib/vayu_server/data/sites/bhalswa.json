@@ -1,0 +1,707 @@
+{
+ "slug": "bhalswa",
+ "name": "Bhalswa",
+ "city": "Delhi",
+ "point": [
+  28.7406,
+  77.1582
+ ],
+ "outline": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     77.154022,
+     28.743202
+    ],
+    [
+     77.156447,
+     28.743762
+    ],
+    [
+     77.156843,
+     28.743799
+    ],
+    [
+     77.157007,
+     28.74378
+    ],
+    [
+     77.157196,
+     28.743733
+    ],
+    [
+     77.157357,
+     28.743607
+    ],
+    [
+     77.1576,
+     28.743286
+    ],
+    [
+     77.157664,
+     28.743094
+    ],
+    [
+     77.158424,
+     28.742614
+    ],
+    [
+     77.159569,
+     28.742224
+    ],
+    [
+     77.159949,
+     28.74204
+    ],
+    [
+     77.160405,
+     28.741673
+    ],
+    [
+     77.160636,
+     28.741457
+    ],
+    [
+     77.16077,
+     28.740375
+    ],
+    [
+     77.160979,
+     28.740271
+    ],
+    [
+     77.160588,
+     28.739763
+    ],
+    [
+     77.159944,
+     28.739373
+    ],
+    [
+     77.158919,
+     28.738682
+    ],
+    [
+     77.157589,
+     28.738077
+    ],
+    [
+     77.156854,
+     28.738037
+    ],
+    [
+     77.156353,
+     28.738263
+    ],
+    [
+     77.155692,
+     28.738786
+    ],
+    [
+     77.15517,
+     28.73938
+    ],
+    [
+     77.154896,
+     28.740396
+    ],
+    [
+     77.154022,
+     28.743202
+    ]
+   ]
+  ]
+ },
+ "outline_source": {
+  "osm": "way/414943488",
+  "name": "Bhalswa Landfill Area",
+  "area_m2": 277836
+ },
+ "sensitive_sites": [
+  {
+   "name": "Madarasa Faiz-ul-Quran",
+   "kind": "school",
+   "lat": 28.739119,
+   "lon": 77.160106,
+   "distance_m": 248,
+   "osm": "way/1168448453"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.740089,
+   "lon": 77.161152,
+   "distance_m": 294,
+   "osm": "node/10866786293"
+  },
+  {
+   "name": "Nav Jyoti Public School",
+   "kind": "school",
+   "lat": 28.743837,
+   "lon": 77.159636,
+   "distance_m": 384,
+   "osm": "way/1179943438"
+  },
+  {
+   "name": "Hospital",
+   "kind": "hospital",
+   "lat": 28.741717,
+   "lon": 77.162104,
+   "distance_m": 401,
+   "osm": "way/1167759067"
+  },
+  {
+   "name": "Khan Clinic",
+   "kind": "clinic",
+   "lat": 28.740655,
+   "lon": 77.16238,
+   "distance_m": 408,
+   "osm": "node/10839204006"
+  },
+  {
+   "name": "Sky Public School",
+   "kind": "school",
+   "lat": 28.743896,
+   "lon": 77.160634,
+   "distance_m": 435,
+   "osm": "node/10956856127"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.740636,
+   "lon": 77.162769,
+   "distance_m": 446,
+   "osm": "node/10836291364"
+  },
+  {
+   "name": "Delhi Government Dispensary",
+   "kind": "clinic",
+   "lat": 28.74019,
+   "lon": 77.163401,
+   "distance_m": 510,
+   "osm": "way/1164997811"
+  },
+  {
+   "name": "Gyan Sarovar School",
+   "kind": "school",
+   "lat": 28.743557,
+   "lon": 77.154101,
+   "distance_m": 517,
+   "osm": "way/1180109246"
+  },
+  {
+   "name": "Shiv Shakti Public School",
+   "kind": "school",
+   "lat": 28.742581,
+   "lon": 77.163087,
+   "distance_m": 525,
+   "osm": "way/1178553640"
+  },
+  {
+   "name": "Umeed Ki Kiran",
+   "kind": "clinic",
+   "lat": 28.740079,
+   "lon": 77.164107,
+   "distance_m": 579,
+   "osm": "node/10775213861"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.735415,
+   "lon": 77.161232,
+   "distance_m": 645,
+   "osm": "way/1189514218"
+  },
+  {
+   "name": "Mohalla Clinic",
+   "kind": "clinic",
+   "lat": 28.742335,
+   "lon": 77.165104,
+   "distance_m": 701,
+   "osm": "node/10861879911"
+  },
+  {
+   "name": "Aryan Model Public School",
+   "kind": "school",
+   "lat": 28.746607,
+   "lon": 77.161113,
+   "distance_m": 723,
+   "osm": "node/11025053735"
+  },
+  {
+   "name": "Navjeevan Medical Center",
+   "kind": "clinic",
+   "lat": 28.742318,
+   "lon": 77.165975,
+   "distance_m": 782,
+   "osm": "node/11048830049"
+  },
+  {
+   "name": "Devraji Narayan Public School",
+   "kind": "school",
+   "lat": 28.747396,
+   "lon": 77.155922,
+   "distance_m": 784,
+   "osm": "way/1182654815"
+  },
+  {
+   "name": "MCD Primary School",
+   "kind": "school",
+   "lat": 28.742486,
+   "lon": 77.167128,
+   "distance_m": 896,
+   "osm": "way/1158946096"
+  },
+  {
+   "name": "Family Clinic",
+   "kind": "clinic",
+   "lat": 28.734829,
+   "lon": 77.168099,
+   "distance_m": 1158,
+   "osm": "node/10654395489"
+  },
+  {
+   "name": "Arya Hansraj Model School",
+   "kind": "school",
+   "lat": 28.733531,
+   "lon": 77.167031,
+   "distance_m": 1164,
+   "osm": "node/10758831609"
+  },
+  {
+   "name": "Anand Maya Multi Speciality Hospital",
+   "kind": "hospital",
+   "lat": 28.729914,
+   "lon": 77.160082,
+   "distance_m": 1196,
+   "osm": "node/10768316749"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.730371,
+   "lon": 77.162391,
+   "distance_m": 1203,
+   "osm": "way/78786325"
+  },
+  {
+   "name": "Modern Education Public School",
+   "kind": "school",
+   "lat": 28.73056,
+   "lon": 77.163398,
+   "distance_m": 1221,
+   "osm": "node/10706635437"
+  },
+  {
+   "name": "MCD Primary School",
+   "kind": "school",
+   "lat": 28.733966,
+   "lon": 77.168593,
+   "distance_m": 1252,
+   "osm": "way/78786214"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.752186,
+   "lon": 77.161264,
+   "distance_m": 1316,
+   "osm": "node/10939760633"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.730904,
+   "lon": 77.166471,
+   "distance_m": 1342,
+   "osm": "way/1157635596"
+  },
+  {
+   "name": "Delhi Government Dispensary",
+   "kind": "clinic",
+   "lat": 28.733918,
+   "lon": 77.169772,
+   "distance_m": 1350,
+   "osm": "way/350852625"
+  },
+  {
+   "name": "Airmid Hospital",
+   "kind": "hospital",
+   "lat": 28.744901,
+   "lon": 77.144869,
+   "distance_m": 1385,
+   "osm": "node/7545203159"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.73039,
+   "lon": 77.166873,
+   "distance_m": 1411,
+   "osm": "way/1149873753"
+  },
+  {
+   "name": "k block school",
+   "kind": "school",
+   "lat": 28.730387,
+   "lon": 77.166868,
+   "distance_m": 1411,
+   "osm": "way/1258318727"
+  },
+  {
+   "name": "Raj Nursing Home & Orthopaedic Center",
+   "kind": "clinic",
+   "lat": 28.744513,
+   "lon": 77.144145,
+   "distance_m": 1438,
+   "osm": "node/7545203249"
+  },
+  {
+   "name": "Municipal Primary Coeducational School",
+   "kind": "school",
+   "lat": 28.753104,
+   "lon": 77.162435,
+   "distance_m": 1443,
+   "osm": "way/1175896957"
+  },
+  {
+   "name": "City Hospital 42",
+   "kind": "hospital",
+   "lat": 28.745734,
+   "lon": 77.144517,
+   "distance_m": 1451,
+   "osm": "node/7545203213"
+  },
+  {
+   "name": "Silver Oak Public School",
+   "kind": "school",
+   "lat": 28.752373,
+   "lon": 77.151644,
+   "distance_m": 1451,
+   "osm": "way/1211751325"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.75067,
+   "lon": 77.167766,
+   "distance_m": 1453,
+   "osm": "way/1192637679"
+  },
+  {
+   "name": "Delhi Government Dispensary",
+   "kind": "clinic",
+   "lat": 28.753386,
+   "lon": 77.162381,
+   "distance_m": 1472,
+   "osm": "way/1175896936"
+  },
+  {
+   "name": "Max Healthcare",
+   "kind": "hospital",
+   "lat": 28.727795,
+   "lon": 77.152674,
+   "distance_m": 1515,
+   "osm": "way/278201043"
+  },
+  {
+   "name": "Industrial Training Institute",
+   "kind": "college",
+   "lat": 28.733144,
+   "lon": 77.171523,
+   "distance_m": 1540,
+   "osm": "way/294122280"
+  },
+  {
+   "name": "Delhi Global Hospital",
+   "kind": "hospital",
+   "lat": 28.744922,
+   "lon": 77.14317,
+   "distance_m": 1543,
+   "osm": "node/7545203166"
+  },
+  {
+   "name": "Babu Jagjivan Ram Memorial Hospital",
+   "kind": "hospital",
+   "lat": 28.734498,
+   "lon": 77.172782,
+   "distance_m": 1575,
+   "osm": "way/78786549"
+  },
+  {
+   "name": "Munshi Shiv Charan Sadar Lions Hospital",
+   "kind": "hospital",
+   "lat": 28.728599,
+   "lon": 77.167126,
+   "distance_m": 1587,
+   "osm": "way/1148195515"
+  },
+  {
+   "name": "DGD, Swaroop Nagar",
+   "kind": "clinic",
+   "lat": 28.753737,
+   "lon": 77.150981,
+   "distance_m": 1614,
+   "osm": "node/7138534423"
+  },
+  {
+   "name": "Clinic",
+   "kind": "clinic",
+   "lat": 28.731382,
+   "lon": 77.171369,
+   "distance_m": 1640,
+   "osm": "node/10801807130"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.755175,
+   "lon": 77.163119,
+   "distance_m": 1682,
+   "osm": "node/10939545856"
+  },
+  {
+   "name": "DGD, Jahangirpuri B Block",
+   "kind": "clinic",
+   "lat": 28.728473,
+   "lon": 77.169162,
+   "distance_m": 1716,
+   "osm": "node/7138534404"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.726545,
+   "lon": 77.16652,
+   "distance_m": 1753,
+   "osm": "way/1143855202"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.728977,
+   "lon": 77.170707,
+   "distance_m": 1773,
+   "osm": "way/1137796415"
+  },
+  {
+   "name": "skv school ground",
+   "kind": "school",
+   "lat": 28.726882,
+   "lon": 77.167763,
+   "distance_m": 1781,
+   "osm": "way/1258323655"
+  },
+  {
+   "name": "Skylife Multispeciality Hospital",
+   "kind": "hospital",
+   "lat": 28.749782,
+   "lon": 77.143097,
+   "distance_m": 1790,
+   "osm": "node/7545203195"
+  },
+  {
+   "name": "Mohalla Clinic",
+   "kind": "clinic",
+   "lat": 28.751387,
+   "lon": 77.171919,
+   "distance_m": 1793,
+   "osm": "node/11067132371"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.726729,
+   "lon": 77.16789,
+   "distance_m": 1802,
+   "osm": "way/1143855214"
+  },
+  {
+   "name": "Patliputra Nursing Home",
+   "kind": "clinic",
+   "lat": 28.749721,
+   "lon": 77.142786,
+   "distance_m": 1811,
+   "osm": "node/7545203189"
+  },
+  {
+   "name": "Aastha Hospital",
+   "kind": "hospital",
+   "lat": 28.732763,
+   "lon": 77.141649,
+   "distance_m": 1833,
+   "osm": "node/7545203206"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.727873,
+   "lon": 77.170757,
+   "distance_m": 1866,
+   "osm": "node/11080855977"
+  },
+  {
+   "name": "ESI TB Hospital",
+   "kind": "hospital",
+   "lat": 28.735014,
+   "lon": 77.140118,
+   "distance_m": 1870,
+   "osm": "node/7545203162"
+  },
+  {
+   "name": "Clinic",
+   "kind": "clinic",
+   "lat": 28.731155,
+   "lon": 77.174142,
+   "distance_m": 1874,
+   "osm": "way/1136416155"
+  },
+  {
+   "name": "Ekta Hospital",
+   "kind": "hospital",
+   "lat": 28.74831,
+   "lon": 77.140508,
+   "distance_m": 1926,
+   "osm": "node/7545203225"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.725778,
+   "lon": 77.168623,
+   "distance_m": 1929,
+   "osm": "way/1143855218"
+  },
+  {
+   "name": "School",
+   "kind": "school",
+   "lat": 28.731691,
+   "lon": 77.175385,
+   "distance_m": 1945,
+   "osm": "way/1136686168"
+  },
+  {
+   "name": "Ishan Hospital",
+   "kind": "hospital",
+   "lat": 28.733631,
+   "lon": 77.139754,
+   "distance_m": 1958,
+   "osm": "node/7545203212"
+  },
+  {
+   "name": "Madarsa Daruluoom Hamidia",
+   "kind": "school",
+   "lat": 28.728958,
+   "lon": 77.173382,
+   "distance_m": 1963,
+   "osm": "node/10799185610"
+  }
+ ],
+ "wind": {
+  "prevailing_from_deg": 315.0,
+  "calm_share": 0.0822,
+  "mean_ms": 2.43,
+  "rose": [
+   {
+    "from_deg": 0.0,
+    "share": 0.0437,
+    "mean_ms": 2.23
+   },
+   {
+    "from_deg": 22.5,
+    "share": 0.0271,
+    "mean_ms": 2.29
+   },
+   {
+    "from_deg": 45.0,
+    "share": 0.0298,
+    "mean_ms": 2.28
+   },
+   {
+    "from_deg": 67.5,
+    "share": 0.0343,
+    "mean_ms": 2.27
+   },
+   {
+    "from_deg": 90.0,
+    "share": 0.0657,
+    "mean_ms": 2.47
+   },
+   {
+    "from_deg": 112.5,
+    "share": 0.0985,
+    "mean_ms": 2.88
+   },
+   {
+    "from_deg": 135.0,
+    "share": 0.0679,
+    "mean_ms": 2.64
+   },
+   {
+    "from_deg": 157.5,
+    "share": 0.0274,
+    "mean_ms": 2.2
+   },
+   {
+    "from_deg": 180.0,
+    "share": 0.0153,
+    "mean_ms": 1.92
+   },
+   {
+    "from_deg": 202.5,
+    "share": 0.0084,
+    "mean_ms": 1.75
+   },
+   {
+    "from_deg": 225.0,
+    "share": 0.0124,
+    "mean_ms": 1.83
+   },
+   {
+    "from_deg": 247.5,
+    "share": 0.0194,
+    "mean_ms": 2.23
+   },
+   {
+    "from_deg": 270.0,
+    "share": 0.0505,
+    "mean_ms": 2.63
+   },
+   {
+    "from_deg": 292.5,
+    "share": 0.1478,
+    "mean_ms": 2.92
+   },
+   {
+    "from_deg": 315.0,
+    "share": 0.1844,
+    "mean_ms": 2.76
+   },
+   {
+    "from_deg": 337.5,
+    "share": 0.0853,
+    "mean_ms": 2.41
+   }
+  ],
+  "hours": 8784,
+  "source": "ERA5 via Open-Meteo archive, 2024, hourly 10 m wind"
+ },
+ "satellite_flags": [
+  {
+   "date": "2025-05-18",
+   "tier": "T2",
+   "lat": 28.7406,
+   "lon": 77.1582,
+   "rate_kgph": 19146.0,
+   "rate_low_kgph": 14610.6,
+   "rate_high_kgph": 23244.6,
+   "wind_u": 2.1,
+   "wind_v": -2.5,
+   "surface_kind": ""
+  }
+ ],
+ "attribution": "Outline and places (c) OpenStreetMap contributors (ODbL). Wind: ERA5 (Copernicus C3S) via Open-Meteo (CC BY 4.0)."
+}

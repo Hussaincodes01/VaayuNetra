@@ -1,0 +1,4 @@
+enclosure,max_batt_C,hours_above_45C,charging_hours_above_45C,hours_above_60C
+"white box, shaded under panel",46.4,33,0,0
+"white box, in sun",50.4,170,0,0
+"grey/black box, in sun",59.1,888,3,0

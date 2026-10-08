@@ -1,0 +1,5 @@
+city,panel_W,cells,gas_uptime,mesh_uptime,min_soc
+Delhi,6,3,100.0,100.0,41
+Delhi,10,3,100.0,100.0,69
+Mumbai,6,3,100.0,100.0,30
+Mumbai,10,3,100.0,100.0,62

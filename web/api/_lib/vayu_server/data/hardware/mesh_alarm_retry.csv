@@ -1,0 +1,13 @@
+topology,radio,alarm_retries,alarm_spread_s,alarm_burst_pct,worst_seed,max_node_duty_pct
+landfill ring (12 nodes),SF7 / 125 kHz,0,10,100.0,100.0,0.13
+landfill ring (12 nodes),SF7 / 125 kHz,3,10,100.0,100.0,0.12
+landfill ring (12 nodes),SF7 / 125 kHz,3,30,100.0,100.0,0.12
+landfill ring (12 nodes),SF9 / 125 kHz (LITE_FAST),0,10,95.8,83.3,0.4
+landfill ring (12 nodes),SF9 / 125 kHz (LITE_FAST),3,10,100.0,100.0,0.45
+landfill ring (12 nodes),SF9 / 125 kHz (LITE_FAST),3,30,100.0,100.0,0.4
+city ward grid (25 nodes),SF7 / 125 kHz,0,10,97.3,80.0,0.21
+city ward grid (25 nodes),SF7 / 125 kHz,3,10,100.0,100.0,0.15
+city ward grid (25 nodes),SF7 / 125 kHz,3,30,100.0,100.0,0.16
+city ward grid (25 nodes),SF9 / 125 kHz (LITE_FAST),0,10,52.0,40.0,0.51
+city ward grid (25 nodes),SF9 / 125 kHz (LITE_FAST),3,10,81.0,72.0,0.56
+city ward grid (25 nodes),SF9 / 125 kHz (LITE_FAST),3,30,97.0,88.0,0.54
